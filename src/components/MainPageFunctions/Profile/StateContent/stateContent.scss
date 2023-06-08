@@ -4,7 +4,7 @@ $twitterComment: #6c757dff;
 $popularsBackground: #fafafb;
 
 .userStatusCollection {
-    padding: 10px 5px;
+    padding: 0 5px;
 
     .classCollection {
         width: 100%;
@@ -13,7 +13,7 @@ $popularsBackground: #fafafb;
 
         .class {
             width: 25%;
-            
+            padding: 15px 0;
             text-align: center;
             cursor: pointer;
         }

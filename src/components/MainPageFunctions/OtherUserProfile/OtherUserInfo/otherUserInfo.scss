@@ -6,7 +6,7 @@ $popularsBackground: #fafafb;
 .userInfo-wrapper { 
     width: 50%;
     position: absolute;
-    top: 77px;
+    top: 73px;
     border-right: 1px solid $twitterBorder;   
 
     .userBanner {
@@ -24,15 +24,26 @@ $popularsBackground: #fafafb;
         transform: translateY(-50%);
 
     }
-    .editBtn {  
+    .btnCollection {  
         position: absolute;
-        right: 30px;
-        margin-top: 30px;
-        padding: 5px 15px;
-        border: 1px solid $twitterMainColor;
-        border-radius: 50px;
-        color: $twitterMainColor;
-        cursor: pointer;
+        right: 5px;
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        
+        .followingBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 15px;
+            border-radius: 50px;
+            border: 1px solid $twitterMainColor;
+            background: $twitterMainColor;
+            color: #fff;
+            cursor: pointer;
+        }
+        
     }
 
     .userTextContent {

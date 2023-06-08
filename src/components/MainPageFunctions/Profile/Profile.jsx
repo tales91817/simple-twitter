@@ -8,6 +8,14 @@ const Profile = () => {
     <div className="profile-wrapper">
         <div className="profileHeader">
           <BackArrowIcon />
+          <div className="backUser">
+            <p className="username">
+                John Doe
+            </p>
+            <p className="userTweetsNum">
+                25 推文
+            </p>
+            </div>
         </div>
         <div className="userInfo">
           <UserInfo />
