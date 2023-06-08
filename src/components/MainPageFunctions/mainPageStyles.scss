@@ -1,0 +1,272 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+$twitterBorderSidebarText: #44444f;
+
+.twitter {
+    display: flex;
+  
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 25%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      border-right: 1px solid $twitterBorder;
+  
+      ul {
+        list-style-type: none;
+        .logo {
+          display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #000;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+        }
+        li {
+          a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: $twitterBorderSidebarText;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            &:hover {
+              background: #e8f5fe;
+              color: $twitterMainColor;
+            }
+  
+              .icons {
+                margin-right: 15px;
+              }
+          }
+        }  
+        
+        .sidebar_Btn {
+          margin: 15px 0;
+          a {
+            text-decoration: none;
+            background: $twitterMainColor;
+            color: #fff;
+            padding: 10px 35px;
+            margin: 0 35px;
+            border-radius: 50px;
+            outline: none;
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+  
+      .logout {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 0;
+        
+        
+        .logoutBtn {
+          display: flex;
+          justify-content: center;
+          width: 25%;
+          cursor: pointer;
+          
+          .logoutText {
+            margin-left: 8px;
+            color: $twitterBorderSidebarText
+          }
+        }
+      }
+      
+    }
+  }
+  
+  /*post styles*/
+  
+  .posts {
+    width: 50%;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+  
+    .post_home {
+      width: 50%;
+      position: fixed;
+      top: 0;
+      padding: 15px;
+      background: #fff;
+      font-weight: 700;
+      border-bottom: 1px solid $twitterBorder;
+      border-right: 1px solid $twitterBorder;
+    }
+  }
+  
+  /*create tweets*/
+  .create {
+    margin-top: 70px;
+    padding: 20px 0;
+    border-bottom: 5px solid $twitterBorder;
+  
+  
+    .create_container {
+      display: flex;
+      padding: 0 20px;
+      align-items: center;
+  
+      .create_input {
+        margin-left: 20px;
+
+        .create_control {
+          border: none;
+          outline: none;
+          color: $twitterBorderSidebarText;
+          font-weight: 500;
+        }
+      }
+    }
+  
+    .tweetbar {
+      margin-left: 20px;
+      margin-top: 15px;
+      display: flex;
+      justify-content: flex-end;
+  
+      .tweet_btn {
+        width: 50%;
+        text-align: right;
+        margin-right: 20px;
+  
+        a {
+          text-decoration: none;
+          background: $twitterMainColor;
+          color: #fff;
+          border-radius: 50px;
+          outline: none;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+  
+  /*postCard*/
+  
+  .post-wrapper {
+  
+    .postBorder {
+      padding: 20px 20px;
+      border-bottom: 1px solid $twitterBorder;;
+  
+      .postCard {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+
+        .postCardImg {
+            cursor: pointer;
+        }
+        
+        .postCardRightSide {
+          display: flex;
+          flex-direction: column;
+          justify-self: flex-start;
+          margin-left: 10px; 
+          
+          .postCardtitle {
+            display: flex;
+            align-items: center;
+            
+            .postCardName {
+              margin-right: 5px;
+              cursor: pointer;
+            }
+    
+            .postUserAccount {
+              color: $twitterComment;
+            }
+          }
+    
+          .postCardfooter {
+            display: flex;
+            
+  
+            .postCardIcon {
+              display: flex;
+              align-items: center;
+              margin: 10px 30px 0px 0px;
+                
+              .icon {
+                cursor: pointer;
+              }
+
+              p {
+                margin: 0 5px;
+                color: $twitterComment;
+                font-weight: 700;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  /*populars styles*/
+  .populars {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 20%;
+    padding: 20px 20px;
+    background: $popularsBackground;
+    border-radius: 5px;
+  
+    .popularsHeader {
+      font-size: 22px;
+      border-bottom: 1px solid $twitterBorder;
+      padding-bottom: 8px;
+    }
+  
+    .wrapper-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .popularCard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 8px 0;
+  
+        .popularImg {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+          cursor: pointer;
+        }
+  
+        .popularName {
+          font-weight: 700;
+        }
+  
+        .popularAccount {
+          font-size: 10px;
+          color: $twitterComment;
+        }
+      }
+  
+      .followBtn {
+        padding: 5px 15px;
+        border: 1px solid $twitterMainColor;
+        border-radius: 50px;
+        color: $twitterMainColor;
+        cursor: pointer;
+      }
+    }
+  }
+  

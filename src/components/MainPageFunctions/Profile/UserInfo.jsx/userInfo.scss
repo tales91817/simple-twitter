@@ -1,0 +1,70 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757dff;
+$popularsBackground: #fafafb;
+
+.userInfo-wrapper { 
+    width: 50%;
+    position: absolute;
+    top: 50px;
+    border-right: 1px solid $twitterBorder;   
+
+    .userBanner {
+        display: flex;
+        
+        .bannerImg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .userPhoto {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        transform: translateY(-50%);
+
+    }
+    .editBtn {  
+        position: absolute;
+        right: 30px;
+        margin-top: 30px;
+        padding: 5px 15px;
+        border: 1px solid $twitterMainColor;
+        border-radius: 50px;
+        color: $twitterMainColor;
+        cursor: pointer;
+    }
+
+    .userTextContent {
+        margin-top: 80px;
+        margin-left: 20px;
+
+        .username {
+            margin: 10px 0;
+            font-weight: 700;
+        }
+        .userAccount {
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: $twitterComment;
+        }
+        .userDescription {
+            margin: 10px 0;
+            font-size: 0.7em;
+        }
+    }
+
+    .followingStatus {
+        display: flex;
+        margin-bottom: 20px;
+        
+        .numbers {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        p {
+            margin-right: 20px;
+           color: $twitterComment; 
+        }
+    }
+}
