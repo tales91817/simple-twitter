@@ -1,0 +1,21 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+
+.profile-wrapper {
+    width: 50%;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+  
+    .profileHeader {
+      width: 50%;
+      position: fixed;
+      top: 0;
+      padding: 15px;
+      background: #fff;
+      font-weight: 700;
+      border-bottom: 1px solid $twitterBorder;
+      border-right: 1px solid $twitterBorder;
+    }
+  }

@@ -1,0 +1,23 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body::after {
+  content: "0123456789!@#$%^&*()";
+  display: none;
+  font-family: "Montserrat", serif;
+}
+
+
