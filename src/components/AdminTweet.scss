@@ -1,0 +1,80 @@
+$error: #fc5a5a;
+$gray80: #696974;
+$gray60: #b5b5be;
+$gray90: #44444f;
+$gray100: #171725;
+$Secondary: #6c757d;
+
+
+
+.adminTweetList {
+  // height: 100%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  flex-grow: 1;
+  margin-left: 24px;
+  border-left: 0.87px solid #e6ecf0;
+  border-right: 0.87px solid #e6ecf0;
+}
+
+.adminTweetCollection {
+  height: 100%;
+}
+
+.adminTweetItemWrapper {
+  margin-top: 16px;
+  border-bottom: 1px solid #e6ecf0;
+  display: flex;
+}
+
+.smallAvatar {
+  margin: 0 8px 36px 24px;
+}
+
+.tweetRight {
+  width: 100%;
+}
+
+.tweetInfo {
+  display: flex;
+  position: relative;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.tweetName {
+  margin-right: 8px;
+  line-height: 26px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $gray100;
+}
+
+.tweetOtherInfo {
+  line-height: 22px;
+  font-size: 14px;
+  color: $Secondary;
+}
+
+.deleteButton {
+  position: absolute;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.deleteImg {
+  width: 15px;
+}
+
+.tweetContent {
+  margin-bottom: 16px;
+  width: 100%;
+  line-height: 26px;
+  font-size: 16px;
+  color: $gray100;
+}

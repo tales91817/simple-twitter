@@ -1,0 +1,72 @@
+$error: #fc5a5a;
+$gray80: #696974;
+$gray60: #b5b5be;
+$gray90: #44444f;
+$gray100: #171725;
+$Secondary: #6c757d;
+
+
+.adminContentPageContainer {
+  height: 100%;
+  // overflow: hidden;
+  width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.adminLeftColumn {
+  min-width: 178px;
+  max-width: 178px;
+  // flex-basis: 178px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.adminLeftColumnLogoContainer {
+  padding: 13px;
+}
+
+.adminNavItemContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.adminNavIconContainer {
+  margin: 17px 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavTitle {
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $gray90;
+}
+
+.adminTitle {
+  padding: 24px 0 8px 21.79px;
+  position: sticky;
+  top: 0;
+  line-height: 26px;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: white;
+  z-index: 1;
+  opacity: 0.95;
+}
+
+@media screen and (min-width: 1200px) {
+  .adminContentPageContainer {
+    width: 1140px;
+  }
+}

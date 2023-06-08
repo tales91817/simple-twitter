@@ -1,3 +1,4 @@
+import "./AdminTweet.scss"
 import AdminTweetItem from "./AdminTweetItem";
 
 
@@ -16,7 +17,7 @@ const AdminTweetCollection = ({tweets}) => {
 const AdminTweetList = ({tweets}) => {
   return (
     <div className="adminTweetList">
-      <div className="adminMainTitle">推文清單</div>
+      <div className="adminTitle">推文清單</div>
       <AdminTweetCollection tweets={tweets}/>
     </div>
   );

@@ -1,3 +1,4 @@
+import "./AuthStyles.scss";
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";

@@ -1,5 +1,6 @@
 import AdminTweetList from "components/AdminTweetList";
 import AdminLeftColumn from "../components/common/AdminLeftColumn";
+import "./AdminContentPageFrame.scss";
 
 const dummyTweets = [
   {
@@ -96,7 +97,7 @@ const dummyTweets = [
 
 const AdminMainPage = () => {
   return (
-    <div className="adminMainPageContainer">
+    <div className="adminContentPageContainer">
       <AdminLeftColumn></AdminLeftColumn>
       <AdminTweetList tweets={dummyTweets} />
     </div>
