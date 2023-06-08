@@ -1,28 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap");
 
 $error: #fc5a5a;
 $gray80: #696974;
 $gray60: #b5b5be;
+$gray90: #44444f;
+$gray100: #171725;
+$Secondary: #6c757d;
 
 * {
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
+  box-sizing: border-box;
 }
 
-.authContainer{
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#root,
+.App {
+  height: 100%;
+}
+
+.authContainer {
   text-align: center;
   width: 356px;
   margin: 69px auto 0 auto;
 }
 
-.authTitle{
+.authTitle {
   text-align: center;
   font-size: 28px;
   font-weight: 700;
   line-height: 26px;
-  margin: 24px 0 40px 0
+  margin: 24px 0 40px 0;
 }
 
-.authInputContainer{
+.authInputContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -32,45 +48,44 @@ $gray60: #b5b5be;
   border-bottom: 2px solid black;
 }
 
-.authInputLabel{
+.authInputLabel {
   font-size: 14px;
   color: $gray80;
   text-align: start;
 }
 
-.authInput{
+.authInput {
   font-size: 16px;
   outline: none;
   border: none;
   background-color: #f5f8fa;
   border-radius: 0px;
-  &::placeholder{
+  &::placeholder {
     color: $gray60;
   }
 }
 
-.authInputMessageContainer{
+.authInputMessageContainer {
   margin-bottom: 8px;
   padding-top: 4px;
   height: 20px;
   display: flex;
   justify-content: space-between;
-
 }
 
-.authInputAlertText{
+.authInputAlertText {
   font-size: 12px;
   line-height: 20px;
   color: $error;
 }
 
-.authInputWordCount{
+.authInputWordCount {
   font-size: 12px;
   line-height: 20px;
   color: $gray80;
 }
 
-.authButton{
+.authButton {
   border-radius: 30px;
   background-color: #ff6600;
   border: none;
@@ -86,7 +101,7 @@ $gray60: #b5b5be;
   }
 }
 
-.authLinkTextContainer{
+.authLinkTextContainer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -97,4 +112,143 @@ $gray60: #b5b5be;
   font-size: 16px;
   font-weight: 400;
   margin: 6px 12px;
+}
+
+.adminMainPageContainer {
+  height: 100%;
+  // overflow: hidden;
+  width: 80%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.adminLeftColumn {
+  min-width: 178px;
+  max-width: 178px;
+  // flex-basis: 178px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.adminLeftColumnLogoContainer {
+  padding: 13px;
+}
+
+.adminNavItemContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.adminNavIconContainer {
+  margin: 17px 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminNavTitle {
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $gray90;
+}
+
+.adminMainTitle {
+  padding: 24px 0 8px 21.79px;
+  position: sticky;
+  top: 0;
+  line-height: 26px;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: white;
+  z-index: 1;
+  opacity: 0.95;
+}
+
+.adminTweetList {
+  // height: 100%;
+  overflow-y: scroll;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  flex-grow: 1;
+  margin-left: 24px;
+  border-left: 0.87px solid #e6ecf0;
+  border-right: 0.87px solid #e6ecf0;
+}
+
+.adminTweetCollection {
+  height: 100%;
+}
+
+.adminTweetItemWrapper {
+  margin-top: 16px;
+  border-bottom: 1px solid #e6ecf0;
+  display: flex;
+}
+
+.smallAvatar {
+  margin: 0 8px 36px 24px;
+}
+
+.tweetRight {
+  width: 100%;
+}
+
+.tweetInfo {
+  display: flex;
+  position: relative;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.tweetName {
+  margin-right: 8px;
+  line-height: 26px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $gray100;
+}
+
+.tweetOtherInfo {
+  line-height: 22px;
+  font-size: 14px;
+  color: $Secondary;
+}
+
+.deleteButton {
+  position: absolute;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.deleteImg {
+  width: 15px;
+}
+
+.tweetContent {
+  margin-bottom: 16px;
+  width: 100%;
+  line-height: 26px;
+  font-size: 16px;
+  color: $gray100;
+}
+
+@media screen and (min-width: 1200px) {
+  .adminMainPageContainer {
+    max-width: 1140px;
+  }
 }
