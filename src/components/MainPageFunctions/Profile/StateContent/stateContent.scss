@@ -3,28 +3,27 @@ $twitterMainColor: #ff6600;
 $twitterComment: #6c757dff;
 $popularsBackground: #fafafb;
 
-.userStatusCollection {
-    padding: 0 5px;
+.classCollection {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid $twitterBorder;
 
-    .classCollection {
-        width: 100%;
-        display: flex;
-        border-bottom: 1px solid $twitterBorder;
+    .class {
+        width: 15%;
+        padding: 15px 0;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: center;
+        cursor: pointer;
+    }
 
-        .class {
-            width: 25%;
-            padding: 15px 0;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .active {
-            width: 25%;
-            text-align: center;
-            font-weight: 600;
-            border-bottom: 2px solid $twitterMainColor;
-            color: $twitterMainColor;
-            cursor: pointer;
-        }
+    .active {
+        width: 15%;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        border-bottom: 2px solid $twitterMainColor;
+        color: $twitterMainColor;
+        cursor: pointer;
     }
 }

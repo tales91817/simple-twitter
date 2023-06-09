@@ -13,8 +13,8 @@ const MainPage = () => {
         <div className="twitter">
           <Sidebar />
           {/* <Twittes /> */}
-          {/* <Profile /> */}
-          <OtherUserProfile />
+          <Profile />
+          {/* <OtherUserProfile /> */}
           <Populars />
         </div>
       );

@@ -1,6 +1,6 @@
 $twitterBorder: #e6ecf0;
 $twitterMainColor: #ff6600;
-$twitterComment: #6c757dff;
+$twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 
 .userInfo-wrapper { 
@@ -8,6 +8,7 @@ $popularsBackground: #fafafb;
     position: absolute;
     top: 73px;
     border-right: 1px solid $twitterBorder;   
+    
 
     .userBanner {
         display: flex;
@@ -41,36 +42,41 @@ $popularsBackground: #fafafb;
             border: 1px solid $twitterMainColor;
             background: $twitterMainColor;
             color: #fff;
+            font-size: 16px;
+            font-weight: 400;
             cursor: pointer;
         }
         
     }
 
-    .userTextContent {
+    .otherUserTextContent {
         margin-top: 80px;
         margin-left: 20px;
 
-        .username {
-            margin: 10px 0;
+        .otherUsername {
+            font-size: 18px;
             font-weight: 700;
         }
-        .userAccount {
-            margin: 10px 0;
-            font-size: 0.9em;
+        .otherUserAccount {
+            font-size: 14px;
+            font-weight: 400;
             color: $twitterComment;
         }
-        .userDescription {
+        .otherUserDescription {
             margin: 10px 0;
-            font-size: 0.7em;
+            font-size: 14px;
+            font-weight: 400;
         }
     }
 
     .followingStatus {
         display: flex;
         margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 400;
         
         .numbers {
-            font-weight: 600;
+            font-weight: 500;
             margin-right: 5px;
         }
         p {

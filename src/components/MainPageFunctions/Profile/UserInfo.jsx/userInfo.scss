@@ -1,6 +1,6 @@
 $twitterBorder: #e6ecf0;
 $twitterMainColor: #ff6600;
-$twitterComment: #6c757dff;
+$twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 
 .userInfo-wrapper { 
@@ -26,11 +26,13 @@ $popularsBackground: #fafafb;
     }
     .editBtn {  
         position: absolute;
-        right: 30px;
+        right: 25px;
         margin-top: 30px;
         padding: 5px 15px;
         border: 1px solid $twitterMainColor;
         border-radius: 50px;
+        font-size: 16px;
+        font-weight: 400;
         color: $twitterMainColor;
         cursor: pointer;
     }
@@ -40,31 +42,35 @@ $popularsBackground: #fafafb;
         margin-left: 20px;
 
         .username {
-            margin: 10px 0;
+            font-size: 18px;
             font-weight: 700;
         }
         .userAccount {
-            margin: 10px 0;
-            font-size: 0.9em;
+            font-size: 14px;
+            font-weight: 400;
             color: $twitterComment;
         }
         .userDescription {
             margin: 10px 0;
-            font-size: 0.7em;
+            font-size: 14px;
+            font-weight: 400;
         }
     }
 
     .followingStatus {
         display: flex;
         margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 400;
         
         .numbers {
-            font-weight: 600;
+            font-weight: 500;
             margin-right: 5px;
         }
         p {
+            font-weight: 400;
             margin-right: 20px;
-           color: $twitterComment; 
+            color: $twitterComment; 
         }
     }
 }

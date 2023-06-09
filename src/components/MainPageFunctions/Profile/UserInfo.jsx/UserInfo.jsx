@@ -8,7 +8,6 @@ const UserInfo = () => {
     <div className="userInfo-wrapper">
         <div className="userBanner">
           <BannerImg className='bannerImg'/>
-          
         </div>
         <div className="userPhoto">
         </div>

@@ -26,7 +26,6 @@ $twitterBorderSidebarText: #44444f;
             text-decoration: none;
             color: #000;
             padding: 18px 35px;
-            font-size: 1.3rem;
         }
         li {
           a {
@@ -34,13 +33,14 @@ $twitterBorderSidebarText: #44444f;
             align-items: center;
             text-decoration: none;
             color: $twitterBorderSidebarText;
-            padding: 18px 35px;
-            font-size: 1.3rem;
+            padding: 20px 35px;
+            font-size: 18px;
+            font-weight: 700;
             &:hover {
               background: #e8f5fe;
               color: $twitterMainColor;
             }
-  
+
               .icons {
                 margin-right: 15px;
               }
@@ -49,11 +49,13 @@ $twitterBorderSidebarText: #44444f;
         
         .sidebar_Btn {
           margin: 15px 0;
+          
           a {
+            width: 100%;
             text-decoration: none;
             background: $twitterMainColor;
             color: #fff;
-            padding: 10px 35px;
+            padding: 8px 24px;
             margin: 0 35px;
             border-radius: 50px;
             outline: none;
@@ -73,11 +75,14 @@ $twitterBorderSidebarText: #44444f;
         .logoutBtn {
           display: flex;
           justify-content: center;
+          align-items: center;
           width: 25%;
+          font-size: 18px;
+          font-weight: 700;
           cursor: pointer;
           
           .logoutText {
-            margin-left: 8px;
+            margin-left: 20px;
             color: $twitterBorderSidebarText
           }
         }
@@ -92,14 +97,31 @@ $twitterBorderSidebarText: #44444f;
     width: 50%;
     margin-left: 25%;
     border-right: 1px solid $twitterBorder;
+    height: 100vh;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-button {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+      border-radius: 4px;
+      }
+    &::-webkit-scrollbar-track {
+      box-shadow: transparent;
+    }
   
     .post_home {
       width: 50%;
+      height: 74px;
       position: fixed;
       top: 0;
       padding: 15px;
       background: #fff;
       font-weight: 700;
+      font-size: 24px;
       border-bottom: 1px solid $twitterBorder;
       border-right: 1px solid $twitterBorder;
     }
@@ -109,16 +131,26 @@ $twitterBorderSidebarText: #44444f;
   .create {
     margin-top: 70px;
     padding: 20px 0;
-    border-bottom: 5px solid $twitterBorder;
+    border-bottom: 10px solid $twitterBorder;
   
   
     .create_container {
       display: flex;
-      padding: 0 20px;
       align-items: center;
+      padding: 0 20px;
+      
   
       .create_input {
-        margin-left: 20px;
+        margin-left: 8px;
+
+        input {
+          height: 50px;
+        }
+
+        input::placeholder {
+          font-size: 18px;
+          font-weight: 700; 
+        }
 
         .create_control {
           border: none;
@@ -178,13 +210,18 @@ $twitterBorderSidebarText: #44444f;
           .postCardtitle {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
             
             .postCardName {
               margin-right: 5px;
+              font-size: 16px;
+              font-weight: 700;
               cursor: pointer;
             }
     
             .postUserAccount {
+              font-size: 14px;
+              font-weight: 400;
               color: $twitterComment;
             }
           }
@@ -205,8 +242,9 @@ $twitterBorderSidebarText: #44444f;
               p {
                 margin: 0 5px;
                 color: $twitterComment;
-                font-weight: 700;
-                font-size: 1rem;
+                font-weight: 600;
+                font-size: 14px;
+                font-family: 'Montserrat', sans-serif;
               }
             }
           }
@@ -218,23 +256,45 @@ $twitterBorderSidebarText: #44444f;
   /*populars styles*/
   .populars {
     position: fixed;
-    top: 40px;
+    top: 16px;
     right: 40px;
     width: 20%;
-    padding: 20px 20px;
     background: $popularsBackground;
     border-radius: 5px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-button {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+      border-radius: 4px;
+      }
+    &::-webkit-scrollbar-track {
+      box-shadow: transparent;
+    }
   
     .popularsHeader {
-      font-size: 22px;
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 700;
       border-bottom: 1px solid $twitterBorder;
       padding-bottom: 8px;
+
+      h4 {
+        margin: 20px;
+      }
     }
   
     .wrapper-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 16px;
+      margin-top: 16px;
   
       .popularCard {
         display: flex;
@@ -251,12 +311,14 @@ $twitterBorderSidebarText: #44444f;
         }
   
         .popularName {
+          font-size: 16px;
           font-weight: 700;
         }
   
         .popularAccount {
-          font-size: 10px;
-          color: $twitterComment;
+          font-size: 14px;
+          font-weight: 500;
+          color: #92929D;
         }
       }
   
@@ -264,6 +326,8 @@ $twitterBorderSidebarText: #44444f;
         padding: 5px 15px;
         border: 1px solid $twitterMainColor;
         border-radius: 50px;
+        font-size: 16px;
+        font-weight: 400;
         color: $twitterMainColor;
         cursor: pointer;
       }

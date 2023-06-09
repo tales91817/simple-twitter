@@ -13,9 +13,3 @@ $popularsBackground: #fafafb;
 body {
   font-family: "Noto Sans TC", sans-serif;
 }
-
-body::after {
-  content: "0123456789!@#$%^&*()";
-  display: none;
-  font-family: "Montserrat", serif;
-}

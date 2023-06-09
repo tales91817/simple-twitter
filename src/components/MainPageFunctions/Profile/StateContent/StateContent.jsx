@@ -10,11 +10,9 @@ const stateContent = () => {
             <div className="class">回覆</div>
             <div className="class">喜歡的內容</div>
         </div>
-        <div className="postCardsCollection">
-            <Posts />
-            <Posts />
-            <Posts />
-        </div>
+        <Posts />
+        <Posts />
+        <Posts />
     </div>
   )
 }

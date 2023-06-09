@@ -10,6 +10,7 @@ $popularsBackground: #fafafb;
   
     .profileHeader {
       width: 50%;
+      height: 74px;
       display: flex;
       align-items: center;
       position: fixed;
@@ -17,6 +18,7 @@ $popularsBackground: #fafafb;
       padding: 15px;
       background: #fff;
       font-weight: 700;
+      font-size: 18px;
       border-right: 1px solid $twitterBorder;
 
       .arrow {
@@ -32,7 +34,8 @@ $popularsBackground: #fafafb;
         }
         .userTweetsNum {
             margin: 0;
-            font-size: 0.8em;
+            font-size: 13px;
+            font-weight: 500;
             color: $twitterComment;
         }
       }

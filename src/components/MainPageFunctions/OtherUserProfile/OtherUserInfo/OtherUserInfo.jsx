@@ -10,7 +10,6 @@ const OtherUserInfo = () => {
     <div className="userInfo-wrapper">
         <div className="userBanner">
           <BannerImg className='bannerImg'/>
-          
         </div>
         <div className="userPhoto">
         </div>
@@ -22,10 +21,10 @@ const OtherUserInfo = () => {
             </div>
         </div>
         
-        <div className="userTextContent">
-          <div className="username">Jane Cathy</div>
-          <div className="userAccount">@iamjane1999</div>
-          <div className="userDescription">
+        <div className="otherUserTextContent">
+          <div className="otherUsername">Jane Cathy</div>
+          <div className="otherUserAccount">@iamjane1999</div>
+          <div className="otherUserDescription">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </div>  
           <div className="followingStatus">
