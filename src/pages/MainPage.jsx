@@ -12,8 +12,8 @@ const MainPage = () => {
     return (
         <div className="twitter">
           <Sidebar />
-          {/* <Twittes /> */}
-          <Profile />
+          <Twittes />
+          {/* <Profile /> */}
           {/* <OtherUserProfile /> */}
           <Populars />
         </div>

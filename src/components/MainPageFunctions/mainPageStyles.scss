@@ -31,15 +31,12 @@ $twitterBorderSidebarText: #44444f;
           a {
             display: flex;
             align-items: center;
+            width: 100%;
             text-decoration: none;
             color: $twitterBorderSidebarText;
             padding: 20px 35px;
             font-size: 18px;
             font-weight: 700;
-            &:hover {
-              background: #e8f5fe;
-              color: $twitterMainColor;
-            }
 
               .icons {
                 margin-right: 15px;
