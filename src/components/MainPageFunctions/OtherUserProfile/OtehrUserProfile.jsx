@@ -5,6 +5,7 @@ import { ReactComponent as BackArrowIcon } from 'assets/icons/back-arrow.svg'
 
 
 
+
 const OtehrUserProfile = () => {
   return (
     <div className="profile-wrapper">

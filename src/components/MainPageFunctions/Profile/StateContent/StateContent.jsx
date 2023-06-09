@@ -10,9 +10,7 @@ const stateContent = () => {
             <div className="class">回覆</div>
             <div className="class">喜歡的內容</div>
         </div>
-        <Posts />
-        <Posts />
-        <Posts />
+        {/* <Posts /> */}
     </div>
   )
 }

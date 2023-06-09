@@ -1,38 +1,17 @@
-import React, { useState } from 'react'
-import { ReactComponent as UserAvatar } from 'assets/icons/other-user-avatar.svg'
+import React from 'react'
+import clsx from 'clsx'
+
 /* eslint-disable */ 
 
-const Populars = () => {
-  const [ trendUser, setTrendUser ] = useState([
-      {
-        id: 1,
-        avatar: <UserAvatar />,
-        name: 'Pizza Hut',
-        account: '@pizzahut',
-        Isfollowed: true,
-      },
-      {
-        id: 2,
-        avatar: <UserAvatar />,
-        name: 'McDon ...',
-        account: '@McDona...',
-        Isfollowed: true,
-      },
-      {
-        id: 3,
-        avatar: <UserAvatar />,
-        name: 'Bank of ...',
-        account: '@McDona...',
-        Isfollowed: true,
-      },
-    ])
+const Populars = ({ trendUsers, onTogglefollow }) => {
+  
   return (
     <div className='populars'>
       <div className="popularsHeader">
         <h4>推薦跟隨</h4>
       </div>
       <div className="populars-wrapper">
-        {trendUser.map((user) => (
+        {trendUsers.map((user) => (
           <div className="wrapper-content">
             <div className="popularCard">
               <div className="popularImg">
@@ -47,8 +26,11 @@ const Populars = () => {
                 </div>
               </div>
             </div>
-            <div className="followBtn">
-              <p>跟隨</p>
+            <div className={clsx('followBtn', { 'followed': user.isFollowed })} 
+              onClick={() => {
+                onTogglefollow(user.id, user.isFollowed)
+              }}>
+              { user.isFollowed ? '正在跟隨' : '跟隨'}
             </div>
           </div>
         ))}
