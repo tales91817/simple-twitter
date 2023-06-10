@@ -4,6 +4,9 @@ import { ReactComponent as HomeIcon } from 'assets/icons/home.svg'
 import { ReactComponent as ProfileIcon } from 'assets/icons/profile.svg'
 import { ReactComponent as SettingIcon } from 'assets/icons/setting.svg'
 import { ReactComponent as LogoutIcon } from 'assets/icons/Logout.svg'
+import { Link } from 'react-router-dom'
+import './sidebar.scss'
+
 /* eslint-disable */ 
 
 const Sidebar = () => {
@@ -12,16 +15,16 @@ const Sidebar = () => {
         <div className="btn-wrapper">
             <ul>
                 <div className='logo'>
-                    <a href="#"><LOGO className='icons'/></a>
+                    <a href="#"><LOGO className='icons' /></a>
                 </div>
                 <li>
-                    <a href="#"><HomeIcon className='icons'/>首頁</a>
+                    <Link to="/"><HomeIcon className='icons' />首頁</Link>
                 </li>
                 <li>
-                    <a href="#"><ProfileIcon className='icons'/>個人資料</a>
+                    <Link to="profile"><ProfileIcon className='icons' />個人資料</Link>
                 </li>
                 <li>
-                    <a href="#"><SettingIcon className='icons'/>設定</a>
+                    <Link to="setting"><SettingIcon className='icons' />設定</Link>
                 </li>
                 <div className="sidebar_Btn">
                     <a href="#">推文</a>

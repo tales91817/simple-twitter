@@ -5,6 +5,8 @@ $popularsBackground: #fafafb;
 
 .profile-wrapper {
     width: 50%;
+    height: 100vh;
+    position: fixed;
     margin-left: 25%;
     border-right: 1px solid $twitterBorder;
   
@@ -29,7 +31,7 @@ $popularsBackground: #fafafb;
       .backUser {
         margin-left: 10px;
 
-        .username {
+        .topUsername {
             margin: 0;
         }
         .userTweetsNum {

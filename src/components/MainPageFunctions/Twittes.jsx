@@ -1,6 +1,7 @@
 import React from 'react'
 import CreateTwitte from './CreateTweet'
 import Posts from './Posts'
+import ReplyModal from './ReplyModal'
 
 const Twittes = ({ postCards, onToggleLike }) => {
   return (
@@ -8,6 +9,7 @@ const Twittes = ({ postCards, onToggleLike }) => {
         <div className="post_home">首頁</div>
         <CreateTwitte />
         <Posts postCards={postCards} onToggleLike={onToggleLike}/>
+        <ReplyModal />
     </div>
   )
 }

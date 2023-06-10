@@ -1,0 +1,11 @@
+
+.container {
+    display: flex;
+    max-width: 960px;
+}
+
+@media screen and (min-width: 1200px) { 
+    .container {
+        width: 1140px
+    }
+}

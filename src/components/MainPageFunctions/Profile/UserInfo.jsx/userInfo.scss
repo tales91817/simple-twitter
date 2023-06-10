@@ -4,27 +4,26 @@ $twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 
 .userInfo-wrapper { 
-    width: 50%;
-    position: absolute;
-    top: 77px;
-    border-right: 1px solid $twitterBorder;   
+    width: 100%;
+    margin-top: 75px;
+    border-right: none; 
 
     .infoContent {
         position: relative;
+        
         .userBanner {
-            position: relative;
             .bannerImg {
                 width: 100%;
                 height: 100%;
                 background-size: cover;
                 background-position: center;
             }
-        }
+        } 
+        
         .userPhoto {
             position: absolute;
-            bottom: -30%;
-            left: 14%;
-            transform: translateX(-50%);
+            top: 65%;
+            left: 22px;
         }
     }
 

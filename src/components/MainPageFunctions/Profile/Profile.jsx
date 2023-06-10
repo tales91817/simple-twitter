@@ -7,9 +7,9 @@ const Profile = () => {
   return (
     <div className="profile-wrapper">
         <div className="profileHeader">
-          <BackArrowIcon />
+          <BackArrowIcon className='arrow'/>
           <div className="backUser">
-            <p className="username">
+            <p className="topUsername">
                 John Doe
             </p>
             <p className="userTweetsNum">

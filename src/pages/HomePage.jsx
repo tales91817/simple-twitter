@@ -1,44 +1,15 @@
 /* eslint-disable */ 
 import React, { useState } from 'react'
-import Sidebar from 'components/MainPageFunctions/Sidebar';
+import Sidebar from 'components/MainPageFunctions/Sidebar/Sidebar';
 import Twittes from 'components/MainPageFunctions/Twittes';
-import Populars from 'components/MainPageFunctions/Populars';
+import Populars from 'components/MainPageFunctions/Populars/Populars';
 import Profile from 'components/MainPageFunctions/Profile/Profile';
 import OtherUserProfile from 'components/MainPageFunctions/OtherUserProfile/OtehrUserProfile'
 import 'components/MainPageFunctions/mainPageStyles.scss'
-import { ReactComponent as UserAvatar } from 'assets/icons/other-user-avatar.svg'
 import { ReactComponent as PostUserAvatar } from 'assets/icons/other-user-avatar.svg'
+import { DummyTrenders } from 'components/dummyDocument/DummyTrenders';
+import './page.scss'
 
-const dummyTrenders = [
-  {
-    id: 1,
-    avatar: <UserAvatar />,
-    name: 'Pizza Hut',
-    account: '@pizzahut',
-    isFollowed: true,
-  },
-  {
-    id: 2,
-    avatar: <UserAvatar />,
-    name: 'McDon ...',
-    account: '@McDona...',
-    isFollowed: false,
-  },
-  {
-    id: 3,
-    avatar: <UserAvatar />,
-    name: 'Bank of ...',
-    account: '@McDona...',
-    isFollowed: false,
-  },
-  {
-    id: 4,
-    avatar: <UserAvatar />,
-    name: 'Bank of ...',
-    account: '@McDona...',
-    isFollowed: false,
-  },
-];
 
 const dummyPosts = [
   {
@@ -81,7 +52,7 @@ const dummyPosts = [
 
 
 const MainPage = () => {
-  const [ trendUsers, setTrenderUsers ] = useState(dummyTrenders)
+  const [ trendUsers, setTrenderUsers ] = useState(DummyTrenders)
   const [ postCards, setPostCards ] = useState(dummyPosts)
 
   const handleToggleFollow = (id, isFollowed) => {
@@ -113,11 +84,9 @@ const MainPage = () => {
   }
 
     return (
-        <div className="twitter">
+        <div className="container">
           <Sidebar />
-          <Twittes postCards={postCards} onToggleLike={handleToggleLike}/>
-          {/* <Profile /> */}
-          {/* <OtherUserProfile /> */}
+          <Twittes postCards={postCards} onToggleLike={handleToggleLike} />
           <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
         </div>
       );
