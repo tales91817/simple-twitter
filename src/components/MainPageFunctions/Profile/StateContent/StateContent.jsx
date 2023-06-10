@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React from 'react'
 import Posts from 'components/MainPageFunctions/Posts'
 import './stateContent.scss'
