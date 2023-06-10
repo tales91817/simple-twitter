@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/https//tales91817.github.io/simple-twitter/static/css/main.a73bd759.css",
+    "main.js": "/https//tales91817.github.io/simple-twitter/static/js/main.16dd9601.js",
+    "static/media/otheruser-info-banner.svg": "/https//tales91817.github.io/simple-twitter/static/media/otheruser-info-banner.298fd8c188486e7bbc1080e408d32381.svg",
+    "static/media/user-info-banner.svg": "/https//tales91817.github.io/simple-twitter/static/media/user-info-banner.c250a62ffaadda6902341abe9461cc4a.svg",
+    "static/media/main-user-John-Doe.png": "/https//tales91817.github.io/simple-twitter/static/media/main-user-John-Doe.97a93639b297aac5480f.png",
+    "static/media/other-user-Jane-Cathy.png": "/https//tales91817.github.io/simple-twitter/static/media/other-user-Jane-Cathy.4b5dc418270b03faab70.png",
+    "static/media/main-user-John-Doe.svg.svg": "/https//tales91817.github.io/simple-twitter/static/media/main-user-John-Doe.svg.b7346a06ded7349e9c566dadb0ef0c3a.svg",
+    "static/media/main-user-John-Doe avatar_50x50.svg": "/https//tales91817.github.io/simple-twitter/static/media/main-user-John-Doe avatar_50x50.00f12c08fa1f5ed6a67ce40cb212d528.svg",
+    "static/media/setting.svg": "/https//tales91817.github.io/simple-twitter/static/media/setting.06ba0b97112ccbcf9a7901603126ab7c.svg",
+    "static/media/other-user-avatar.svg": "/https//tales91817.github.io/simple-twitter/static/media/other-user-avatar.691d5a1898225d317f4268acd4a941d1.svg",
+    "static/media/LOGO.svg": "/https//tales91817.github.io/simple-twitter/static/media/LOGO.eea79863f987f0eb16f5291563e66e94.svg",
+    "static/media/notify.svg": "/https//tales91817.github.io/simple-twitter/static/media/notify.f0679ec31392e5a7d9edaadee86cc645.svg",
+    "static/media/Logout.svg": "/https//tales91817.github.io/simple-twitter/static/media/Logout.e0ca41e9271eef8779f88ba1621e43d8.svg",
+    "index.html": "/https//tales91817.github.io/simple-twitter/index.html",
+    "static/media/profile.svg": "/https//tales91817.github.io/simple-twitter/static/media/profile.bf0b578c8b387dabbc19a78e66a71a66.svg",
+    "static/media/home.svg": "/https//tales91817.github.io/simple-twitter/static/media/home.2e890571b8c370d010bd1f2c3371fea0.svg",
+    "static/media/icon_reply.svg": "/https//tales91817.github.io/simple-twitter/static/media/icon_reply.71d418f613202b1aae1328e598b133cf.svg",
+    "static/media/home_selected.svg": "/https//tales91817.github.io/simple-twitter/static/media/home_selected.531902829815a1c7d6cf0ef41422afac.svg",
+    "static/media/msg.svg": "/https//tales91817.github.io/simple-twitter/static/media/msg.608b5b827d6b85f1fef8aac0513d9e97.svg",
+    "static/media/icon_like.svg": "/https//tales91817.github.io/simple-twitter/static/media/icon_like.9685ef00ac0d759d17dc403e1bea8440.svg",
+    "static/media/icon_post.svg": "/https//tales91817.github.io/simple-twitter/static/media/icon_post.ddf73128e5c356ff04157c4f954c83db.svg",
+    "static/media/delete.svg": "/https//tales91817.github.io/simple-twitter/static/media/delete.a0ce301e51662cf154cdb87c07510af3.svg",
+    "static/media/back-arrow.svg": "/https//tales91817.github.io/simple-twitter/static/media/back-arrow.5a11d6a8a2191decdf03869a77b345db.svg",
+    "static/media/icon_like_slected.svg": "/https//tales91817.github.io/simple-twitter/static/media/icon_like_slected.816e9f378ab9de3bdafbba658f7bccf2.svg",
+    "main.a73bd759.css.map": "/https//tales91817.github.io/simple-twitter/static/css/main.a73bd759.css.map",
+    "main.16dd9601.js.map": "/https//tales91817.github.io/simple-twitter/static/js/main.16dd9601.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a73bd759.css",
+    "static/js/main.16dd9601.js"
+  ]
+}
