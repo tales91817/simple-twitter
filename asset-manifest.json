@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/https//tales91817.github.io/simple-twitter/static/css/main.a73bd759.css",
-    "main.js": "/https//tales91817.github.io/simple-twitter/static/js/main.16dd9601.js",
+    "main.js": "/https//tales91817.github.io/simple-twitter/static/js/main.f617ebf8.js",
     "static/media/otheruser-info-banner.svg": "/https//tales91817.github.io/simple-twitter/static/media/otheruser-info-banner.298fd8c188486e7bbc1080e408d32381.svg",
     "static/media/user-info-banner.svg": "/https//tales91817.github.io/simple-twitter/static/media/user-info-banner.c250a62ffaadda6902341abe9461cc4a.svg",
     "static/media/main-user-John-Doe.png": "/https//tales91817.github.io/simple-twitter/static/media/main-user-John-Doe.97a93639b297aac5480f.png",
@@ -25,10 +25,10 @@
     "static/media/back-arrow.svg": "/https//tales91817.github.io/simple-twitter/static/media/back-arrow.5a11d6a8a2191decdf03869a77b345db.svg",
     "static/media/icon_like_slected.svg": "/https//tales91817.github.io/simple-twitter/static/media/icon_like_slected.816e9f378ab9de3bdafbba658f7bccf2.svg",
     "main.a73bd759.css.map": "/https//tales91817.github.io/simple-twitter/static/css/main.a73bd759.css.map",
-    "main.16dd9601.js.map": "/https//tales91817.github.io/simple-twitter/static/js/main.16dd9601.js.map"
+    "main.f617ebf8.js.map": "/https//tales91817.github.io/simple-twitter/static/js/main.f617ebf8.js.map"
   },
   "entrypoints": [
     "static/css/main.a73bd759.css",
-    "static/js/main.16dd9601.js"
+    "static/js/main.f617ebf8.js"
   ]
 }
