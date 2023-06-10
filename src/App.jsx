@@ -1,5 +1,6 @@
 import "./AuthStyles.scss";
 import "./App.scss";
+import MainPage from 'pages/MainPage';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";

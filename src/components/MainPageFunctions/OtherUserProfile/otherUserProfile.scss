@@ -1,0 +1,43 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+
+.profile-wrapper {
+    width: 50%;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+  
+    .profileHeader {
+      width: 50%;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      padding: 15px;
+      background: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      border-right: 1px solid $twitterBorder;
+
+      .arrow {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .backUser {
+        margin-left: 10px;
+
+        .username {
+            margin: 0;
+        }
+        .userTweetsNum {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: $twitterComment;
+        }
+      }
+    }
+  }

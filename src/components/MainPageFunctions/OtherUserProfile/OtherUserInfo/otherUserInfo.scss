@@ -1,0 +1,92 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+
+.other-userInfo-wrapper { 
+    width: 50%;
+    position: absolute;
+    top: 73px;
+    border-right: 1px solid $twitterBorder;
+    
+    .OtherInfoContent {
+        position: relative;
+        .otherUserBanner {
+            position: absolute;
+
+            .otherUserBannerImg {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+            }
+
+        }
+        .otherUserPhoto {
+            position: absolute;
+            bottom: -35%;
+            left: 14%;
+            transform: translateX(-50%);
+        }
+    }
+    
+    .btnCollection {  
+        position: absolute;
+        right: 5px;
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        
+        .followingBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 15px;
+            border-radius: 50px;
+            border: 1px solid $twitterMainColor;
+            background: $twitterMainColor;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        
+    }
+
+    .otherUserTextContent {
+        margin-top: 80px;
+        margin-left: 20px;
+
+        .otherUsername {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .otherUserAccount {
+            font-size: 14px;
+            font-weight: 400;
+            color: $twitterComment;
+        }
+        .otherUserDescription {
+            margin: 10px 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .followingStatus {
+        display: flex;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-weight: 400;
+        
+        .numbers {
+            font-weight: 500;
+            margin-right: 5px;
+        }
+        p {
+            margin-right: 20px;
+           color: $twitterComment; 
+        }
+    }
+}
