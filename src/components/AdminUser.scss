@@ -1,0 +1,119 @@
+$error: #fc5a5a;
+$gray80: #696974;
+$gray60: #b5b5be;
+$gray90: #44444f;
+$gray100: #171725;
+$Secondary: #6c757d;
+
+@mixin fontStyle($height, $size, $weight, $color) {
+  line-height: $height;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+.adminUserList {
+  // height: 100%;
+
+  flex-grow: 1;
+  // display: flex;
+
+  margin-left: 24px;
+  border-left: 1px solid #e6ecf0;
+  // border-right: 1px solid #e6ecf0;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+.adminTitle {
+margin-bottom: 16px;
+border-bottom: 1px solid #e6ecf0;;
+}
+
+.adminUserCollection {
+  // border: 1px solid #000;
+  // margin-top: 16px;
+  padding-left: 16px;
+  display: grid;
+  grid-template-columns: 210px 210px 210px;
+  grid-auto-rows: 314px;
+  grid-gap: 16px;
+}
+
+.adminUserItemWrapper {
+  // border: 1px solid #000;
+  position: relative;
+  background-color: #f6f7f8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .midAvatar {
+    position: absolute;
+    top: 64px;
+    .avatar {
+      width: 100px;
+    }
+  }
+
+  .cover {
+    border-radius: 10px 10px 0 0;
+    width: 210px;
+    height: 140px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .name {
+    margin-top: 32px;
+    @include fontStyle(26px, 16px, 700, $gray100)
+  }
+
+  .account {
+    @include fontStyle(22px, 14px, 400, $Secondary)
+  }
+
+  .rowActions {
+    display: flex;
+    width: 139px;
+    height: 26px;
+    margin-top: 16px;
+    .iconPost{
+      margin-right: 8px;
+    }
+    .iconLike {
+      width: 24px;
+      height: 24px;
+      margin: 0 8px 0 16px;
+    }
+  }
+
+  .rowFollow {
+    display: flex;
+    // justify-content: space-between;
+    margin-top: 8px;
+    // width: 158px;
+    height: 22px;
+    @include fontStyle(22px, 14px, 400, $gray100);
+    
+    .followLeft {
+      margin-right: 8px;
+    }
+
+    .followSpan {
+      color: $Secondary;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .adminUserCollection {
+  grid-template-columns: 210px 210px 210px 210px; 
+  grid-auto-rows: 314px;
+  grid-gap: 16px;
+}
+}
