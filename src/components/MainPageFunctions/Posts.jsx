@@ -3,7 +3,8 @@ import { ReactComponent as ReplyIcon } from 'assets/icons/icon_reply.svg'
 import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
 
-const posts = ({ postCards, onToggleLike }) => {
+const posts = ({ postCards, onToggleLike, onOpenModalReply }) => {
+
 
   return (
     <div className='post-wrapper'>
@@ -22,21 +23,21 @@ const posts = ({ postCards, onToggleLike }) => {
                     </div>
                 </div>
                 <div className="postCardContent">
-                    <div className="postCardMsg">
                         <p>{post.postMsg}</p>
-                    </div>
                 </div>
                 <div className="postCardfooter">
                     <div className='postCardIcon'>
-                        <ReplyIcon className="icon"/>
-                        <p>13</p>
+                        <ReplyIcon className="icon" onClick={() => {
+                            onOpenModalReply(post.id)
+                        }}/>
+                        <div className="text">13</div>
                     </div>
                     <div className='postCardIcon'>
                         <div className="icon" onClick = {() => {
                             onToggleLike(post.id, post.isLiked)
                         }} > { post.isLiked ? <LikedIcon /> : <LikeIcon /> }
                         </div>
-                        <p>76</p>
+                        <div className="text">76</div>
                     </div>
                 </div>
             </div>

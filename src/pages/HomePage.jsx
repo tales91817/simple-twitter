@@ -9,6 +9,7 @@ import 'components/MainPageFunctions/mainPageStyles.scss'
 import { ReactComponent as PostUserAvatar } from 'assets/icons/other-user-avatar.svg'
 import { DummyTrenders } from 'components/dummyDocument/DummyTrenders';
 import './page.scss'
+import ReplyModal from 'components/MainPageFunctions/ReplyModal';
 
 
 const dummyPosts = [
@@ -54,6 +55,7 @@ const dummyPosts = [
 const MainPage = () => {
   const [ trendUsers, setTrenderUsers ] = useState(DummyTrenders)
   const [ postCards, setPostCards ] = useState(dummyPosts)
+  const [ openModalReply, setOpenModalReply ] = useState(false)
 
   const handleToggleFollow = (id, isFollowed) => {
     setTrenderUsers((prevUsers) => {
@@ -83,11 +85,20 @@ const MainPage = () => {
     })
   }
 
+  const handleOpenModalReply = (id) => {
+    setOpenModalReply(true)
+  }
+
+  const handleCloseModalReply = () => {
+    setOpenModalReply(false)
+  }
+
     return (
         <div className="container">
           <Sidebar />
-          <Twittes postCards={postCards} onToggleLike={handleToggleLike} />
+          <Twittes postCards={postCards} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply}/>
           <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
+          {openModalReply && <ReplyModal closeModal={handleCloseModalReply}/>}
         </div>
       );
 }
