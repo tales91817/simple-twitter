@@ -69,6 +69,12 @@ $Secondary: #6c757d;
   height: 24px;
   display: flex;
   justify-content: center;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    opacity: 0.4;
+  }
 }
 
 .deleteImg {
