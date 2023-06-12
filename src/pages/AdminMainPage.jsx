@@ -1,6 +1,9 @@
 import AdminTweetList from "components/AdminTweetList";
 import AdminLeftColumn from "../components/common/AdminLeftColumn";
 import "./AdminContentPageFrame.scss";
+import { ReactComponent as HomeSelected } from "../assets/icons/home_selected.svg";
+import { ReactComponent as Profile } from "../assets/icons/profile.svg";
+import { useState } from "react";
 
 const dummyTweets = [
   {
@@ -96,10 +99,19 @@ const dummyTweets = [
 ];
 
 const AdminMainPage = () => {
+  const [tweets, setTweets] = useState(dummyTweets);
+  
+  const handleDelete = (id) => {
+    setTweets(tweets.filter((tweet) => tweet.id !== id));
+  };
+  
   return (
-    <div className="adminContentPageContainer">
-      <AdminLeftColumn></AdminLeftColumn>
-      <AdminTweetList tweets={dummyTweets} />
+    <div className="adminContentPageContainer ">
+      <AdminLeftColumn
+        icon1={<HomeSelected />}
+        icon2={<Profile />}
+      />
+      <AdminTweetList tweets={tweets} onDelete={handleDelete} />
     </div>
   );
 };

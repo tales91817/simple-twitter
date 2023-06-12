@@ -11,6 +11,9 @@ const AuthInput = ({
   alertText,
   wordCount,
 }) => {
+  const wordCountClassName =
+    value.length > 0 ? "showWordCount" : "hideWordCount";
+    
   return (
     <>
       <div className="authInputContainer">
@@ -25,7 +28,7 @@ const AuthInput = ({
       </div>
       <div className="authInputMessageContainer">
         <div className="authInputAlertText">{alertText}</div>
-        <div className="authInputWordCount">{wordCount}</div>
+        <div className={wordCountClassName}>{wordCount}</div>
       </div>
     </>
   );
