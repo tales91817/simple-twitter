@@ -1,0 +1,101 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+$twitterBorderSidebarText: #44444f;
+$labelBackground: #f5f8fa;
+$labelText: #696974;
+$inputBorder:#657786;
+$inputPlaceholderText: #b5b5be;
+
+
+.settingContainer {
+    width: 50%;
+    position: fixed;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+    height: 100vh;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-button {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+      border-radius: 4px;
+      }
+    &::-webkit-scrollbar-track {
+      box-shadow: transparent;
+    }
+
+    .settingHeader {
+        width: 50%;
+        height: 74px;
+        position: fixed;
+        top: 0;
+        padding: 20px;
+        background: #fff;
+        font-weight: 700;
+        font-size: 24px;
+        border-bottom: 1px solid $twitterBorder;
+        border-right: 1px solid $twitterBorder;
+    }
+
+    .settingForm {
+        margin-top: 98px;
+        padding: 0 23px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        label {
+            margin-bottom: 32px;
+            padding: 0 17.57px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            color: $labelText;
+            text-align: start;
+            background: $labelBackground;
+            border-bottom: 2px solid $inputBorder;
+            
+            input {
+                width: 100%;
+                outline: none;
+                border: none;
+                background-color: #f5f8fa;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26px;
+            }
+            &::placeholder {
+                color: $inputPlaceholderText;
+            }
+        }
+        
+    }
+
+    .saveBtn {
+        margin-right: 24px;
+        display: flex;
+        justify-content: flex-end;
+        button {
+            width: 88px;
+            height: 46px;
+            padding: 8px 24px;
+            background: $twitterMainColor;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 30px;
+            color: #fff;
+            border-radius: 50px;
+            border: none;
+        }
+    }
+}

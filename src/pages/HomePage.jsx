@@ -1,44 +1,19 @@
 /* eslint-disable */ 
 import React, { useState } from 'react'
-import Sidebar from 'components/MainPageFunctions/Sidebar';
+import Sidebar from 'components/MainPageFunctions/Sidebar/Sidebar';
 import Twittes from 'components/MainPageFunctions/Twittes';
-import Populars from 'components/MainPageFunctions/Populars';
+import Populars from 'components/MainPageFunctions/Populars/Populars';
 import Profile from 'components/MainPageFunctions/Profile/Profile';
 import OtherUserProfile from 'components/MainPageFunctions/OtherUserProfile/OtehrUserProfile'
 import 'components/MainPageFunctions/mainPageStyles.scss'
-import { ReactComponent as UserAvatar } from 'assets/icons/other-user-avatar.svg'
 import { ReactComponent as PostUserAvatar } from 'assets/icons/other-user-avatar.svg'
+import { DummyTrenders } from 'components/dummyDocument/DummyTrenders';
+import './page.scss'
+import ReplyModal from 'components/MainPageFunctions/ReplyModal';
+import Setting from 'components/MainPageFunctions/Setting/Setting';
+import { Route, Router, Routes } from 'react-router-dom';
+import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 
-const dummyTrenders = [
-  {
-    id: 1,
-    avatar: <UserAvatar />,
-    name: 'Pizza Hut',
-    account: '@pizzahut',
-    isFollowed: true,
-  },
-  {
-    id: 2,
-    avatar: <UserAvatar />,
-    name: 'McDon ...',
-    account: '@McDona...',
-    isFollowed: false,
-  },
-  {
-    id: 3,
-    avatar: <UserAvatar />,
-    name: 'Bank of ...',
-    account: '@McDona...',
-    isFollowed: false,
-  },
-  {
-    id: 4,
-    avatar: <UserAvatar />,
-    name: 'Bank of ...',
-    account: '@McDona...',
-    isFollowed: false,
-  },
-];
 
 const dummyPosts = [
   {
@@ -80,9 +55,12 @@ const dummyPosts = [
 ]
 
 
-const MainPage = () => {
-  const [ trendUsers, setTrenderUsers ] = useState(dummyTrenders)
+const HomePage = () => {
+  const [ trendUsers, setTrenderUsers ] = useState(DummyTrenders)
   const [ postCards, setPostCards ] = useState(dummyPosts)
+  const [ openModalReply, setOpenModalReply ] = useState(false)
+
+
 
   const handleToggleFollow = (id, isFollowed) => {
     setTrenderUsers((prevUsers) => {
@@ -112,15 +90,30 @@ const MainPage = () => {
     })
   }
 
+  const handleOpenModalReply = (id) => {
+    setOpenModalReply(true)
+  }
+
+  const handleCloseModalReply = () => {
+    setOpenModalReply(false)
+  }
+
+
+
     return (
-        <div className="twitter">
-          <Sidebar />
-          <Twittes postCards={postCards} onToggleLike={handleToggleLike}/>
-          {/* <Profile /> */}
-          {/* <OtherUserProfile /> */}
-          <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
+        <div className="container">
+            <Sidebar />
+            <Routes>
+              <Route exact path="/" element={<Twittes postCards={postCards} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply}/>} />
+              <Route exact path="/profile" element={<Profile />} />
+              <Route exact path="/setting" element={<Setting />} />
+              <Route exact path="/other" element={<OtherUserProfile />} />
+              <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
+            </Routes>
+            <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
+            { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
         </div>
       );
 }
 
-export default MainPage
+export default HomePage

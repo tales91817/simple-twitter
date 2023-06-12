@@ -3,41 +3,38 @@ $twitterMainColor: #ff6600;
 $twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 
-.other-userInfo-wrapper { 
-    width: 50%;
-    position: absolute;
-    top: 73px;
-    border-right: 1px solid $twitterBorder;
-    
+.other-userInfo-wrapper {
+    width: 100%;
+    margin-top: 75px;
+    border-right: none; 
+
     .OtherInfoContent {
         position: relative;
-        .otherUserBanner {
-            position: absolute;
 
+        .OtherUserBanner {
             .otherUserBannerImg {
                 width: 100%;
                 height: 100%;
                 background-size: cover;
                 background-position: center;
             }
-
         }
+
         .otherUserPhoto {
             position: absolute;
-            bottom: -35%;
-            left: 14%;
-            transform: translateX(-50%);
+            top: 65%;
+            left: 22px;
         }
     }
-    
-    .btnCollection {  
+
+    .btnCollection {
         position: absolute;
         right: 5px;
         width: 30%;
         display: flex;
         justify-content: space-around;
         margin-top: 10px;
-        
+
         .followingBtn {
             display: flex;
             justify-content: center;
@@ -51,7 +48,6 @@ $popularsBackground: #fafafb;
             font-weight: 400;
             cursor: pointer;
         }
-        
     }
 
     .otherUserTextContent {
@@ -81,6 +77,9 @@ $popularsBackground: #fafafb;
         font-weight: 400;
         
         .numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 500;
             margin-right: 5px;
         }

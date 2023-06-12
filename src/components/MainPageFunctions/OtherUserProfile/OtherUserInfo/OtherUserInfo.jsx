@@ -2,7 +2,7 @@ import React from 'react'
 import './otherUserInfo.scss'
 import StateContent from 'components/MainPageFunctions/Profile/StateContent/StateContent'
 import OtherUserAvatar from 'assets/images/other-user-Jane-Cathy.png'
-import { ReactComponent as BannerImg } from 'assets/images/otheruser-info-banner.svg'
+import { ReactComponent as OtherUserBanner } from 'assets/images/otheruser-info-banner.svg'
 import { ReactComponent as Msg } from 'assets/icons/msg.svg'
 import { ReactComponent as Notify } from 'assets/icons/notify.svg'
 
@@ -11,7 +11,7 @@ const OtherUserInfo = () => {
     <div className="other-userInfo-wrapper">
       <div className="OtherInfoContent">
         <div className="OtherUserBanner">
-          <BannerImg className='otherUserBannerImg'/>
+          <OtherUserBanner className='otherUserBannerImg'/>
         </div>
         <div className="otherUserPhoto">
           <img src={OtherUserAvatar} alt='avatar' />
@@ -21,7 +21,7 @@ const OtherUserInfo = () => {
           <Notify />
           <Msg />
           <div className="followingBtn">
-              <p>正在跟隨</p>
+              正在跟隨
           </div>
       </div>
         

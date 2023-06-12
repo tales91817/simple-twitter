@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import './populars.scss'
 
 /* eslint-disable */ 
 
@@ -19,10 +20,10 @@ const Populars = ({ trendUsers, onTogglefollow }) => {
               </div>
               <div className="popularContent">
                 <div className="popularName">
-                  <p>{user.name}</p>
+                  {user.name}
                 </div>
                 <div className="popularAccount">
-                  <p>{user.account}</p>
+                  {user.account}
                 </div>
               </div>
             </div>

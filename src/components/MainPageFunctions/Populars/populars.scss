@@ -1,0 +1,107 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+$twitterBorderSidebarText: #44444f;
+
+.populars {
+    position: fixed;
+    top: 16px;
+    right: 60px;
+    width: 20%;
+    background: $popularsBackground;
+    border-radius: 5px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-button {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+      border-radius: 4px;
+      }
+    &::-webkit-scrollbar-track {
+      box-shadow: transparent;
+    }
+  
+    .popularsHeader {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      border-bottom: 1px solid $twitterBorder;
+      padding-bottom: 8px;
+
+      h4 {
+        margin: 20px;
+      }
+    }
+  
+    .populars-wrapper {
+      .wrapper-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px;
+        margin: 22px 16px;
+    
+        .popularCard {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+    
+          .popularImg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 8px;
+            cursor: pointer;
+          }
+
+          .popularContent {
+            display: flex;
+            flex-direction: column;
+
+            
+            .popularName {
+              font-size: 16px;
+              font-weight: 700;
+            }
+      
+            .popularAccount {
+              font-size: 14px;
+              font-weight: 500;
+              color: #92929D;
+            }
+          }
+    
+          
+        }
+    }
+    
+  
+      .followBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+        height: 40px;
+        padding: 5px 15px;
+        border: 1px solid $twitterMainColor;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 400;
+        color: $twitterMainColor;
+        cursor: pointer;
+        
+        &.followed {
+          width: 96px;
+          height: 40px;
+          background: $twitterMainColor;
+          color: #fff;
+        }
+      }
+    }
+  }
