@@ -6,10 +6,7 @@ import SignUpPage from "./pages/SignUpPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminMainPage from "./pages/AdminMainPage";
 import AdminUsersPage from "pages/AdminUsersPage";
-import HomePage from 'pages/HomePage';
-import ProfilePage from 'pages/ProfilePage';
-import SettingPage from 'pages/SettingPage';
-import OtherUserPage from 'pages/OtherUserPage';
+import HomePage from "pages/HomePage";
 
 const App = () => {
   return (
@@ -21,9 +18,6 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route path="/admin/main" element={<AdminMainPage />} />
           <Route path="/admin/users" element={<AdminUsersPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/setting" element={<SettingPage />} />
-          <Route path="/other" element={<OtherUserPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>

@@ -21,7 +21,7 @@ const OtherUserInfo = () => {
           <Notify />
           <Msg />
           <div className="followingBtn">
-              <p>正在跟隨</p>
+              正在跟隨
           </div>
       </div>
         

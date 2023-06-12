@@ -15,7 +15,7 @@ const Profile = () => {
             <p className="userTweetsNum">
                 25 推文
             </p>
-            </div>
+          </div>
         </div>
         <div className="userInfo">
           <UserInfo />

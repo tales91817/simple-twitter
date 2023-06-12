@@ -2,8 +2,9 @@ import React from 'react'
 import { ReactComponent as ReplyIcon } from 'assets/icons/icon_reply.svg'
 import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
+import { Link } from 'react-router-dom'
 
-const posts = ({ postCards, onToggleLike, onOpenModalReply }) => {
+const Posts = ({ postCards, onToggleLike, onOpenModalReply }) => {
 
 
   return (
@@ -23,7 +24,7 @@ const posts = ({ postCards, onToggleLike, onOpenModalReply }) => {
                     </div>
                 </div>
                 <div className="postCardContent">
-                        <p>{post.postMsg}</p>
+                    <Link to="/replyList" className="toReply"><p>{post.postMsg}</p></Link>
                 </div>
                 <div className="postCardfooter">
                     <div className='postCardIcon'>
@@ -43,9 +44,8 @@ const posts = ({ postCards, onToggleLike, onOpenModalReply }) => {
             </div>
         </div>
         ))}
-
     </div>
   )
 }
 
-export default posts
+export default Posts

@@ -62,11 +62,14 @@ $popularsBackground: #fafafb;
 
     .followingStatus {
         display: flex;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-size: 14px;
         font-weight: 400;
         
         .numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 500;
             margin-right: 5px;
         }

@@ -77,6 +77,9 @@ $popularsBackground: #fafafb;
         font-weight: 400;
         
         .numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-weight: 500;
             margin-right: 5px;
         }

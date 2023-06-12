@@ -141,6 +141,17 @@ $twitterBorderSidebarText: #44444f;
 
       .postCardContent {
         display: flex;
+
+        .toReply {
+          text-decoration: none;
+          color: #171725;
+          p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+          }
+        }
       }
 
       .postCardfooter {
@@ -199,11 +210,24 @@ $twitterBorderSidebarText: #44444f;
     }
 
     .postContent {
+      position: relative;
       display: flex;
+      justify-content: center;
       padding: 12px;
+      &::before {
+        content: '';
+        border-left: 2px solid #b5b5be;
+        position: absolute;
+        top: 45%;
+        left: 6%;
+        width: 100%;
+        height: 50%;
+        z-index: 99;
+      }
       
       .modalUserAvatar {
         margin-right: 8px;
+
       }
 
       .modalRightSide {

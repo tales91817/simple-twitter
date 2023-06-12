@@ -15,8 +15,7 @@ $twitterBorderSidebarText: #44444f;
     left: 0;
     border-right: 1px solid $twitterBorder;
 
-    ul {
-      list-style-type: none;
+    .btn-wrapper {
       .logo {
         display: flex;
           align-items: center;
@@ -24,8 +23,7 @@ $twitterBorderSidebarText: #44444f;
           color: #000;
           padding: 18px 35px;
       }
-      li {
-        a {
+      .item {
           display: flex;
           align-items: center;
           width: 100%;
@@ -34,12 +32,28 @@ $twitterBorderSidebarText: #44444f;
           padding: 20px 35px;
           font-size: 18px;
           font-weight: 700;
-
+          
             .icons {
               margin-right: 15px;
             }
-        }
       }  
+      .selected {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          text-decoration: none;
+          color: $twitterBorderSidebarText;
+          padding: 20px 35px;
+          font-size: 18px;
+          font-weight: 700;
+          
+            .icons {
+              margin-right: 15px;
+            }
+        .text {
+          color: $twitterMainColor;
+        }
+      }
       
       .sidebar_Btn {
         margin: 15px 0;

@@ -1,0 +1,123 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+$twitterBorderSidebarText: #44444f;
+
+.replyList {
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+
+    .replyListHeader {
+      width: 50%;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      padding: 15px;
+      background-color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      border-right: 1px solid $twitterBorder;
+      border-bottom: 1px solid $twitterBorder;
+
+      .arrow {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+
+    .replyPost {
+      width: 100%;
+      margin-top: 75px;
+      border-right: none; 
+      border-bottom: 1px solid $twitterBorder;
+
+      .replyInfo {
+        display: flex;
+        flex-direction: column;
+        
+        .infoWrapper {
+            display: flex;
+            margin: 16px 16px 0 16px;
+
+            .replyer {
+                margin-right: 8px;
+            }
+            .replyTitle {
+                display: flex;
+                flex-direction: column;
+
+                .name {
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+                .account {
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 22px;
+                    color: $twitterComment;
+                }
+            }
+        }
+        .replyContent {
+            p {
+                margin: 8px 45px 0 16px;
+            }
+            .postDate {
+                margin: 8px 16px;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 22px;
+                color: $twitterComment;
+            }
+        }
+      }
+
+      .postStatus {
+        display: flex;
+        align-items: center;
+        margin: 0 16px;
+        padding: 16px 0;
+        height: 60px;
+        border-top: 1px solid $twitterBorder;
+        border-bottom: 1px solid $twitterBorder;
+
+        .numbers {
+            margin-right: 5px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 19px;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 23px;
+        }
+
+        p {
+            margin-right: 24px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 23px;
+            color: $twitterComment;
+        }
+      }
+      .actionIcon {
+        padding: 22px 20px;
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 134px;
+            cursor: pointer;
+        }
+      }
+    }
+}
