@@ -1,4 +1,4 @@
-const AdminTweetItem = ( {tweet} ) => {
+const AdminTweetItem = ( { tweet , onDelete } ) => {
   const AvatarImagePath = require("../assets/icons/other-user-avatar.svg").default;
   const deleteImagePath = require("../assets/icons/delete.svg").default;
 
@@ -17,7 +17,12 @@ const AdminTweetItem = ( {tweet} ) => {
           <div className="tweetOtherInfo">
             ＠{tweet.account}・{tweet.time}
           </div>
-          <div className="deleteButton">
+          <div
+            className="deleteButton"
+            onClick={() => {
+              onDelete?.(tweet.id);
+            }}
+          >
             <img className="deleteImg" src={deleteImagePath} alt="delete" />
           </div>
         </div>

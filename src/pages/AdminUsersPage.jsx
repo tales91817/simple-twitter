@@ -1,6 +1,10 @@
 import AdminUserList from "components/AdminUserList";
 import AdminLeftColumn from "../components/common/AdminLeftColumn";
 import "./AdminContentPageFrame.scss";
+import { ReactComponent as Home } from "../assets/icons/home.svg";
+import { ReactComponent as ProfileSelected } from "../assets/icons/profile_selected.svg";
+
+
 
 const dummyUsers = [
   {
@@ -118,7 +122,10 @@ const dummyUsers = [
 const AdminUsersPage = () => {
   return (
     <div className="adminContentPageContainer">
-      <AdminLeftColumn></AdminLeftColumn>
+      <AdminLeftColumn
+        icon1={<Home />}
+        icon2={<ProfileSelected />}
+      />
       <AdminUserList users={dummyUsers} />
     </div>
   );

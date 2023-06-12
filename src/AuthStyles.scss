@@ -4,6 +4,7 @@ $gray60: #b5b5be;
 $gray90: #44444f;
 $gray100: #171725;
 $Secondary: #6c757d;
+$SecondaryBlue: #50B5FF;
 
 
 .authContainer {
@@ -28,6 +29,16 @@ $Secondary: #6c757d;
   width: 100%;
   height: 54px;
   border-bottom: 2px solid black;
+
+  // &:hover,
+  // &:focus,
+  &:focus-within {
+    border-bottom-color: $SecondaryBlue;
+  }
+  // alert {
+  //   border-bottom-color: $error ;
+  // }
+
 }
 
 .authInputLabel {
@@ -59,9 +70,14 @@ $Secondary: #6c757d;
   font-size: 12px;
   line-height: 20px;
   color: $error;
+  // visibility: hidden;
 }
 
-.authInputWordCount {
+.hideWordCount {
+  visibility: hidden;
+}
+
+.showWordCount {
   font-size: 12px;
   line-height: 20px;
   color: $gray80;
