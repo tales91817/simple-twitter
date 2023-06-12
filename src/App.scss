@@ -6,6 +6,10 @@ $gray60: #b5b5be;
 $gray90: #44444f;
 $gray100: #171725;
 $Secondary: #6c757d;
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
 
 * {
   font-family: "Noto Sans TC", sans-serif;
@@ -22,4 +26,5 @@ body {
 #root,
 .App {
   height: 100%;
+
 }

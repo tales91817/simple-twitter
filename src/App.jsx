@@ -1,5 +1,6 @@
 import "./AuthStyles.scss";
 import "./App.scss";
+import MainPage from 'pages/MainPage';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -17,7 +18,7 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route path="/admin/main" element={<AdminMainPage />} />
           <Route path="/admin/users" element={<AdminUsersPage />} />
-          {/* <Route path="*" element={<HomePage />} />      後面會用到，所以先留著*/}
+          <Route path="*" element={<MainPage />} />
         </Routes>
       </BrowserRouter>
     </div>
