@@ -83,6 +83,11 @@ $twitterBorderSidebarText: #44444f;
     
   
       .followBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+        height: 40px;
         padding: 5px 15px;
         border: 1px solid $twitterMainColor;
         border-radius: 50px;
@@ -92,6 +97,8 @@ $twitterBorderSidebarText: #44444f;
         cursor: pointer;
         
         &.followed {
+          width: 96px;
+          height: 40px;
           background: $twitterMainColor;
           color: #fff;
         }
