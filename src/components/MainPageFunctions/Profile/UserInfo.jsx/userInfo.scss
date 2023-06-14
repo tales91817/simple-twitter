@@ -4,15 +4,31 @@ $twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 
 .userInfo-wrapper { 
+    position: relative;
     width: 100%;
+    height: 100vh;
     margin-top: 75px;
     border-right: none; 
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-button {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 4px;
+        }
+      &::-webkit-scrollbar-track {
+        box-shadow: transparent;
+      }
 
     .infoContent {
         position: relative;
         
         .userBanner {
-            .bannerImg {
+            img {
                 width: 100%;
                 height: 100%;
                 background-size: cover;
@@ -22,8 +38,12 @@ $popularsBackground: #fafafb;
         
         .userPhoto {
             position: absolute;
-            top: 65%;
+            top: 70%;
             left: 22px;
+            
+            img {
+                border-radius: 50%;
+            }
         }
     }
 

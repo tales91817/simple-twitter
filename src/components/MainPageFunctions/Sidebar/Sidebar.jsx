@@ -13,7 +13,7 @@ import './sidebar.scss'
 
 /* eslint-disable */ 
 
-const Sidebar = () => {
+const Sidebar = ({ onOpenModalTweet }) => {
     const [ isSelectedIcon, setIsSelectedIcon ] = useState('')
     const handleButtonClick = (buttonName) => {
         setIsSelectedIcon(buttonName)
@@ -74,7 +74,9 @@ const Sidebar = () => {
           )}
           <div className="text">設定</div>
         </div>
-        <div className="sidebar_Btn">
+        <div className="sidebar_Btn" onClick={() => {
+                onOpenModalTweet()
+        }}>
           <a href="#">推文</a>
         </div>
       </div>
