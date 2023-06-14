@@ -34,11 +34,13 @@ const AuthInput = ({
   );
 };
 
-const AuthButton = ({children}) => {
-  return(
-    <button className="authButton">{children}</button>
-  )
-}
+const AuthButton = ({ children, onClick }) => {
+  return (
+    <button onClick={onClick} className="authButton">
+      {children}
+    </button>
+  );
+};
 
 const LinkTextContainer = ({ children }) => {
   return <div className="authLinkTextContainer">{children}</div>;
