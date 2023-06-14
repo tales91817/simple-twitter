@@ -1,20 +1,18 @@
 import React from 'react'
 import './otherUserInfo.scss'
 import StateContent from 'components/MainPageFunctions/Profile/StateContent/StateContent'
-import OtherUserAvatar from 'assets/images/other-user-Jane-Cathy.png'
-import { ReactComponent as OtherUserBanner } from 'assets/images/otheruser-info-banner.svg'
 import { ReactComponent as Msg } from 'assets/icons/msg.svg'
 import { ReactComponent as Notify } from 'assets/icons/notify.svg'
 
-const OtherUserInfo = () => {
+const OtherUserInfo = ({ userInfo, postCards }) => {
   return (
     <div className="other-userInfo-wrapper">
       <div className="OtherInfoContent">
         <div className="OtherUserBanner">
-          <OtherUserBanner className='otherUserBannerImg'/>
+          <img src={userInfo.cover} alt='banner' />
         </div>
         <div className="otherUserPhoto">
-          <img src={OtherUserAvatar} alt='avatar' />
+          <img src={userInfo.avatar} alt='avatar' />
         </div>
       </div>
       <div className="btnCollection">
@@ -26,17 +24,17 @@ const OtherUserInfo = () => {
       </div>
         
       <div className="otherUserTextContent">
-        <div className="otherUsername">Jane Cathy</div>
-        <div className="otherUserAccount">@iamjane1999</div>
+        <div className="otherUsername">{userInfo.name}</div>
+        <div className="otherUserAccount">@{userInfo.account}</div>
         <div className="otherUserDescription">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            {userInfo.introduction}
         </div>  
         <div className="followingStatus">
-          <span className='numbers'>231個</span><p>跟隨中</p>
-          <span className="numbers">45位</span><p>跟隨者</p>
+          <span className='numbers'>{userInfo.following}個</span><p>跟隨中</p>
+          <span className="numbers">{userInfo.follower}位</span><p>跟隨者</p>
         </div>
       </div>
-      <StateContent />
+      <StateContent postCards={postCards} />
     </div>
   )
 }

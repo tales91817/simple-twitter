@@ -4,7 +4,7 @@ import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
 import { Link } from 'react-router-dom'
 
-const Posts = ({ tweets, onToggleLike, onOpenModalReply }) => {
+const UserPosts = ({ postCards, onToggleLike, onOpenModalReply }) => {
     
     const getTimeDifference = (tweetTimestamp) => {
         const tweetDate = new Date(tweetTimestamp)
@@ -24,7 +24,7 @@ const Posts = ({ tweets, onToggleLike, onOpenModalReply }) => {
 
   return (
     <div className='post-wrapper'>
-        {tweets.map((post) => (
+        {postCards.map((post) => (
             <div className="postCard">
             <div className="postCardImg">
                 <img src={post.userAvatar} alt="user-avatar" />
@@ -63,4 +63,4 @@ const Posts = ({ tweets, onToggleLike, onOpenModalReply }) => {
   )
 }
 
-export default Posts
+export default UserPosts

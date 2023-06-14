@@ -3,6 +3,10 @@ $twitterMainColor: #ff6600;
 $twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 $twitterBorderSidebarText: #44444f;
+$labelBackground: #f5f8fa;
+$labelText: #696974;
+$inputBorder:#657786;
+$inputPlaceholderText: #b5b5be;
 
   
 /*post styles*/
@@ -106,12 +110,17 @@ $twitterBorderSidebarText: #44444f;
   .postCard {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
     padding: 20px;
     border-bottom: 1px solid $twitterBorder;
 
     .postCardImg {
-        cursor: pointer;
+      cursor: pointer;
+      
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
     }
     
     .postCardRightSide {
@@ -283,6 +292,37 @@ $twitterBorderSidebarText: #44444f;
       }
     }
 
+    /*Tweet Modal*/
+    .myTweet {
+      display: flex;
+      width: 634px;
+      padding: 24px;
+
+      .myTweetContainer {
+        display: flex;
+        align-items: center;
+
+        .tweetRightSide {
+          margin-left: 10px;
+
+          input {
+            height: 50px;
+          }
+          input::placeholder {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            color: $twitterComment;
+          }
+          .tweetContent {
+            border: none;
+            outline: none;
+          }
+        }
+      }
+    }
+
+    /*Reply Modal*/
     .myReply {
       display: flex;
       padding: 24px;
@@ -293,18 +333,15 @@ $twitterBorderSidebarText: #44444f;
 
         .replyRightSide {
           margin-left: 10px;
-
           input {
             height: 50px;
           }
-    
           input::placeholder {
             font-weight: 400;
             font-size: 16px;
             line-height: 26px;
             color: $twitterComment;
           }
-
           .replyContent {
             border: none;
             outline: none;
@@ -328,6 +365,7 @@ $twitterBorderSidebarText: #44444f;
         background: $twitterMainColor;
         color: #fff;
         border-radius: 50px;
+        cursor: pointer;
         
         p {
           font-style: normal;
@@ -338,4 +376,132 @@ $twitterBorderSidebarText: #44444f;
       }
     }
   }
+}
+
+/*Edit Modal*/
+.editModalBackground {
+  width: 100%;
+  height: 100%;
+  background-color: #e5e5e5;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+
+  .editModalContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 634;
+    height: 610px;
+    margin-top: 56px;
+    border-radius: 14px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    .editModalHeader {
+      display: flex;
+      align-items: center;
+      height: 57px;
+      padding: 15px;
+      border-bottom: 1px solid $twitterBorder;
+
+      .closeBtn {
+        margin-right: 37px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 26px;
+        cursor: pointer;
+      }
+
+      
+    }
+    .editUserInfo {
+      display: flex;
+      flex-direction: column;
+      
+      .editUserBanner {
+        position: relative;
+
+        .cameraInBanner {
+          position: absolute;
+          top: 45%;
+          left: 40%;
+          z-index: 99;
+        }
+
+        .cameraInAvatar {
+          position: absolute;
+          top: 45%;
+          left: 40%;
+          z-index: 99;
+        }
+
+        .removeBtn {
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          z-index: 99;
+        }
+        .editUserAvatar {
+          position: absolute;
+          top: 95%;
+          left: 16px;
+          transform: translateY(-50%);
+        }
+      }
+      .editTextInfo {
+        margin: 80px 16px 32px 16px;
+        form {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          label {
+            margin-bottom: 32px;
+            padding: 0 17.84px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: $labelText;
+            text-align: start;
+            background: $labelBackground;
+            border-bottom: 2px solid $inputBorder;
+
+              .nameText {
+                width: 100%;
+                outline: none;
+                border: none;
+                background-color: #f5f8fa;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 26px;
+              }
+
+              .introduceText {
+                width: 100%;
+                height: 145px;
+                outline: none;
+                border: none;
+                background-color: #f5f8fa;
+                font-weight: 400;
+                font-size: 16px;
+                vertical-align: text-top;
+              }
+  
+              &::placeholder {
+                color: $inputPlaceholderText;
+              }
+          }
+        }
+      }
+    }
+  }
+}
+
+.test {
+  z-index: 100;
 }

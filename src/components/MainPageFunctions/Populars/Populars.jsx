@@ -16,14 +16,14 @@ const Populars = ({ trendUsers, onTogglefollow }) => {
           <div className="wrapper-content">
             <div className="popularCard">
               <div className="popularImg">
-                {user.avatar}
+                <img src={user.userAvatar} alt="usrAvatar" />
               </div>
               <div className="popularContent">
                 <div className="popularName">
-                  {user.name}
+                  {user.userName.length > 10 ? `${user.userName.slice(0, 5)}...` : user.userName}
                 </div>
                 <div className="popularAccount">
-                  {user.account}
+                  {user.userAccount}
                 </div>
               </div>
             </div>

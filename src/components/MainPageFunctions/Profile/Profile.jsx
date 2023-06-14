@@ -3,7 +3,7 @@ import './profile.scss'
 import { ReactComponent as BackArrowIcon } from 'assets/icons/back-arrow.svg'
 import UserInfo from './UserInfo.jsx/UserInfo'
 
-const Profile = () => {
+const Profile = ({ onOpenEditModal, postCards, userInfo }) => {
   return (
     <div className="profile-wrapper">
         <div className="profileHeader">
@@ -18,7 +18,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="userInfo">
-          <UserInfo />
+          <UserInfo onOpenEditModal={onOpenEditModal} postCards={postCards} userInfo={userInfo} />
         </div>
 
     </div>
