@@ -1,9 +1,10 @@
 /* eslint-disable */ 
 import React from 'react'
 import Posts from 'components/MainPageFunctions/Posts'
+import UserPosts from 'components/MainPageFunctions/UserPosts'
 import './stateContent.scss'
 
-const stateContent = () => {
+const stateContent = ({ postCards }) => {
   return (
     <div className="userStatusCollection">
         <div className="classCollection">
@@ -11,7 +12,7 @@ const stateContent = () => {
             <div className="class replies">回覆</div>
             <div className="class likeed">喜歡的內容</div>
         </div>
-        {/* <Posts /> */}
+        <UserPosts postCards={postCards}/>
     </div>
   )
 }

@@ -1,66 +1,74 @@
 /* eslint-disable */ 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from 'components/MainPageFunctions/Sidebar/Sidebar';
 import Twittes from 'components/MainPageFunctions/Twittes';
 import Populars from 'components/MainPageFunctions/Populars/Populars';
 import Profile from 'components/MainPageFunctions/Profile/Profile';
-import OtherUserProfile from 'components/MainPageFunctions/OtherUserProfile/OtehrUserProfile'
+import OtherUserProfile from 'components/MainPageFunctions/OtherUserProfile/OtherUserProfile';
 import 'components/MainPageFunctions/mainPageStyles.scss'
-import { ReactComponent as PostUserAvatar } from 'assets/icons/other-user-avatar.svg'
 import { DummyTrenders } from 'components/dummyDocument/DummyTrenders';
 import './page.scss'
 import ReplyModal from 'components/MainPageFunctions/ReplyModal';
 import Setting from 'components/MainPageFunctions/Setting/Setting';
 import { Route, Router, Routes } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
+import TwitterModal from 'components/MainPageFunctions/TwitterModal';
+import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
+import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/UserInfo'
 
-
-const dummyPosts = [
-  {
-      id: 1,
-      avatar: <PostUserAvatar />,
-      name: 'Apple',
-      account: '@apple',
-      postTime: '3小時',
-      postMsg: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloremque culpa vitae quam veniam reiciendis officia, tenetur voluptate similique a error recusandae voluptates commodi enim consequuntur sed modi odit sit!',
-      isLiked: true,
-  },
-  {
-      id: 2,
-      avatar: <PostUserAvatar />,
-      name: 'ASUS',
-      account: '@asus',
-      postTime: '4小時',
-      postMsg: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloremque culpa vitae quam veniam reiciendis officia, tenetur voluptate similique a error recusandae voluptates commodi enim consequuntur sed modi odit sit!',
-      isLiked: false,
-  },
-  {
-      id: 3,
-      avatar: <PostUserAvatar />,
-      name: 'Dell',
-      account: '@dell',
-      postTime: '5小時',
-      postMsg: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloremque culpa vitae quam veniam reiciendis officia, tenetur voluptate similique a error recusandae voluptates commodi enim consequuntur sed modi odit sit!',
-      isLiked: true,
-  },
-  {
-      id: 4,
-      avatar: <PostUserAvatar />,
-      name: 'Samsung',
-      account: '@samsung',
-      postTime: '6小時',
-      postMsg: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio doloremque culpa vitae quam veniam reiciendis officia, tenetur voluptate similique a error recusandae voluptates commodi enim consequuntur sed modi odit sit!',
-      isLiked: false,
-  },
-]
 
 
 const HomePage = () => {
-  const [ trendUsers, setTrenderUsers ] = useState(DummyTrenders)
-  const [ postCards, setPostCards ] = useState(dummyPosts)
+  const [ trendUsers, setTrenderUsers ] = useState([])
+  const [ postCards, setPostCards ] = useState([])
   const [ openModalReply, setOpenModalReply ] = useState(false)
+  const [ openModalTweet, setOpenMoadlTweet ] = useState(false)
+  const [ openModelEdit, setOpenModelEdit ] = useState(false)
+  const [ userInfo, setuserInfo ] = useState({})
+  const [ inputValue, setInputValue ] = useState('')
+  const [ tweets, setTweets ] = useState([])
 
 
+  const handleClick = () => {
+    const test = getPopulars()
+    console.log(test)
+  }
+
+  useEffect(() => {
+    const getTweetContentAsync = async () => {
+      try {
+        const tweetInfo = await getUserTweetInfo()
+        setPostCards(tweetInfo.map((post) => ({...post})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getTweetContentAsync()
+  }, [])
+
+  useEffect(() => {
+    const getUserInfoAsyn = async () => {
+      try {
+        const userInfo = await getUserInfo()
+        setuserInfo(userInfo)
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserInfoAsyn()
+  }, [])
+
+  useEffect(() => {
+    const getPopularsAsyn = async () => {
+      try {
+        const popular = await getPopulars()
+        setTrenderUsers(popular.map((people) => ({...people})))
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getPopularsAsyn()
+  }, [])
 
   const handleToggleFollow = (id, isFollowed) => {
     setTrenderUsers((prevUsers) => {
@@ -98,20 +106,70 @@ const HomePage = () => {
     setOpenModalReply(false)
   }
 
+  const handleOpenModalTweet = () => {
+    setOpenMoadlTweet(true)
+  }
 
+  const handleCloseModalTweet = () => {
+    setOpenMoadlTweet(false)
+  }
+
+  const handleOpenModalEdit = () => {
+    setOpenModelEdit(true)
+  }
+
+  const handleCloseModalEdit = () => {
+    setOpenModelEdit(false)
+  }
+
+  const handleChange = (value) => {
+    setInputValue(value)
+  }
+
+  const handleAddTweet = async() => {
+    if (inputValue.length === 0) {
+      return
+    }
+
+    try {
+      const {data} = await postTweet({
+        description: inputValue
+      })
+
+      setTweets((prevTweets) => {
+        return [
+            ...prevTweets,
+          {
+            id: data.id,
+            description: data.description,
+            updatedAt: data.updatedAt,
+            createdAt: data.createdAt
+          },
+        ]
+      })
+      console.log(data)
+      console.log(tweets)
+      setInputValue('');
+    } catch(error) {
+      console.error(error);
+    }
+  }
 
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
-              <Route exact path="/" element={<Twittes postCards={postCards} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply}/>} />
-              <Route exact path="/profile" element={<Profile />} />
+              <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
+              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
               <Route exact path="/setting" element={<Setting />} />
-              <Route exact path="/other" element={<OtherUserProfile />} />
+              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
               <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
             </Routes>
             <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
+            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
+            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
+            <button class="test" onClick={handleClick} >TEST</button>
         </div>
       );
 }
