@@ -1,21 +1,21 @@
 const AdminTweetItem = ( { tweet , onDelete } ) => {
-  const AvatarImagePath = require("../assets/icons/other-user-avatar.svg").default;
   const deleteImagePath = require("../assets/icons/delete.svg").default;
 
   let shortenedContent =''
-  if (tweet.content.length > 50) {
-  shortenedContent = tweet.content.slice(0, 50) + "...";
-}
+  if (tweet.description.length > 50) {
+    shortenedContent = tweet.description.slice(0, 50) + "...";
+  }
+
   return (
     <div className="adminTweetItemWrapper">
-      <div className="smallAvatar">
-        <img src={AvatarImagePath} alt="avatar" />
+      <div className="smallAvatarWrapper">
+        <img className="smallAvatar" src={tweet.avatar} alt="avatar" />
       </div>
       <div className="tweetRight">
         <div className="tweetInfo">
           <div className="tweetName">{tweet.name}</div>
           <div className="tweetOtherInfo">
-            ＠{tweet.account}・{tweet.time}
+            ＠{tweet.account}・{tweet.createdAt}
           </div>
           <div
             className="deleteButton"
