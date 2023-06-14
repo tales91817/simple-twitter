@@ -1,6 +1,7 @@
 import axios from "axios";
 const baseUrl = 'https://afternoon-waters-66047.herokuapp.com/api'
 
+
 const axiosInstance = axios.create({
   baseURL: baseUrl
 })
@@ -34,5 +35,14 @@ export const deleteTweet = async (id) => {
     return res.data;
   } catch (error) {
     console.error("[Delete Tweet failed]:", error);
+  }
+};
+
+export const getUsers = async () => {
+  try {
+    const res = await axiosInstance.get(`${baseUrl}/admin/users`);
+    return res.data;
+  } catch (error) {
+    console.error("[Get Users failed]: ", error);
   }
 };
