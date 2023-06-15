@@ -16,7 +16,7 @@ const CreateTweet = ({ onChange, inputValue, onAddTweet }) => {
         </div>
       </div>
       <div className="tweetbar">
-        <div className="tweet_btn" onClick={() => onAddTweet()}>
+        <div className="tweet_btn" onClick={() => onAddTweet()} >
           <a href="#">推文</a>
         </div>
       </div>

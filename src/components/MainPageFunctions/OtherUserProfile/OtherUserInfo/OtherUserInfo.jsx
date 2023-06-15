@@ -4,7 +4,7 @@ import StateContent from 'components/MainPageFunctions/Profile/StateContent/Stat
 import { ReactComponent as Msg } from 'assets/icons/msg.svg'
 import { ReactComponent as Notify } from 'assets/icons/notify.svg'
 
-const OtherUserInfo = ({ userInfo, postCards }) => {
+const OtherUserInfo = ({ userInfo, postCards, onOpenModalReply }) => {
   return (
     <div className="other-userInfo-wrapper">
       <div className="OtherInfoContent">
@@ -34,7 +34,7 @@ const OtherUserInfo = ({ userInfo, postCards }) => {
           <span className="numbers">{userInfo.follower}位</span><p>跟隨者</p>
         </div>
       </div>
-      <StateContent postCards={postCards} />
+      <StateContent postCards={postCards} onOpenModalReply={onOpenModalReply} />
     </div>
   )
 }
