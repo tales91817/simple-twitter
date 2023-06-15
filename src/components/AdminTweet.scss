@@ -35,6 +35,8 @@ $Secondary: #6c757d;
 
 .smallAvatar {
   margin: 0 8px 36px 24px;
+  border-radius: 50%;
+  width: 50px;
 }
 
 .tweetRight {
@@ -83,6 +85,7 @@ $Secondary: #6c757d;
 
 .tweetContent {
   margin-bottom: 16px;
+  padding-right: 32px;
   width: 100%;
   line-height: 26px;
   font-size: 16px;
