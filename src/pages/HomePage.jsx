@@ -42,6 +42,23 @@ const HomePage = () => {
    const [checkPassword, setCheckPassword] = useState("");
 
 
+useEffect(() => {
+  const checkTokenIsValid = async () => {
+    const authToken = localStorage.getItem("authToken");
+    if (!authToken) {
+      navigate("/users/login");
+    }
+    const result = await checkPermission(authToken);
+    if (!result) {
+      navigate("/users/login");
+    }
+  };
+
+  checkTokenIsValid();
+}, [navigate]);
+
+
+
   const handleClick = () => {
     const test = getPopulars()
     console.log(test)
