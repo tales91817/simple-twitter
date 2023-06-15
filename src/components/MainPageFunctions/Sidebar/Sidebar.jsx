@@ -82,17 +82,20 @@ const Sidebar = ({ onOpenModalTweet }) => {
           )}
           <div className="text">設定</div>
         </div>
-        <div className="sidebar_Btn" onClick={() => {
-                onOpenModalTweet()
-        }}>
+        <div
+          className="sidebar_Btn"
+          onClick={() => {
+            onOpenModalTweet();
+          }}
+        >
           <a href="#">推文</a>
         </div>
       </div>
       <div onClick={handleClick} className="logout">
         <div className="logoutBtn">
           <LogoutIcon />
-          <div className="logoutText">登出</div>
         </div>
+        <div className="logoutText">登出</div>
       </div>
     </div>
   );

@@ -28,6 +28,7 @@ $SecondaryBlue: #50B5FF;
   background-color: #f5f8fa;
   width: 100%;
   height: 54px;
+  padding: 0 10.55px;
   border-bottom: 2px solid black;
 
   // &:hover,
@@ -60,7 +61,7 @@ $SecondaryBlue: #50B5FF;
 
 .authInputMessageContainer {
   margin-bottom: 8px;
-  padding-top: 4px;
+  margin-top: 4px;
   height: 20px;
   display: flex;
   justify-content: space-between;

@@ -12,7 +12,11 @@ import { Route, Router, Routes } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
+<<<<<<< HEAD
 import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/userInfo'
+=======
+import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/UserInfo'
+>>>>>>> 3a53a9a (refactor Setting and change css styles of HomePage (not done yet))
 
 
 
@@ -50,8 +54,6 @@ const HomePage = () => {
   const [ checkInputIsSpace, setCheckInputIsSpace ] = useState(false)
   const [ disabledButton, setDisabledButton ] = useState(false)
 
-  /* Likes */
-  const [ currentClickLike, setCurrentClickLike] = useState('')
 
   /* 取得所有推文(主畫面) */
   useEffect(() => {
@@ -294,167 +296,8 @@ const HomePage = () => {
         ]
       })
       setInputValue('');
-      setOpenMoadlTweet(false)
-      /* 推文發出後重新get推文列 */
-      const getAllTweetContentAsync = async () => {
-        try {
-          const allTweet = await getAllTweetPost()
-          setAllTweet(allTweet.map((post) => ({...post})))
-          } catch (error) {
-          console.error (error);
-        }
-      }
-      getAllTweetContentAsync()
-
-      /* 推文發出後重新get使用者的發文列表 */
-      const getUserTweetContentAsync = async () => {
-        try {
-            const tweetInfo = await getUserTweetInfo()
-            setPostCards(tweetInfo.map((post) => ({...post})))
-            } catch (error) {
-            console.error (error);
-          }
-        }
-          getUserTweetContentAsync()
-      } catch(error) {
-        console.error(error);
-      }
-    }
-
-    /* 在推文新增回覆 */
-    const handleAddReply = async (id) => {
-      if (inputValue.length === 0 || inputValue.trim() === '') {
-        return
-      }
-  
-      try {
-        const data = await replyToTweet(inputValue, id)
-        setAddReply({
-          comment: data.comment
-        })
-        /* 輸入框淨空 & 關閉視窗 */
-        setInputValue('');
-        setOpenModalReply(false)
-
-        /* 推文發出後重新get回覆列表 */
-        const getAllTweetContentAsync = async () => {
-          try {
-            const allTweet = await getAllTweetPost()
-            setAllTweet(allTweet.map((post) => ({...post})))
-            } catch (error) {
-            console.error (error);
-          }
-        }
-        getAllTweetContentAsync()
-
-      } catch(error) {
-        console.log(error)
-      }
-    }
-
-  const handleOpenModalReply = (id, avatar, name, account, createdAt, description) => {
-    setOpenModalReply(true)
-    setRelyPostInfo({
-      id: id,
-      avatar: avatar,
-      name: name,
-      account: account,
-      createdAt: createdAt,
-      description: description
-    })
-  }
-
-  const handleCloseModalReply = () => {
-    setOpenModalReply(false)
-    setInputValue('');
-  }
-
-  const handleOpenModalTweet = () => {
-    setOpenMoadlTweet(true)
-  }
-
-  const handleCloseModalTweet = () => {
-    setOpenMoadlTweet(false)
-    setInputValue('');
-  }
-
-  const handleOpenModalEdit = () => {
-    setOpenModelEdit(true)
-  }
-
-  const handleCloseModalEdit = () => {
-    setOpenModelEdit(false)
-    setInputValue('');
-  }
-
-  /* 輸入框限制文字內容 */
-  const handleChange = (value) => {
-    setInputValue(value)
-
-    if(value.length === 0 || value.trim() === '') {
-      setDisabledButton(true)
-      setCheckInputIsSpace(true)
-    } else if(value.length !== 0 || value.trim() !== '') {
-      setDisabledButton(false)
-      setCheckInputIsSpace(false)
-    }
-
-    if(value.length >= 140) {
-      setCheckWordLength(true)
-      setDisabledButton(true)
-    } else if(value.length <= 140) {
-      setCheckWordLength(false)
-      setDisabledButton(false)
-    }
-  }
-
-  /* 取消預設送出 */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
-
-
-  /* 從主畫面的推特文進入回覆清單的回覆內容 */
-  const handleChangeReply = async(id) => {
-    console.log(id)
-    setReplyId(id)
-    try {
-      const Replies = await getAllReplies(id)
-      setAllReplies(Replies)
-    } catch (error) {
-      console.log(error)
-    }
-
-    const currentTweet = allTweet.find((tweet) => tweet.id === id)
-    setCurrentTweet(currentTweet)
-  }
-
-  
-
-  /* 跟隨 & 取消跟隨 */
-  const handleClickFollow = (id, isFollowed) => {
-    if(isFollowed === true) {
-      deleteFollower(id)
-      const getUserInfoAsyn = async () => {
-        try {
-          const info = await getUserInfo(id)
-          setuserInfo(info)
-        } catch (error) {
-          console.error (error);
-        }
-      }
-      getUserInfoAsyn()
-    } else if (isFollowed === false) {
-      postFollower(id)
-      const getUserInfoAsyn = async () => {
-        try {
-          const info = await getUserInfo(id)
-          setuserInfo(info)
-        } catch (error) {
-          console.error (error);
-        }
-      }
-      getUserInfoAsyn()
+    } catch(error) {
+      console.error(error);
     }
   }
 
@@ -462,16 +305,25 @@ const HomePage = () => {
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
+<<<<<<< HEAD
               <Route exct path="*" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
               <Route exct path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
               <Route exct path="/setting" element={<Setting />} />
               <Route exct path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
               <Route exct path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
+=======
+              <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
+              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
+              <Route exact path="/setting" element={<Setting />} />
+              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
+              <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
+>>>>>>> 3a53a9a (refactor Setting and change css styles of HomePage (not done yet))
             </Routes>
-            <Populars trendUsers={trendUsers} />
-            { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
-            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
-            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} onChangeName={handleChangeName} onChangeIntro={handleChangeIntro} onSave={handleOnSave}/>}
+            <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
+            { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
+            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
+            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
+            <button class="test" onClick={handleClick} >TEST</button>
         </div>
       );
 }

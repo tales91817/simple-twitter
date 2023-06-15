@@ -22,37 +22,4 @@ $popularsBackground: #fafafb;
     &::-webkit-scrollbar-track {
         box-shadow: transparent;
     }
-  
-    .profileHeader {
-      width: 50%;
-      height: 74px;
-      display: flex;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      padding: 15px;
-      background: #fff;
-      font-weight: 700;
-      font-size: 18px;
-      border-right: 1px solid $twitterBorder;
-
-      .arrow {
-        margin: 0 10px;
-        cursor: pointer;
-      }
-
-      .backUser {
-        margin-left: 10px;
-
-        .username {
-            margin: 0;
-        }
-        .userTweetsNum {
-            margin: 0;
-            font-size: 13px;
-            font-weight: 500;
-            color: $twitterComment;
-        }
-      }
-    }
-  }
+}
