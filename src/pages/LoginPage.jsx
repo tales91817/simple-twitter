@@ -15,6 +15,7 @@ const LoginPage = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  let alertText = "";
 
   const handleClick = async () => {
     if (account.length === 0) {
@@ -26,11 +27,13 @@ const LoginPage = () => {
 
     const {
       status,
+      // message,
       data: { token: authToken },
     } = await login({
       account,
       password,
     });
+
     if (status === "success") {
       localStorage.setItem("authToken", authToken);
       console.log("status是" + status);
@@ -56,6 +59,11 @@ const LoginPage = () => {
       icon: "error",
       showConfirmButton: false,
     });
+
+    // if (message) {
+    //   alertText = message;
+    //   console.log(`message是${message}`);
+    // }
   };
 
   return (
@@ -67,7 +75,7 @@ const LoginPage = () => {
         placeholder="請輸入帳號"
         value={account}
         onChange={(accountInputValue) => setAccount(accountInputValue)}
-        alertText="帳號不存在！"
+        alertText={alertText === "Error: 帳號不存在!" ? "帳號不存在!" : ""}
       />
       <AuthInput
         type="password"
@@ -75,7 +83,7 @@ const LoginPage = () => {
         placeholder="請輸入密碼"
         value={password}
         onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-        alertText="密碼錯誤！"
+        alertText={alertText === "Error: 密碼錯誤！" ? "密碼錯誤！" : ""}
       />
       <AuthButton onClick={handleClick}>登入</AuthButton>
       <LinkTextContainer>

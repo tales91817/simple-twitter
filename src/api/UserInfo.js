@@ -68,3 +68,4 @@ export const getPopulars = async() => {
         console.error(error)
     }
 }
+

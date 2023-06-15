@@ -16,7 +16,14 @@ import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
 import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/UserInfo'
 
-
+const dummyUserInfo = {
+  id: 1,
+  account: "wonderwoman",
+  name: "Diana",
+  email: "diana@gmail.com",
+  password: "",
+  passwordComfirmation: "",
+};
 
 const HomePage = () => {
   const [ trendUsers, setTrenderUsers ] = useState([])
@@ -27,6 +34,12 @@ const HomePage = () => {
   const [ userInfo, setuserInfo ] = useState({})
   const [ inputValue, setInputValue ] = useState('')
   const [ tweets, setTweets ] = useState([])
+
+   const [account, setAccount] = useState(dummyUserInfo.account);
+   const [name, setUsername] = useState(dummyUserInfo.name);
+   const [email, setEmail] = useState(dummyUserInfo.email);
+   const [password, setPassword] = useState("");
+   const [checkPassword, setCheckPassword] = useState("");
 
 
   const handleClick = () => {
@@ -154,24 +167,100 @@ const HomePage = () => {
       console.error(error);
     }
   }
+///////////////////////////////////
+  const handleSaveConfig = ()=>{
+    if (account.length === 0) {
+      return;
+    }
+    if (name.length === 0) {
+      return;
+    }
+    if (email.length === 0) {
+      return;
+    }
+    if (password.length === 0) {
+      return;
+    }
+    if (checkPassword.length === 0) {
+      return;
+    }
 
+    // const {} = 
+
+  }
+//////////////////////////////////////
     return (
-        <div className="container">
-            <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
-            <Routes>
-              <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
-              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
-              <Route exact path="/setting" element={<Setting />} />
-              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
-              <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
-            </Routes>
-            <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
-            { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
-            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
-            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
-            <button class="test" onClick={handleClick} >TEST</button>
-        </div>
-      );
+      <div className="container">
+        <Sidebar onOpenModalTweet={handleOpenModalTweet} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Twittes
+                tweets={tweets}
+                onToggleLike={handleToggleLike}
+                onOpenModalReply={handleOpenModalReply}
+                onChange={handleChange}
+                inputValue={inputValue}
+                onAddTweet={handleAddTweet}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/profile"
+            element={
+              <Profile
+                onOpenEditModal={handleOpenModalEdit}
+                postCards={postCards}
+                userInfo={userInfo}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/setting"
+            element={
+              <Setting
+                onClick
+                account={account}
+                name={name}
+                email={email}
+                password={password}
+                checkPassword={checkPassword}
+                setAccount={setAccount}
+                setUsername={setUsername}
+                setEmail={setEmail}
+                setPassword={setPassword}
+                setCheckPassword={setCheckPassword}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/other"
+            element={
+              <OtherUserProfile userInfo={userInfo} postCards={postCards} />
+            }
+          />
+          <Route
+            exact
+            path="/replyList"
+            element={<ReplyList onOpenModalReply={handleOpenModalReply} />}
+          />
+        </Routes>
+        <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow} />
+        {openModalReply && <ReplyModal closeModal={handleCloseModalReply} />}
+        {openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} />}
+        {openModelEdit && (
+          <EditProfileModal closeModal={handleCloseModalEdit} />
+        )}
+        <button class="test" onClick={handleClick}>
+          TEST
+        </button>
+      </div>
+    );
 }
 
 export default HomePage
