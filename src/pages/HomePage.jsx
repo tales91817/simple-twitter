@@ -12,7 +12,7 @@ import { Route, Routes } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
-import { getUserTweetInfo, getUserInfo, getPopulars, getUserLikesInfo } from 'api/UserInfo'
+import { getUserTweetInfo, getUserInfo, getPopulars, getUserLikesInfo } from 'api/userInfo'
 import { getAllTweetPost, postTweet } from 'api/tweetInfo';
 import { getAllReplies, replyToTweet } from 'api/reply';
 
@@ -22,6 +22,7 @@ const HomePage = () => {
   const [ trendUsers, setTrenderUsers ] = useState([])
   const [ postCards, setPostCards ] = useState([])
   const [ inputValue, setInputValue ] = useState('')
+
   /* Main & ReplyList */
   const [ openModalReply, setOpenModalReply ] = useState(false)
   const [ openModalTweet, setOpenMoadlTweet ] = useState(false)
@@ -29,13 +30,20 @@ const HomePage = () => {
   const [ replyPostInfo, setRelyPostInfo ] = useState({})
 
   /* UserProfile */
+  const [ userId, setUserId ] = useState(14)
   const [ userInfo, setuserInfo ] = useState({})
   const [ tweets, setTweets ] = useState([])
   const [ allReplies, setAllReplies ] = useState([])
   const [ likes, setLikes ] = useState([])
 
+  /* Tweet */
+  const [ checkWordLength, setCheckWordLength ] = useState(false)
+  const [ checkInputIsSpace, setCheckInputIsSpace ] = useState(false)
+  const [ disabledButton, setDisabledButton ] = useState(false)
+
+
   const handleClick = () => {
-    const test = getUserLikesInfo()
+    const test = getUserInfo(userId)
     console.log(test)
   }
 
@@ -54,26 +62,31 @@ const HomePage = () => {
   useEffect(() => {
     const getUserTweetContentAsync = async () => {
       try {
-        const tweetInfo = await getUserTweetInfo()
+        const tweetInfo = await getUserTweetInfo(userId)
         setPostCards(tweetInfo.map((post) => ({...post})))
         } catch (error) {
         console.error (error);
       }
     }
     getUserTweetContentAsync()
-  }, [])
+  }, [userId])
 
   useEffect(() => {
     const getUserInfoAsyn = async () => {
       try {
-        const userInfo = await getUserInfo()
+        const userInfo = await getUserInfo(userId)
         setuserInfo(userInfo)
       } catch (error) {
         console.error (error);
       }
     }
     getUserInfoAsyn()
-  }, [])
+  }, [userId])
+
+  const handleClickedId = (id) => {
+    setUserId(id)
+  }
+
 
   useEffect(() => {
     const getPopularsAsyn = async () => {
@@ -110,6 +123,8 @@ const HomePage = () => {
     }
     getUserLikesAsync()
   }, [])
+
+  useEffect(() => {})
 
   const handleToggleFollow = (id, isFollowed) => {
     setTrenderUsers((prevUsers) => {
@@ -203,6 +218,7 @@ const HomePage = () => {
     }
   }
 
+
   const handleOpenModalReply = (id, avatar, name, account, createdAt, description) => {
     setOpenModalReply(true)
     setRelyPostInfo({
@@ -237,21 +253,42 @@ const HomePage = () => {
 
   const handleChange = (value) => {
     setInputValue(value)
+
+    if(value.length >= 140) {
+      setCheckWordLength(true)
+      setDisabledButton(true)
+    } else if(value.length <= 140) {
+      setCheckWordLength(false)
+      setDisabledButton(false)
+    }
+
+    if(value.length === 0 || value.trim() === '') {
+      setDisabledButton(true)
+      setCheckInputIsSpace(true)
+    } else if(value.length !== 0 || value.trim() !== '') {
+      setDisabledButton(false)
+      setCheckInputIsSpace(false)
+    }
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
 
     return (
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
-              <Route exact path="/" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
-              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes}/>} />
+              <Route exact path="/" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} userId={userId} onClickedId={handleClickedId}/>} />
+              <Route exact path="/profile/:id" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes}/>} />
               <Route exact path="/setting" element={<Setting />} />
               <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards} onOpenModalReply={handleOpenModalReply}/>} />
               <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply} allReplies={allReplies}/>} />
             </Routes>
             <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} /> }
-            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet}/> }
+            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
             { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
             <button class="test" onClick={handleClick} >TEST</button>
         </div>
