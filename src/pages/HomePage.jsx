@@ -55,18 +55,10 @@ const HomePage = () => {
   const [ disabledButton, setDisabledButton ] = useState(false)
 
 
-  /* 取得所有推文(主畫面) */
-  useEffect(() => {
-    const getAllTweetContentAsync = async () => {
-      try {
-        const allTweet = await getAllTweetPost()
-        setAllTweet(allTweet.map((post) => ({...post})))
-        } catch (error) {
-        console.error (error);
-      }
-    }
-    getAllTweetContentAsync()
-  }, [currentClickLike])
+  const handleClick = () => {
+    const test = getPopulars()
+    console.log(test)
+  }
 
   useEffect(() => {
     const getUserTweetContentAsync = async () => {

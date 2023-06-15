@@ -72,3 +72,17 @@ export const register = async ({
     console.error("[Register Failed]:", error);
   }
 };
+
+
+export const checkPermission = async (authToken) => {
+  try {
+    const response = await axios.get(`${authURL}/auth/users`, {
+      headers: {
+        Authorization: 'Bearer ' + authToken,
+      },
+    });
+    return response.data.status;
+  } catch (error) {
+    console.error('[Check Permission Failed]:', error);
+  }
+};

@@ -7,8 +7,8 @@ import {
 } from "../components/common/Auth";
 import { ReactComponent as Logo } from "../assets/icons/LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { login } from "api/auth";
+import { useEffect, useState } from "react";
+import { checkPermission, login } from "api/auth";
 import Swal from "sweetalert2";
 
 const LoginPage = () => {
@@ -87,6 +87,21 @@ const LoginPage = () => {
     //   console.log(`message是${message}`);
     // }
   };
+
+   useEffect(() => {
+     const checkTokenIsValid = async () => {
+       const authToken = localStorage.getItem("authToken");
+       if (!authToken) {
+         return;
+       }
+       const result = await checkPermission(authToken);
+       if (result) {
+         navigate("/");
+       }
+     };
+
+     checkTokenIsValid();
+   }, [navigate]);
 
   return (
     <AuthContainer>
