@@ -307,7 +307,7 @@ const HomePage = () => {
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
-              <Route path="/simple-twitter/" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} userId={userId} onClickedId={handleClickedId} onChangeReply={handleChangeReply} replyId={replyId}/>} />
+              <Route path="/" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} userId={userId} onClickedId={handleClickedId} onChangeReply={handleChangeReply} replyId={replyId}/>} />
               <Route path="/profile/:id" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes} />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards} onOpenModalReply={handleOpenModalReply}/>} />

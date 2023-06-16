@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route path="/admin/main" element={<AdminMainPage />} />
           <Route path="/admin/users" element={<AdminUsersPage />} />
-          <Route path="/simple-twitter/" element={<HomePage />} />
+          <Route path="/*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>

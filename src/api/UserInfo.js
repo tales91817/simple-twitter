@@ -42,7 +42,7 @@ export const getPopulars = async() => {
 
         localStorage.setItem('token', token);
         const response = await axios.get( `${baseUrl}/api/users`, { headers })
-        return response.data 
+        return response.data
 
     } catch(error) {
         console.error(error)
