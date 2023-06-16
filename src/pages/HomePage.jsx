@@ -51,6 +51,7 @@ const HomePage = () => {
 
   // const { isAuthenticated } = useAuth()
   
+  
   // useEffect(() => {
   //   if(!isAuthenticated) {
   //     console.log("登愣沒有isAuthenticated了");
