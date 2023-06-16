@@ -40,7 +40,7 @@ const HomePage = () => {
 
   const navigate = useNavigate()
 
-  const { isAuthenticated } = useAuth()
+  // const { isAuthenticated } = useAuth()
   
   useEffect(() => {
     if(!isAuthenticated) {
