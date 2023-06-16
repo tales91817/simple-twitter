@@ -1,4 +1,4 @@
-import { checkPermission, login, register } from 'api/auth';
+import { checkPermission, login, register } from "api/auth";
 import { createContext, useContext, useEffect, useState } from 'react';
 import * as jwt from 'jsonwebtoken';
 import { useLocation } from 'react-router-dom';
@@ -17,18 +17,17 @@ export const useAuth = () => useContext(AuthContext); // 這邊的 useAuth 可�
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [payload, setPayload] = useState(null);
-
   const { pathName } = useLocation()
 
   useEffect(() => {
     const checkTokenIsValid = async () => {
       const authToken = localStorage.getItem("authToken");
-      if (!authToken) {
+      if (!authToken) {                         //////這邊判斷有authToken
         setIsAuthenticated(false)
         setPayload(null)
         return
       }
-      const result = await checkPermission(authToken);
+      const result = await checkPermission(authToken);/////這邊判斷result = undefined
       if (result) {
         setIsAuthenticated(true);
         const tempPayload = jwt.decode(authToken);
@@ -38,7 +37,6 @@ export const AuthProvider = ({ children }) => {
         setPayload(null);
       }
     };
-
     checkTokenIsValid();
   }, [pathName]);
 
@@ -77,22 +75,31 @@ export const AuthProvider = ({ children }) => {
 
         login: async (data) => {
           const {
-            status,
-            data: { token: authToken },
+            // status,
+            success,
+            message,
+            // error,
+            authToken,
           } = await login({
             account: data.account,
             password: data.password,
           });
+        //   if (successData) {
+        //  const { token: authToken } = successData;
+
           const tempPayload = jwt.decode(authToken);
           if (tempPayload) {
             setPayload(tempPayload);
             setIsAuthenticated(true);
             localStorage.setItem("authToken", authToken);
+            console.log("可以喔");
+          
           } else {
             setPayload(null);
             setIsAuthenticated(false);
+            console.log('不行捏')
           }
-          return status;
+          return {success, message};
         },
 
         logout: () => {

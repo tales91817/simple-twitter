@@ -3,6 +3,8 @@ import { ReactComponent as IconPost } from "assets/icons/icon_post.svg";
 import { ReactComponent as IconLike } from "assets/icons/icon_like.svg";
 
 const AdminUserItem = ({ user }) => {
+  const AvatarImagePath =
+    require("../assets/images/main-user-John-Doe.svg.svg").default;
 
   return (
     <div className="adminUserItemWrapper">

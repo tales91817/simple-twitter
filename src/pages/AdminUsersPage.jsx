@@ -3,24 +3,123 @@ import AdminLeftColumn from "../components/common/AdminLeftColumn";
 import "./AdminContentPageFrame.scss";
 import { ReactComponent as Home } from "../assets/icons/home.svg";
 import { ReactComponent as ProfileSelected } from "../assets/icons/profile_selected.svg";
-import { useEffect, useState } from "react";
-import { getUsers } from "api/admin";
+
+
+
+const dummyUsers = [
+  {
+    id: 1,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 2,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 3,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 4,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 5,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 6,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 7,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 8,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 9,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+  {
+    id: 10,
+    name: "John Doe",
+    account: "heyjohn",
+    avatar: "../assets/icons/other-user-avatar.svg",
+    cover: "https://loremflickr.com/640/200/mountain/?lock=30.27625888615926",
+    tweetCount: "1.5k",
+    likeCount: "20k",
+    followingCount: 34,
+    followerCount: 59,
+  },
+];
 
 const AdminUsersPage = () => {
- const [users, setUsers] = useState([]);
- 
-  useEffect(() => {
-   const getUsersAsync = async () => {
-     try {
-       const users = await getUsers();
-       setUsers(users);
-     } catch (error) {
-       console.error(error);
-     }
-   };
-   getUsersAsync();
- }, []);
-  
   return (
     <div className="adminContentPageContainer">
       <AdminLeftColumn

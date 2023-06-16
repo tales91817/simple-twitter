@@ -38,21 +38,15 @@ const HomePage = () => {
    const [password, setPassword] = useState("");
    const [checkPassword, setCheckPassword] = useState("");
 
+  const navigate = useNavigate()
 
-useEffect(() => {
-  const checkTokenIsValid = async () => {
-    const authToken = localStorage.getItem("authToken");
-    if (!authToken) {
+  const { isAuthenticated } = useAuth()
+  
+  useEffect(() => {
+    if(!isAuthenticated) {
       navigate("/users/login");
     }
-    const result = await checkPermission(authToken);
-    if (!result) {
-      navigate("/users/login");
-    }
-  };
-
-  checkTokenIsValid();
-}, [navigate]);
+  }, [navigate, isAuthenticated]);
 
 
 
