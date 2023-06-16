@@ -4,10 +4,10 @@ import { ReactComponent as Logo } from "../assets/icons/LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useEffect, useState } from "react";
-import { checkPermission, register } from "api/auth";
 import Swal from "sweetalert2";
+import { useAuth } from "contexts/AuthContext";
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const [account, setAccount] = useState("");
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -17,6 +17,8 @@ const LoginPage = () => {
   const nameInputLength = name.length;
 
   const navigate = useNavigate();
+
+  const { register, isAuthenticated } = useAuth();
 
   const handleClick = async () => {
     if (account.length === 0) {
@@ -34,15 +36,10 @@ const LoginPage = () => {
     if (checkPassword.length === 0) {
       return;
     }
-    const {
-      status,
-      data: { token: authToken },
-    } = await register({ name, account, email, password, checkPassword });
+    const status = await register({ name, account, email, password, checkPassword });
 
     if (status === "success") {
-      localStorage.setItem("authToken", authToken);
-
-      // 註冊成功訊息
+       // 註冊成功訊息
       Swal.fire({
         position: "top",
         title: "註冊成功！",
@@ -50,7 +47,6 @@ const LoginPage = () => {
         icon: "success",
         showConfirmButton: false,
       });
-      navigate("/");
       return;
     }
 
@@ -65,19 +61,10 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    const checkTokenIsValid = async () => {
-      const authToken = localStorage.getItem("authToken");
-      if (!authToken) {
-        return;
-      }
-      const result = await checkPermission(authToken);
-      if (result) {
-        navigate("/");
-      }
-    };
-
-    checkTokenIsValid();
-  }, [navigate]);
+    if(isAuthenticated) {
+      navigate('/')
+    }
+  }, [navigate, isAuthenticated]);
 
   return (
     <AuthContainer>
@@ -132,4 +119,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
