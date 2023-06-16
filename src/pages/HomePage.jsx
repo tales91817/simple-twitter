@@ -8,7 +8,7 @@ import 'components/MainPageFunctions/mainPageStyles.scss'
 import './page.scss'
 import ReplyModal from 'components/MainPageFunctions/ReplyModal';
 import Setting from 'components/MainPageFunctions/Setting/Setting';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes, HashRouter } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
