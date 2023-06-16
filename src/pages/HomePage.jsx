@@ -12,12 +12,9 @@ import { Route, Router, Routes } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
-import FollowInfo from 'components/MainPageFunctions/Follower/FollowInfo';
-import { getUserTweetInfo, getUserInfo, getPopulars, getUserLikesInfo, putUserProfileInfo, getUserReplies } from 'api/UserInfo'
-import { getAllTweetPost, postTweet } from 'api/tweetInfo';
-import { getAllReplies, replyToTweet } from 'api/reply';
-import { addLikes, cancelLikes } from 'api/like';
-import { deleteFollower, postFollower, getFollower, getFollowing } from 'api/follow';
+import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/userInfo'
+
+
 
 const HomePage = () => {
   /* Main */
