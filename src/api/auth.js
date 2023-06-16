@@ -10,16 +10,34 @@ export const login = async ({ account, password }) => {
     });
 
     console.log(data);
-
-    const {
-      data: { token: authToken },
-    } = data;
-    if (authToken) {
-      return { success: true, ...data };
+    // if(data.message){
+    // console.log(data.message);
+    // }
+    const{ status } = data
+    if(status==='success'){
+       const { data: successData } = data;
+       if (successData) {
+         const { token: authToken } = successData;
+         if (authToken) {
+           return { success: true, message: '', authToken, ...data };
+         }
+         return data;
+       }
+    } else {
+      const {message} = data;
+      // console.log(message);
+      return { success: false, message, ...data };
     }
-    return data;
+    // const {
+    //   data: { token: authToken },
+    // } = data;
+    // if (authToken) {
+    //   return { success: true, ...data };
+    // }
+    // return data;
   } catch (error) {
     console.error("[Login Failed]:", error);
+    console.log(error)
   }
 };
 
@@ -76,11 +94,17 @@ export const register = async ({
 
 export const checkPermission = async (authToken) => {
   try {
+    ////這邊判斷response = undefined  但是如果直接把localStorage 裡存放的 token 拿去餵 postman，可以得到回傳
+    // {
+    //     "status": "success",
+    //     "message": "It's a User"
+    // }
     const response = await axios.get(`${authURL}/auth/users`, {
       headers: {
-        Authorization: 'Bearer ' + authToken,
+        Authorization: "Bearer " + authToken,
       },
     });
+    console.log(response) ///// 這行沒有印出任何東西，連undefined也沒有
     return response.data.status;
   } catch (error) {
     console.error('[Check Permission Failed]:', error);

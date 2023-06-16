@@ -3,13 +3,13 @@ import { ReactComponent as IconPost } from "assets/icons/icon_post.svg";
 import { ReactComponent as IconLike } from "assets/icons/icon_like.svg";
 
 const AdminUserItem = ({ user }) => {
-  const AvatarImagePath =
-    require("../assets/images/main-user-John-Doe.svg.svg").default;
+  // const AvatarImagePath =
+  //   require("../assets/images/main-user-John-Doe.svg.svg").default;
 
   return (
     <div className="adminUserItemWrapper">
       <div className="midAvatar">
-        <img className="avatar" src={AvatarImagePath} alt="avatar" />
+        <img className="avatar" src={user.avatar} alt="avatar" />
       </div>
       <div>
         <img className="cover" src={user.cover} alt="" />
@@ -20,17 +20,17 @@ const AdminUserItem = ({ user }) => {
 
       <div className="rowActions">
         <IconPost className="iconPost" />
-        <div>{user.tweetCount}</div>
-        <IconLike className="iconLike"/>
-        <div>{user.likeCount}</div>
+        <div className="postNum">{user.postNum}</div>
+        <IconLike className="iconLike" />
+        <div className="likes">{user.likes}</div>
       </div>
 
       <div className="rowFollow">
         <div className="followLeft">
-          {user.followerCount} 個<span className="followSpan">跟隨中</span>
+          {user.following} 個<span className="followSpan">跟隨中</span>
         </div>
         <div>
-          {user.followingCount} 位<span className="followSpan">跟隨者</span>
+          {user.follower} 位<span className="followSpan">跟隨者</span>
         </div>
       </div>
     </div>

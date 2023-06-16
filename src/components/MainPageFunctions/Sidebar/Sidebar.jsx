@@ -24,7 +24,7 @@ const Sidebar = ({ onOpenModalTweet }) => {
     const navigate = useNavigate()
     const handleClick = () => {
       console.log("按到了");
-      navigate("/users/signup");
+      navigate("/users/login");
       localStorage.removeItem("authToken");
       navigate("/users/login");
       

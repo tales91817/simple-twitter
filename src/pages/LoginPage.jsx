@@ -27,13 +27,13 @@ const LoginPage = () => {
       return;
     }
 
-    const status = await login({
+    const { success, message }= await login({
       account,
       password,
     });
 
-    if (status === "success") {
-      console.log("status是" + status);
+    if (success) {
+      console.log("success是" + success);
       const authToken = localStorage.getItem('authToken')
       console.log("token是" + authToken);
 
@@ -47,20 +47,21 @@ const LoginPage = () => {
       });
       return;
     }
-
-    // 登入失敗訊息
+    
+    console.log('登入GG')
+    if (message === "Error: 帳號不存在!") {
+      alertText = "帳號不存在！";;
+    } else if (message === "Error: 密碼錯誤!") {
+      alertText = "密碼錯誤！";;
+    }
+    
     Swal.fire({
       position: "top",
-      title: "登入失敗！",
+      title: alertText,
       timer: 1000,
       icon: "error",
       showConfirmButton: false,
     });
-
-    // if (message) {
-    //   alertText = message;
-    //   console.log(`message是${message}`);
-    // }
   };
 
    useEffect(() => {
@@ -78,7 +79,8 @@ const LoginPage = () => {
         placeholder="請輸入帳號"
         value={account}
         onChange={(accountInputValue) => setAccount(accountInputValue)}
-        alertText={alertText === "Error: 帳號不存在!" ? "帳號不存在!" : ""}
+        // alertText={alertText === "Error: 帳號不存在!" ? "帳號不存在!" : ""}
+        alertText={alertText}
       />
       <AuthInput
         type="password"

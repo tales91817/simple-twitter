@@ -36,3 +36,12 @@ export const deleteTweet = async (id) => {
     console.error("[Delete Tweet failed]:", error);
   }
 };
+
+export const getUsers = async () => {
+  try {
+    const res = await axiosInstance.get(`${baseUrl}/admin/users`);
+    return res.data;
+  } catch (error) {
+    console.error("[Get Users failed]: ", error);
+  }
+};

@@ -47,15 +47,16 @@ const HomePage = () => {
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const { isAuthenticated } = useAuth()
+  // const { isAuthenticated } = useAuth()
   
-  useEffect(() => {
-    if(!isAuthenticated) {
-      navigate("/users/login");
-    }
-  }, [navigate, isAuthenticated]);
+  // useEffect(() => {
+  //   if(!isAuthenticated) {
+  //     console.log("登愣沒有isAuthenticated了");
+  //     navigate('users/login')
+  //   } 
+  // }, [navigate, isAuthenticated]);
 
   const handleClick = () => {
     const test = getPopulars();
