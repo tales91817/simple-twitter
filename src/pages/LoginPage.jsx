@@ -8,14 +8,16 @@ import {
 import { ReactComponent as Logo } from "../assets/icons/LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { checkPermission, login } from "api/auth";
 import Swal from "sweetalert2";
+import { useAuth } from "contexts/AuthContext";
 
 const LoginPage = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   let alertText = "";
+
+  const { login, isAuthenticated } = useAuth()
 
   const handleClick = async () => {
     if (account.length === 0) {
@@ -25,18 +27,14 @@ const LoginPage = () => {
       return;
     }
 
-    const {
-      status,
-      // message,
-      data: { token: authToken },
-    } = await login({
+    const status = await login({
       account,
       password,
     });
 
     if (status === "success") {
-      localStorage.setItem("authToken", authToken);
       console.log("status是" + status);
+      const authToken = localStorage.getItem('authToken')
       console.log("token是" + authToken);
 
       // 登入成功訊息
@@ -47,7 +45,6 @@ const LoginPage = () => {
         icon: "success",
         showConfirmButton: false,
       });
-      navigate("/");
       return;
     }
 
@@ -67,19 +64,10 @@ const LoginPage = () => {
   };
 
    useEffect(() => {
-     const checkTokenIsValid = async () => {
-       const authToken = localStorage.getItem("authToken");
-       if (!authToken) {
-         return;
-       }
-       const result = await checkPermission(authToken);
-       if (result) {
-         navigate("/");
-       }
-     };
-
-     checkTokenIsValid();
-   }, [navigate]);
+    if(isAuthenticated) {
+      navigate('/')
+    }
+   }, [navigate, isAuthenticated]);
 
   return (
     <AuthContainer>

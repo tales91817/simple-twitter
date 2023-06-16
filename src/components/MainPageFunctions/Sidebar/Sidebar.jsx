@@ -9,19 +9,26 @@ import { ReactComponent as SettingIconSelected } from 'assets/icons/setting_sele
 import { ReactComponent as LogoutIcon } from 'assets/icons/Logout.svg'
 import { useNavigate } from 'react-router-dom'
 import './sidebar.scss'
+import { useAuth } from 'contexts/AuthContext'
 
 
 /* eslint-disable */ 
 
 const Sidebar = ({ onOpenModalTweet }) => {
-    const [ isSelectedIcon, setIsSelectedIcon ] = useState('')
+    const [ isSelectedIcon, setIsSelectedIcon ] = useState ('')
     const handleButtonClick = (buttonName) => {
         setIsSelectedIcon(buttonName)
     }
+
+    const { logout } = useAuth
     const navigate = useNavigate()
     const handleClick = () => {
+      console.log("按到了");
+      navigate("/users/signup");
       localStorage.removeItem("authToken");
       navigate("/users/login");
+      
+      // logout()
     };
 
   return (
