@@ -3,7 +3,7 @@ import { ReactComponent as ModalUserAvatar } from 'assets/icons/other-user-avata
 import { ReactComponent as MyAvatar } from 'assets/images/main-user-John-Doe avatar_50x50.svg'
 import { ReactComponent as CloseBtn } from 'assets/icons/close-button.svg'
 
-const ReplyModal = ({ closeModal, replyPostInfo }) => {
+const ReplyModal = ({ closeModal, replyPostInfo, onChange, onAddReply, disabledButton }) => {
 
     const getTimeDifference = (tweetTimestamp) => {
         const tweetDate = new Date(tweetTimestamp)
@@ -47,14 +47,18 @@ const ReplyModal = ({ closeModal, replyPostInfo }) => {
                 <div className="myReplyContainer">
                     <MyAvatar />
                     <div className="replyRightSide">
-                        <input type="text" className="replyContent" placeholder='推你的回覆'/>
+                        <form action="submit">
+                            <textarea type="text" className="replyContent" placeholder='推你的回覆' onChange={(e) => {
+                        onChange(e.target.value)
+                        }}/>
+                        </form>
                     </div>
                 </div>
             </div>
             <div className="modalFooter">
-                <div className="replyBtn">
-                    <p>回覆</p>
-                </div>
+                <button className="replyBtn" onClick={() => onAddReply()} disabled={disabledButton} >
+                    回覆
+                </button>
             </div>
         </div>
     </div>

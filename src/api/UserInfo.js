@@ -12,7 +12,6 @@ export const getUserTweetInfo = async(id) => {
         const response = await axios.get( `${baseUrl}/api/users/${id}/tweets`, { headers })
         return response.data
 
-
     } catch (error) {
         console.error(error)
     }
@@ -60,7 +59,6 @@ export const getUserLikesInfo = async() => {
         localStorage.setItem('token', token);
         const response = await axios.get( `${baseUrl}/api/users/14/likes`, { headers })
         return response.data
-
 
     } catch (error) {
         console.error(error)

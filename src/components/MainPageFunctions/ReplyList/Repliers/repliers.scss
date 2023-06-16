@@ -6,10 +6,13 @@ $popularsBackground: #fafafb;
 .replyPost-wrapper {
     width: 100%;
     display: flex;
+    flex-direction: column;
     padding: 24px;
 
     .repliesCard {
         display: flex;
+        margin-bottom: 16px;
+        border-bottom: 1px solid $twitterBorder;
 
         .replyUserImg {
             margin-right: 8px;

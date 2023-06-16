@@ -4,7 +4,7 @@ import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
 import { Link } from 'react-router-dom'
 
-const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClickedId }) => {
+const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClickedId, onChangeReply, replyId }) => {
     
     const getTimeDifference = (tweetTimestamp) => {
         const tweetDate = new Date(tweetTimestamp)
@@ -20,7 +20,6 @@ const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClicked
             return `${hoursDifference} 小時前`;
           }
     }
-
 
   return (
     <div className='post-wrapper'>
@@ -41,7 +40,7 @@ const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClicked
                     </div>
                 </div>
                 <div className="postCardContent">
-                    <Link to="/replyList" className="toReply">{post.description}</Link>
+                    <Link to={`/replyList/${replyId}`} className="toReply" onClick={() => {onChangeReply(post.id)}}>{post.description}</Link>
                 </div>
                 <div className="postCardfooter">
                     <div className='postCardIcon'>
