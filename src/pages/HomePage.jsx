@@ -459,12 +459,11 @@ const HomePage = () => {
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
-              <Route path="*" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} currentId={currentId} onClickedId={handleClickedId} onChangeReply={handleChangeReply} replyId={replyId} />} />
-              <Route path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes} onClickFollow={handleClickFollow} />} />
-              <Route path="/setting" element={<Setting />} />
-              <Route path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards} onOpenModalReply={handleOpenModalReply}/>} />
-              <Route path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply} allReplies={allReplies} currentTweet={currentTweet} />} />
-              <Route path="/followers" element={<FollowInfo followers={followers} followings={followings}/>} />
+              <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
+              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
+              <Route exact path="/setting" element={<Setting />} />
+              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
+              <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
             </Routes>
             <Populars trendUsers={trendUsers} />
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
