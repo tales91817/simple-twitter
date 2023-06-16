@@ -14,7 +14,7 @@ import { Route, Router, Routes } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
-import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/UserInfo'
+import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/userInfo'
 
 
 
