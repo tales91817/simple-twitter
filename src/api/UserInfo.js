@@ -25,7 +25,7 @@ export const getUserInfo = async() => {
             Authorization: `Bearer ${token}`
         }
 
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', token)
         const response = await axios.get( `${baseUrl}/api/users/14`, { headers })
         return response.data 
 
@@ -42,7 +42,7 @@ export const postTweet = async(payload) => {
             Authorization: `Bearer ${token}`
         }
 
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', token)
         const response = await axios.post( `${baseUrl}/api/tweets`, { 
             description
         }, { headers })
@@ -60,7 +60,7 @@ export const getPopulars = async() => {
             Authorization: `Bearer ${token}`
         }
 
-        localStorage.setItem('token', token);
+        localStorage.setItem('token', token)
         const response = await axios.get( `${baseUrl}/api/users`, { headers })
         return response.data 
 
