@@ -307,11 +307,11 @@ const HomePage = () => {
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
-              <Route exact path="/" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} userId={userId} onClickedId={handleClickedId} onChangeReply={handleChangeReply} replyId={replyId}/>} />
-              <Route exact path="/profile/:id" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes} />} />
-              <Route exact path="/setting" element={<Setting />} />
-              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards} onOpenModalReply={handleOpenModalReply}/>} />
-              <Route exact path="/replyList/:id" element={<ReplyList onOpenModalReply={handleOpenModalReply} allReplies={allReplies} currentTweet={currentTweet} />} />
+              <Route path="/simple-twitter" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} userId={userId} onClickedId={handleClickedId} onChangeReply={handleChangeReply} replyId={replyId}/>} />
+              <Route path="/profile/:id" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes} />} />
+              <Route path="/setting" element={<Setting />} />
+              <Route path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards} onOpenModalReply={handleOpenModalReply}/>} />
+              <Route path="/replyList/:id" element={<ReplyList onOpenModalReply={handleOpenModalReply} allReplies={allReplies} currentTweet={currentTweet} />} />
             </Routes>
             <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
