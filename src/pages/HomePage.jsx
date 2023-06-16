@@ -8,7 +8,7 @@ import 'components/MainPageFunctions/mainPageStyles.scss'
 import './page.scss'
 import ReplyModal from 'components/MainPageFunctions/ReplyModal';
 import Setting from 'components/MainPageFunctions/Setting/Setting';
-import { Route, Router, Routes, HashRouter } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 import ReplyList from 'components/MainPageFunctions/ReplyList/ReplyList';
 import TwitterModal from 'components/MainPageFunctions/TwitterModal';
 import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
@@ -53,6 +53,7 @@ const HomePage = () => {
 
   /* Likes */
   const [ currentClickLike, setCurrentClickLike] = useState('')
+
 
   useEffect(() => {
     const getAllTweetContentAsync = async () => {
@@ -451,15 +452,13 @@ const HomePage = () => {
     return (
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
-            <HashRouter>
             <Routes>
               <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
-              <Route path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
-              <Route path="/setting" element={<Setting />} />
-              <Route path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
-              <Route path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
+              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
+              <Route exact path="/setting" element={<Setting />} />
+              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
+              <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
             </Routes>
-            </HashRouter>
             <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
             { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
