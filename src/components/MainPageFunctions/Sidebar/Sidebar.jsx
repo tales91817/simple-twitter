@@ -50,7 +50,7 @@ const Sidebar = ({ onOpenModalTweet }) => {
           className={isSelectedIcon === "profile" ? "selected" : "item"}
           onClick={() => {
             handleButtonClick("profile");
-            navigate("/profile");
+            navigate("/profile/24");
           }}
         >
           {isSelectedIcon === "profile" ? (

@@ -7,6 +7,21 @@ $popularsBackground: #fafafb;
     width: 50%;
     margin-left: 25%;
     border-right: 1px solid $twitterBorder;
+    height: 100%;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-button {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 4px;
+        }
+    &::-webkit-scrollbar-track {
+        box-shadow: transparent;
+    }
   
     .profileHeader {
       width: 50%;

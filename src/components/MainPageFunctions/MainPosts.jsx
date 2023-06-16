@@ -4,7 +4,7 @@ import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
 import { Link } from 'react-router-dom'
 
-const Posts = ({ tweets, onToggleLike, onOpenModalReply }) => {
+const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClickedId, onChangeReply, replyId }) => {
     
     const getTimeDifference = (tweetTimestamp) => {
         const tweetDate = new Date(tweetTimestamp)
@@ -20,39 +20,41 @@ const Posts = ({ tweets, onToggleLike, onOpenModalReply }) => {
             return `${hoursDifference} 小時前`;
           }
     }
-    
+
   return (
     <div className='post-wrapper'>
-        {tweets.map((post) => (
+        {allTweet.map((post) => (
             <div className="postCard">
-            <div className="postCardImg">
-                <img src={post.userAvatar} alt="user-avatar" />
-            </div>
+                <div className="postCardImg" key={post.id} onClick={() => {
+                onClickedId(post.UserId)
+            }}>
+                    <Link to={`profile/${userId}`}><img src={post.avatar} alt="user-avatar" /></Link>
+                </div>
             <div className="postCardRightSide">
                 <div className="postCardtitle">
                     <div className="postCardName">
-                        <strong>{post.userName}</strong>
+                        <strong>{post.name}</strong>
                     </div>
                     <div className="postUserAccount">
-                        @{post.userAccount}・<span>{getTimeDifference(post.updatedAt)}</span>
+                        @{post.account}・<span>{getTimeDifference(post.createdAt)}</span>
                     </div>
                 </div>
                 <div className="postCardContent">
-                    <Link to="/replyList" className="toReply"><p>{post.description}</p></Link>
+                    <Link to={`/replyList/${replyId}`} className="toReply" onClick={() => {onChangeReply(post.id)}}>{post.description}</Link>
                 </div>
                 <div className="postCardfooter">
                     <div className='postCardIcon'>
                         <ReplyIcon className="icon" onClick={() => {
-                            onOpenModalReply(post.id)
+                            onOpenModalReply(post.id, post.avatar, post.name, post.account, post.createdAt, post.description)
                         }}/>
-                        <div className="text">{post.repliesNum}</div>
+                        <div className="text">{post.repliedCount}</div>
                     </div>
                     <div className='postCardIcon'>
                         <div className="icon" onClick = {() => {
                             onToggleLike(post.id, post.isLiked)
                         }} > { post.isLiked ? <LikedIcon /> : <LikeIcon /> }
                         </div>
-                        <div className="text">{post.likes}</div>
+                        <div className="text">{post.likedCount}</div>
                     </div>
                 </div>
             </div>
@@ -62,4 +64,4 @@ const Posts = ({ tweets, onToggleLike, onOpenModalReply }) => {
   )
 }
 
-export default Posts
+export default MainPosts

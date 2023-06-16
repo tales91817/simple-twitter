@@ -1,10 +1,8 @@
 import React from 'react'
 import './userInfo.scss'
 import StateContent from 'components/MainPageFunctions/Profile/StateContent/StateContent'
-import UserAvatar from 'assets/images/main-user-John-Doe.png'
-import { ReactComponent as BannerImg } from 'assets/images/user-info-banner.svg'
 
-const UserInfo = ({ onOpenEditModal, postCards, userInfo }) => {
+const UserInfo = ({ onOpenEditModal, postCards, userInfo, onToggleLike, onOpenModalReply, likes }) => {
   return (
     <div className="userInfo-wrapper">
       <div className="infoContent">
@@ -30,7 +28,7 @@ const UserInfo = ({ onOpenEditModal, postCards, userInfo }) => {
           <span className="numbers">{userInfo.follower}位</span><p>跟隨者</p>
         </div>
       </div>
-      <StateContent postCards={postCards}/>
+      <StateContent postCards={postCards} onToggleLike={onToggleLike} onOpenModalReply={onOpenModalReply} likes={likes}/>
     </div>
   )
 }
