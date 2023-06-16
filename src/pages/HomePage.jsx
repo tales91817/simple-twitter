@@ -37,7 +37,6 @@ const HomePage = () => {
   const [ userId, setUserId ] = useState(14)
   const [ userInfo, setuserInfo ] = useState({})
   const [ tweets, setTweets ] = useState([])
-
   const [ likes, setLikes ] = useState([])
 
   /* Tweet */
@@ -45,11 +44,13 @@ const HomePage = () => {
   const [ checkInputIsSpace, setCheckInputIsSpace ] = useState(false)
   const [ disabledButton, setDisabledButton ] = useState(false)
 
+  /* Likes */
 
-  const handleClick = () => {
-    const test = replyToTweet()
-    console.log(test)
-  }
+
+  // const handleClick = () => {
+  //   const test = replyToTweet()
+  //   console.log(test)
+  // }
 
   useEffect(() =>{
     const getAllTweetContentAsync = async () => {
@@ -118,7 +119,7 @@ const HomePage = () => {
   useEffect(() =>{
     const getUserLikesAsync = async () => {
       try {
-        const allLikes = await getUserLikesInfo()
+        const allLikes = await getUserLikesInfo() 
         setLikes(allLikes.map((like) => ({...like})))
         } catch (error) {
         console.error (error);
@@ -316,7 +317,7 @@ const HomePage = () => {
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
             { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
             { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
-            <button class="test" onClick={handleClick} >TEST</button>
+            {/* <button class="test" onClick={handleClick} >TEST</button> */}
         </div>
       );
 }
