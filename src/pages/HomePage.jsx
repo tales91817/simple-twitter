@@ -15,6 +15,8 @@ import EditProfileModal from 'components/MainPageFunctions/EditProfileModal';
 import { getUserTweetInfo, getUserInfo, getPopulars, getUserLikesInfo } from 'api/userInfo'
 import { getAllTweetPost, postTweet } from 'api/tweetInfo';
 import { getAllReplies, replyToTweet } from 'api/reply';
+import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/userInfo'
+
 
 const HomePage = () => {
   /* Main */
@@ -46,6 +48,7 @@ const HomePage = () => {
   const [ disabledButton, setDisabledButton ] = useState(false)
 
 
+
   const handleClick = () => {
     const test = replyToTweet()
     console.log(test)
@@ -62,7 +65,7 @@ const HomePage = () => {
     }
     getAllTweetContentAsync()
   }, [])
-
+  
   useEffect(() => {
     const getUserTweetContentAsync = async () => {
       try {
@@ -316,7 +319,6 @@ const HomePage = () => {
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
             { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
             { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
-            <button class="test" onClick={handleClick} >TEST</button>
         </div>
       );
 }
