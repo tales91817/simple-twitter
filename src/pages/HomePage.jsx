@@ -54,13 +54,6 @@ const HomePage = () => {
   /* Likes */
   const [ currentClickLike, setCurrentClickLike] = useState('')
 
-
-  const handleClick = () => {
-    const test = getFollower(24)
-    console.log(test)
-  }
-
-  /* 取得所有推文(主畫面) */
   useEffect(() => {
     const getAllTweetContentAsync = async () => {
       try {
@@ -458,18 +451,19 @@ const HomePage = () => {
     return (
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
+            <HashRouter>
             <Routes>
-              <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
+              <Route exact path="/main" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
               <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
               <Route exact path="/setting" element={<Setting />} />
               <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
               <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
             </Routes>
-            <Populars trendUsers={trendUsers} />
-            { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
-            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
-            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} onChangeName={handleChangeName} onChangeIntro={handleChangeIntro} onSave={handleOnSave} onChangeImg={handleChangeImg}/>}
-            <button class="test" onClick={handleClick} >TEST</button>
+            </HashRouter>
+            <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
+            { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
+            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
+            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
         </div>
       );
 }
