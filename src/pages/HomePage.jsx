@@ -28,12 +28,6 @@ const HomePage = () => {
   const [ inputValue, setInputValue ] = useState('')
   const [ tweets, setTweets ] = useState([])
 
-
-  const handleClick = () => {
-    const test = getPopulars()
-    console.log(test)
-  }
-
   useEffect(() => {
     const getTweetContentAsync = async () => {
       try {
@@ -158,18 +152,19 @@ const HomePage = () => {
     return (
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
+            <HashRouter>
             <Routes>
-              <Route exact path="*" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
+              <Route exact path="/main" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
               <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
               <Route exact path="/setting" element={<Setting />} />
               <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
               <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
             </Routes>
+            </HashRouter>
             <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
             { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
             { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
-            <button class="test" onClick={handleClick} >TEST</button>
         </div>
       );
 }
