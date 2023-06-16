@@ -8,19 +8,17 @@ import AdminMainPage from "./pages/AdminMainPage";
 import AdminUsersPage from "pages/AdminUsersPage";
 import HomePage from "pages/HomePage";
 
-const basename = process.env.PUBLIC_URL;
-
 const App = () => {
   return (
-    <div className="App" basename={basename}>
+    <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="users/login" element={<LoginPage />} />
-          <Route path="users/signup" element={<SignUpPage />} />
-          <Route path="admin/login" element={<AdminLoginPage />} />
-          <Route path="admin/main" element={<AdminMainPage />} />
-          <Route path="admin/users" element={<AdminUsersPage />} />
-          <Route exact path="*" element={<HomePage />} />
+          <Route path="/users/login" element={<LoginPage />} />
+          <Route path="/users/signup" element={<SignUpPage />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin/main" element={<AdminMainPage />} />
+          <Route path="/admin/users" element={<AdminUsersPage />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>
