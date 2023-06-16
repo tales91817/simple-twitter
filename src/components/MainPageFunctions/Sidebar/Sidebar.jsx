@@ -36,7 +36,7 @@ const Sidebar = ({ onOpenModalTweet }) => {
           className={isSelectedIcon === "home" ? "selected" : "item"}
           onClick={() => {
             handleButtonClick("home");
-            navigate("/");
+            navigate("/simple-twitter");
           }}
         >
           {isSelectedIcon === "home" ? (
