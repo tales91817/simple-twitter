@@ -154,11 +154,11 @@ const HomePage = () => {
         <div className="container">
             <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
             <Routes>
-              <Route exact path="/" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
-              <Route exact path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
-              <Route exact path="/setting" element={<Setting />} />
-              <Route exact path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
-              <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
+              <Route path="/simple-twitter" element={<Twittes tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} />} />
+              <Route path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo}/>} />
+              <Route path="/setting" element={<Setting />} />
+              <Route path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards}/>} />
+              <Route path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
             </Routes>
             <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
