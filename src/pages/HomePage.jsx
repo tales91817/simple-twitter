@@ -39,6 +39,7 @@ const HomePage = () => {
 
   /* UserProfile */
   const [ userInfo, setuserInfo ] = useState({})
+  const [ userId, setUserId] = useState(currentId)
   const [ tweets, setTweets ] = useState([])
   const [ likes, setLikes ] = useState([])
   const [ inputNameValue, setInputNameValue ] = useState('')
