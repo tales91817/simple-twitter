@@ -21,15 +21,26 @@ import {
   getPopulars,
 } from "api/UserInfo";
 import { useAuth } from "contexts/AuthContext";
+import { patchConfig } from "api/configSetting";
 
-const dummyUserInfo = {
-  id: 1,
-  account: "wonderwoman",
-  name: "Diana",
-  email: "diana@gmail.com",
-  password: "",
-  passwordComfirmation: "",
-};
+// const dummyUserInfo = {
+//   id: 1,
+//   account: "wonderwoman",
+//   name: "Diana",
+//   email: "diana@gmail.com",
+//   password: "",
+//   passwordComfirmation: "",
+// };
+
+
+
+// currentMember: payload && {
+//   id: payload.id,
+//   name: payload.name,
+//   email: payload.email,
+//   account: payload.account,
+// };
+
 
 const HomePage = () => {
   const [trendUsers, setTrenderUsers] = useState([]);
@@ -41,11 +52,17 @@ const HomePage = () => {
   const [inputValue, setInputValue] = useState("");
   const [tweets, setTweets] = useState([]);
 
-  const [account, setAccount] = useState(dummyUserInfo.account);
-  const [name, setUsername] = useState(dummyUserInfo.name);
-  const [email, setEmail] = useState(dummyUserInfo.email);
+  const { currentMember } = useAuth();
+  const currentId = currentMember.id;
+  console.log('現在的id是',currentId)
+  const [id, setId] = useState(currentMember.id);
+  const [account, setAccount] = useState(currentMember.account);
+  const [name, setUsername] = useState(currentMember.name);
+  const [email, setEmail] = useState(currentMember.email);
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
+  const [alertText, setAlertText] = useState("");
+  
 
   // const navigate = useNavigate()
 
@@ -185,7 +202,7 @@ const HomePage = () => {
     }
   };
   ///////////////////////////////////
-  const handleSaveConfig = () => {
+  const handleSaveConfig = async() => {
     if (account.length === 0) {
       return;
     }
@@ -201,8 +218,22 @@ const HomePage = () => {
     if (checkPassword.length === 0) {
       return;
     }
-
-    // const {} =
+    console.log("現在的id是", currentId);
+    let id = currentId
+    console.log(`currenId是${currentId}, id是${id}`);
+    const data = await patchConfig({
+      id,
+      name,
+      account,
+      email,
+      password,
+      checkPassword,
+    });
+    console.log('按到了')
+    console.log(data)
+    setAlertText(data.message)
+    console.log(alertText)
+    // if (data.message) {console.log(data.message)};
   };
   //////////////////////////////////////
   return (
@@ -239,7 +270,8 @@ const HomePage = () => {
           path="/setting"
           element={
             <Setting
-              onClick
+              onClick={handleSaveConfig}
+              alertText={alertText}
               account={account}
               name={name}
               email={email}
@@ -270,7 +302,7 @@ const HomePage = () => {
       {openModalReply && <ReplyModal closeModal={handleCloseModalReply} />}
       {openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} />}
       {openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} />}
-      <button class="test" onClick={handleClick}>
+      <button className="test" onClick={handleClick}>
         TEST
       </button>
     </div>

@@ -49,6 +49,7 @@ export {ConfigInput}
 
 
 const Setting = ({
+  alertText,
   onClick,
   account,
   name,
@@ -76,7 +77,8 @@ const Setting = ({
         <ConfigInput
           label="帳號"
           placeholder="請輸入帳號"
-          alertText="account 已重複註冊！"
+          // alertText="account 已重複註冊！"
+          alertText={alertText}
           value={account}
           onChange={(accountInputValue) => setAccount(accountInputValue)}
         />
@@ -107,50 +109,13 @@ const Setting = ({
           type="password"
           label="密碼確認"
           placeholder="請再次輸入密碼"
-          alertText="密碼與確認密碼不相符！"
+          alertText={alertText}
           value={checkPassword}
           onChange={(checkPasswordInputValue) =>
             setCheckPassword(checkPasswordInputValue)
           }
         />
 
-        {/* <form>
-          <label>
-            帳號
-            <input
-              type="text"
-            //   defaultValue={dummyUserInfo.account}
-              value={account}
-              placeholder="請輸入您的帳號"
-            />
-          </label>
-          <label>
-            名稱
-            <input
-              type="text"
-            //   defaultValue={dummyUserInfo.name}
-              value={name}
-              placeholder="請輸入您的名稱"
-            />
-          </label>
-          <label>
-            Email
-            <input
-              type="text"
-            //   defaultValue={dummyUserInfo.email}
-              value={email}
-              placeholder="請輸入您的Email"
-            />
-          </label>
-          <label>
-            密碼
-            <input type="text" value={password} placeholder="請設定密碼" />
-          </label>
-          <label>
-            密碼再確認
-            <input type="text" value={checkPassword} placeholder="請再次輸入密碼" />
-          </label>
-        </form> */}
       </div>
       <div className="saveBtn">
         <button onClick={onClick} type="submit">
