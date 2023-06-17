@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable */ 
 import React, { useEffect, useState } from 'react'
 import Sidebar from 'components/MainPageFunctions/Sidebar/Sidebar';
@@ -20,6 +21,31 @@ import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/userI
 import { getUserTweetInfo, getUserInfo, postTweet, getPopulars } from 'api/UserInfo'
 >>>>>>> 3a53a9a (refactor Setting and change css styles of HomePage (not done yet))
 
+=======
+/* eslint-disable */
+import React, { useEffect, useState } from "react";
+import Sidebar from "components/MainPageFunctions/Sidebar/Sidebar";
+import Twittes from "components/MainPageFunctions/Twittes";
+import Populars from "components/MainPageFunctions/Populars/Populars";
+import Profile from "components/MainPageFunctions/Profile/Profile";
+import OtherUserProfile from "components/MainPageFunctions/OtherUserProfile/OtherUserProfile";
+import "components/MainPageFunctions/mainPageStyles.scss";
+import { DummyTrenders } from "components/dummyDocument/DummyTrenders";
+import "./page.scss";
+import ReplyModal from "components/MainPageFunctions/ReplyModal";
+import Setting from "components/MainPageFunctions/Setting/Setting";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
+import ReplyList from "components/MainPageFunctions/ReplyList/ReplyList";
+import TwitterModal from "components/MainPageFunctions/TwitterModal";
+import EditProfileModal from "components/MainPageFunctions/EditProfileModal";
+import {
+  getUserTweetInfo,
+  getUserInfo,
+  postTweet,
+  getPopulars,
+} from "api/UserInfo";
+import { useAuth } from "contexts/AuthContext";
+>>>>>>> 76b3bbb (可以編輯並儲存個人設定 且有初步的錯誤提示  但重新整理會卡住 因為抓不到current id 原因查找中)
 
 
 const HomePage = () => {
@@ -32,11 +58,11 @@ const HomePage = () => {
   const [ inputValue, setInputValue ] = useState('')
   const [ tweets, setTweets ] = useState([])
 
-   const [account, setAccount] = useState(dummyUserInfo.account);
-   const [name, setUsername] = useState(dummyUserInfo.name);
-   const [email, setEmail] = useState(dummyUserInfo.email);
-   const [password, setPassword] = useState("");
-   const [checkPassword, setCheckPassword] = useState("");
+  const [account, setAccount] = useState(dummyUserInfo.account);
+  const [name, setUsername] = useState(dummyUserInfo.name);
+  const [email, setEmail] = useState(dummyUserInfo.email);
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
 
   const navigate = useNavigate()
 
@@ -175,9 +201,9 @@ const HomePage = () => {
     } catch(error) {
       console.error(error);
     }
-  }
-///////////////////////////////////
-  const handleSaveConfig = ()=>{
+  };
+  ///////////////////////////////////
+  const handleSaveConfig = () => {
     if (account.length === 0) {
       return;
     }
@@ -194,8 +220,82 @@ const HomePage = () => {
       return;
     }
 
-    // const {} = 
+    // const {} =
+  };
+  //////////////////////////////////////
+  return (
+    <div className="container">
+      <Sidebar onOpenModalTweet={handleOpenModalTweet} />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Twittes
+              tweets={tweets}
+              onToggleLike={handleToggleLike}
+              onOpenModalReply={handleOpenModalReply}
+              onChange={handleChange}
+              inputValue={inputValue}
+              onAddTweet={handleAddTweet}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/profile"
+          element={
+            <Profile
+              onOpenEditModal={handleOpenModalEdit}
+              postCards={postCards}
+              userInfo={userInfo}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/setting"
+          element={
+            <Setting
+              onClick
+              account={account}
+              name={name}
+              email={email}
+              password={password}
+              checkPassword={checkPassword}
+              setAccount={setAccount}
+              setUsername={setUsername}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              setCheckPassword={setCheckPassword}
+            />
+          }
+        />
+        <Route
+          exact
+          path="/other"
+          element={
+            <OtherUserProfile userInfo={userInfo} postCards={postCards} />
+          }
+        />
+        <Route
+          exact
+          path="/replyList"
+          element={<ReplyList onOpenModalReply={handleOpenModalReply} />}
+        />
+      </Routes>
+      <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow} />
+      {openModalReply && <ReplyModal closeModal={handleCloseModalReply} />}
+      {openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} />}
+      {openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} />}
+      <button class="test" onClick={handleClick}>
+        TEST
+      </button>
+    </div>
+  );
+};
 
+<<<<<<< HEAD
   }
 //////////////////////////////////////
     return (
@@ -298,3 +398,6 @@ const HomePage = () => {
     );
 >>>>>>> be0163c (add useAuth in pages and downgrade react script version to 4.0.3)
 }
+=======
+export default HomePage;
+>>>>>>> 76b3bbb (可以編輯並儲存個人設定 且有初步的錯誤提示  但重新整理會卡住 因為抓不到current id 原因查找中)

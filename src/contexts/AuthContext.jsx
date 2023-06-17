@@ -49,6 +49,8 @@ export const AuthProvider = ({ children }) => {
         currentMember: payload && {
           id: payload.id,
           name: payload.name,
+          email: payload.email,
+          account: payload.account
         },
         register: async (data) => {
           const {

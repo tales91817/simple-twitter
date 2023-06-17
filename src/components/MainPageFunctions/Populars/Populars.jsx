@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
-const Populars = ({ trendUsers }) => {
+/* eslint-disable */ 
+
+const Populars = ({ trendUsers, onTogglefollow }) => {
   
   return (
-    <div className='populars'>
+    <div className="populars">
       <div className="popularsHeader">
         <h4>推薦跟隨</h4>
       </div>
       <div className="populars-wrapper">
         {trendUsers.map((user) => (
           <div className="wrapper-content">
-            <div className="popularCard" key={user.userId}>
+            <div className="popularCard">
               <div className="popularImg">
                 <img src={user.userAvatar} alt="usrAvatar" />
               </div>
@@ -25,14 +27,17 @@ const Populars = ({ trendUsers }) => {
                 </div>
               </div>
             </div>
-            <div className={clsx('followBtn', { 'followed': user.isFollowed })}>
+            <div className={clsx('followBtn', { 'followed': user.isFollowed })} 
+              onClick={() => {
+                onTogglefollow(user.id, user.isFollowed)
+              }}>
               { user.isFollowed ? '正在跟隨' : '跟隨'}
             </div>
-          </div>
+          </Fragment>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default Populars
