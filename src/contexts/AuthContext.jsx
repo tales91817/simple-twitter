@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const defaultAuthContext = {
   isAuthenticated: false,
-  currentMember: null,
+  currentMember: {},
   register: null,
   login: null,
   logout: null,
@@ -54,8 +54,11 @@ export const AuthProvider = ({ children }) => {
         },
         register: async (data) => {
           const {
-            status,
-            data: { token: authToken },
+            // status,
+            success,
+            message,
+            // data: { token: authToken },
+            // authToken
           } = await register({
             name: data.name,
             account: data.account,
@@ -63,28 +66,33 @@ export const AuthProvider = ({ children }) => {
             password: data.password,
             checkPassword: data.checkPassword,
           });
-          const tempPayload = jwt.decode(authToken);
-          if (tempPayload) {
-            setPayload(tempPayload);
-            setIsAuthenticated(true);
-            localStorage.setItem("authToken", authToken);
-          } else {
-            setPayload(null);
-            setIsAuthenticated(false);
-          }
-          return status;
+
+
+          // const tempPayload = jwt.decode(authToken);
+          // if (tempPayload) {
+          //   setPayload(tempPayload);
+          //   setIsAuthenticated(true);
+          //   localStorage.setItem("authToken", authToken);
+          //   console.log("現在有權限喔^^");
+          // } else {
+          //   setPayload(null);
+          //   setIsAuthenticated(false);
+          //   console.log("現在沒權限了><");
+          // }
+          return { success, message };
         },
 
-        login: async (data) => {
+        login: async (giveInData) => {
           const {
             // status,
             success,
             message,
             // error,
             authToken,
+            data,
           } = await login({
-            account: data.account,
-            password: data.password,
+            account: giveInData.account,
+            password: giveInData.password,
           });
         //   if (successData) {
         //  const { token: authToken } = successData;
@@ -94,20 +102,21 @@ export const AuthProvider = ({ children }) => {
             setPayload(tempPayload);
             setIsAuthenticated(true);
             localStorage.setItem("authToken", authToken);
-            console.log("可以喔");
+            console.log("現在有權限喔^^");
           
           } else {
             setPayload(null);
             setIsAuthenticated(false);
-            console.log('不行捏')
+            console.log('現在沒權限了><')
           }
-          return {success, message};
+          return {success, message, data};
         },
 
         logout: () => {
           localStorage.removeItem("authToken");
           setPayload(null);
           setIsAuthenticated(false);
+          console.log(`isAuthenticated狀態：${isAuthenticated}`)
         },
       }}
     >

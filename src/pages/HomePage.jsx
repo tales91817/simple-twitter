@@ -58,28 +58,35 @@ const HomePage = () => {
   const [ inputValue, setInputValue ] = useState('')
   const [ tweets, setTweets ] = useState([])
 
-  const [account, setAccount] = useState(dummyUserInfo.account);
-  const [name, setUsername] = useState(dummyUserInfo.name);
-  const [email, setEmail] = useState(dummyUserInfo.email);
+  const { currentMember } = useAuth();
+  const currentId = currentMember.id;
+  console.log('現在的id是',currentId)
+  const [id, setId] = useState(currentMember.id);
+  const [account, setAccount] = useState(currentMember.account);
+  const [name, setUsername] = useState(currentMember.name);
+  const [email, setEmail] = useState(currentMember.email);
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
+  const [alertText, setAlertText] = useState("");
+  
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   // const { isAuthenticated } = useAuth()
   
-  useEffect(() => {
-    if(!isAuthenticated) {
-      navigate("/users/login");
-    }
-  }, [navigate, isAuthenticated]);
-
-
+  
+  // useEffect(() => {
+  //   if(!isAuthenticated) {
+  //     console.log("登愣沒有isAuthenticated了");
+  //     navigate('users/login')
+  //   } 
+  // }, [navigate, isAuthenticated]);
 
   const handleClick = () => {
     const test = getPopulars();
     console.log(test);
   };
+  /////////////////////////////////////////////////
 
   useEffect(() => {
     const getUserTweetContentAsync = async () => {
@@ -203,7 +210,7 @@ const HomePage = () => {
     }
   };
   ///////////////////////////////////
-  const handleSaveConfig = () => {
+  const handleSaveConfig = async() => {
     if (account.length === 0) {
       return;
     }
@@ -219,10 +226,25 @@ const HomePage = () => {
     if (checkPassword.length === 0) {
       return;
     }
-
-    // const {} =
+    console.log("現在的id是", currentId);
+    let id = currentId
+    console.log(`currenId是${currentId}, id是${id}`);
+    const data = await patchConfig({
+      id,
+      name,
+      account,
+      email,
+      password,
+      checkPassword,
+    });
+    console.log('按到了')
+    console.log(data)
+    setAlertText(data.message)
+    console.log(alertText)
+    // if (data.message) {console.log(data.message)};
   };
   //////////////////////////////////////
+
   return (
     <div className="container">
       <Sidebar onOpenModalTweet={handleOpenModalTweet} />

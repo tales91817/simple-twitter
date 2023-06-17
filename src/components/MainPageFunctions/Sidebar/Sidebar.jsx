@@ -19,21 +19,12 @@ const Sidebar = ({ onOpenModalTweet }) => {
         setIsSelectedIcon(buttonName)
     }
 
-    const { logout } = useAuth
+    const { logout } = useAuth()
     const navigate = useNavigate()
     const handleClick = () => {
       console.log("按到了");
       navigate("/users/login");
       localStorage.removeItem("authToken");
-      localStorage.removeItem("id");
-      localStorage.removeItem("name");
-      localStorage.removeItem("email");
-      localStorage.removeItem("useraccount");
-      localStorage.removeItem("avatar");
-      localStorage.removeItem("cover");
-      localStorage.removeItem("introduction");
-      localStorage.removeItem("role");
-      localStorage.removeItem("token");
       navigate("/users/login");
       
       // logout()
