@@ -3,7 +3,8 @@ import './profile.scss'
 import { ReactComponent as BackArrowIcon } from 'assets/icons/back-arrow.svg'
 import UserInfo from './UserInfo.jsx/UserInfo'
 
-const Profile = ({ onOpenEditModal, postCards, userInfo, allReplies, onToggleLike, onOpenModalReply, likes }) => {
+
+const Profile = ({ onOpenEditModal, postCards, userInfo, allReplies, onToggleLike, onOpenModalReply, likes, onClickFollow }) => {
   return (
     <div className="profile-wrapper">
         <div className="profileHeader">
@@ -18,9 +19,8 @@ const Profile = ({ onOpenEditModal, postCards, userInfo, allReplies, onToggleLik
           </div>
         </div>
         <div className="userInfo">
-          <UserInfo onOpenEditModal={onOpenEditModal} postCards={postCards} userInfo={userInfo} onToggleLike={onToggleLike} onOpenModalReply={onOpenModalReply} likes={likes}/>
+          <UserInfo onOpenEditModal={onOpenEditModal} postCards={postCards} userInfo={userInfo} onToggleLike={onToggleLike} onOpenModalReply={onOpenModalReply} likes={likes} allReplies={allReplies} onClickFollow={onClickFollow} />
         </div>
-
     </div>
   )
 }

@@ -1,40 +1,34 @@
 import React from 'react'
-import Avatar from 'assets/images/main-user-John-Doe avatar_50x50.png'
 import './userReplies.scss'
 
-const UserReplies = () => {
+const UserReplies = ({ allReplies }) => {
   return (
     <div className="replyPost-wrapper">
-      {/* {allReplies.map((post) => ( */}
+      {allReplies.map((post) => (
         <div className="repliesCard">
         <div className="replyUserImg">
-          <img src={Avatar} alt="avatar" />
+          <img src={post.avatar} alt="avatar" />
         </div>
         <div className="replyCardRightSide">
           <div className="cardtitle">
             <div className="cardName">
-              Apple
-              {/* {post.name} */}
+              {post.name}
             </div>
             <div className="postUserAccount">
-              @Apple
-              {/* {post.tweetAuthorAccount} */}
+              {post.tweetAuthorAccount}
             </div>
           </div>
           <div className="cardContent">
             <div className="replyTo">
-            回覆給<span>@apple</span>
-              {/* {post.commentAccount} */}
+            回覆給<span>@{post.commentAccount}</span>
             </div>
             <div className="description">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio, suscipit earum voluptate distinctio eligendi temporibus rem reiciendis totam ut. Suscipit quam culpa asperiores debitis earum distinctio ab! Nam, eveniet eius.
-              {/* {post.comment} */}
+              {post.comment}
             </div>
           </div>
         </div>
-        
       </div>
-      {/* ))} */}
+      ))}
     </div>
   )
 }

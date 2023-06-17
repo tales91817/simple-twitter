@@ -56,6 +56,12 @@ $inputPlaceholderText: #b5b5be;
     display: flex;
     align-items: center;
     padding: 0 20px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
     
     .create_input {
       width: 90%;
@@ -323,6 +329,12 @@ $inputPlaceholderText: #b5b5be;
           display: flex;
           height: 100%;
 
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+          }
+
             textarea::placeholder {
               font-weight: 400;
               font-size: 16px;
@@ -354,6 +366,12 @@ $inputPlaceholderText: #b5b5be;
         align-items: flex-start;
         width: 100%;
         height: 100%;
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
 
         .replyRightSide {
           width: 100%;
@@ -451,28 +469,48 @@ $inputPlaceholderText: #b5b5be;
 
     .editModalHeader {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       height: 57px;
       padding: 15px;
       border-bottom: 1px solid $twitterBorder;
 
       .closeBtn {
-        margin-right: 37px;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 26px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
+
+        p {
+          margin-left: 20px;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 26px;
+        }
       }
 
-      
+      button {
+        width: 64px;
+        height: 40px;
+        padding: 8px 16px;
+        background: $twitterMainColor;
+        color: #fff;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+      }
     }
+
     .editUserInfo {
       display: flex;
       flex-direction: column;
       
       .editUserBanner {
         position: relative;
+
+        img {
+          filter: brightness(0.5)
+        }
 
         .cameraInBanner {
           position: absolute;
@@ -494,11 +532,21 @@ $inputPlaceholderText: #b5b5be;
           left: 50%;
           z-index: 99;
         }
+        
         .editUserAvatar {
           position: absolute;
           top: 95%;
           left: 16px;
           transform: translateY(-50%);
+          border: 5px solid #fff;
+          border-radius: 50%;
+
+          img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            filter: brightness(0.5)
+          }
         }
       }
       .editTextInfo {
@@ -539,6 +587,10 @@ $inputPlaceholderText: #b5b5be;
                 font-weight: 400;
                 font-size: 16px;
                 vertical-align: text-top;
+                resize: none;
+                border: none;
+                outline: none;
+                word-break: break-all;
               }
   
               &::placeholder {

@@ -1,15 +1,14 @@
 import React from 'react'
-import { ReactComponent as AvatarS } from 'assets/images/main-user-John-Doe avatar_50x50.svg'
-/* eslint-disable */ 
+
+const currentUserImg = localStorage.getItem("avatar")
 
 const CreateTweet = ({ onChange, inputValue, onAddTweet, onSubmit, disabledButton, checkWordLength, checkInputIsSpace }) => {
-  
   
   return (
     <div className='create'>
       <div className="create_container">
         <div className="create_img">
-          <AvatarS />
+          <img src={currentUserImg} alt="avatar" />
         </div>
         <div className="create_input">
           <form onSubmit={onSubmit}>

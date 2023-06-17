@@ -2,6 +2,8 @@ import React from 'react'
 import { ReactComponent as CloseBtn } from 'assets/icons/close-button.svg'
 import { ReactComponent as MyAvatar } from 'assets/images/main-user-John-Doe avatar_50x50.svg'
 
+const currentUserImg = localStorage.getItem("avatar")
+
 const TwitterModal = ({ closeModal, onAddTweet, onChange, inputValue, checkWordLength, onSubmit, disabledButton, checkInputIsSpace }) => {
   return (
     <div className="modalBackground">
@@ -14,7 +16,7 @@ const TwitterModal = ({ closeModal, onAddTweet, onChange, inputValue, checkWordL
             <div className="myTweet">
             <form onSubmit={onSubmit}>
                 <div className="myTweetContainer">
-                    <MyAvatar />
+                    <img src={currentUserImg} alt="avatar" />
                     <textarea type="text" className="tweetContent" value={inputValue} placeholder='有什麼新鮮事？' onChange={(e) => {
                     onChange(e.target.value)
                     }}/>

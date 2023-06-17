@@ -2,9 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
-/* eslint-disable */ 
-
-const Populars = ({ trendUsers, onTogglefollow }) => {
+const Populars = ({ trendUsers }) => {
   
   return (
     <div className='populars'>
@@ -14,7 +12,7 @@ const Populars = ({ trendUsers, onTogglefollow }) => {
       <div className="populars-wrapper">
         {trendUsers.map((user) => (
           <div className="wrapper-content">
-            <div className="popularCard">
+            <div className="popularCard" key={user.userId}>
               <div className="popularImg">
                 <img src={user.userAvatar} alt="usrAvatar" />
               </div>
@@ -27,10 +25,7 @@ const Populars = ({ trendUsers, onTogglefollow }) => {
                 </div>
               </div>
             </div>
-            <div className={clsx('followBtn', { 'followed': user.isFollowed })} 
-              onClick={() => {
-                onTogglefollow(user.id, user.isFollowed)
-              }}>
+            <div className={clsx('followBtn', { 'followed': user.isFollowed })}>
               { user.isFollowed ? '正在跟隨' : '跟隨'}
             </div>
           </div>
