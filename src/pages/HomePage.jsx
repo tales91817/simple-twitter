@@ -55,6 +55,7 @@ const HomePage = () => {
   const [ currentClickLike, setCurrentClickLike] = useState('')
 
 
+
   const handleClick = () => {
     const test = getFollower(24)
     console.log(test)
@@ -71,9 +72,20 @@ const HomePage = () => {
       }
     }
     getAllTweetContentAsync()
-  }, [currentClickLike])
+  }, [])
 
-  /* 取得使用者的資料 */
+  useEffect(() => {
+    const getUserTweetContentAsync = async () => {
+      try {
+        const tweetInfo = await getUserTweetInfo(userId)
+        setPostCards(tweetInfo.map((post) => ({...post})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserTweetContentAsync()
+  }, [userId])
+
   useEffect(() => {
     const getUserInfoAsyn = async () => {
       try {
@@ -469,7 +481,7 @@ const HomePage = () => {
             <Populars trendUsers={trendUsers} />
             { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
             { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
-            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} onChangeName={handleChangeName} onChangeIntro={handleChangeIntro} onSave={handleOnSave} onChangeImg={handleChangeImg}/>}
+            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
             <button class="test" onClick={handleClick} >TEST</button>
         </div>
       );
