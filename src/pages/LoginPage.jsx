@@ -14,8 +14,10 @@ import { useAuth } from "contexts/AuthContext";
 const LoginPage = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  const [alertText1, setAlertText1] = useState("");
+  const [alertText2, setAlertText2] = useState("");
+  const [alertText, setAlertText] = useState("");
   const navigate = useNavigate();
-  let alertText = "";
 
   const { login, isAuthenticated } = useAuth()
 
@@ -27,7 +29,11 @@ const LoginPage = () => {
       return;
     }
 
-    const { success, message }= await login({
+    const {
+      success,
+      message,
+      data,
+    } = await login({
       account,
       password,
     });
@@ -35,7 +41,6 @@ const LoginPage = () => {
     if (success) {
       console.log("success是" + success);
       const authToken = localStorage.getItem('authToken')
-      console.log("token是" + authToken);
 
       // 登入成功訊息
       Swal.fire({
@@ -50,16 +55,20 @@ const LoginPage = () => {
     
     console.log('登入GG')
     if (message === "Error: 帳號不存在!") {
-      alertText = "帳號不存在！";;
+      setAlertText("帳號不存在！");
+      setAlertText1("帳號不存在！");
+      setAlertText2("");
     } else if (message === "Error: 密碼錯誤!") {
-      alertText = "密碼錯誤！";;
+      setAlertText("密碼錯誤！");
+      setAlertText2("密碼錯誤！");
+      setAlertText1("");
     }
     
     Swal.fire({
       position: "top",
       title: alertText,
       timer: 1000,
-      icon: "error",
+      // icon: "error",
       showConfirmButton: false,
     });
   };
@@ -79,8 +88,7 @@ const LoginPage = () => {
         placeholder="請輸入帳號"
         value={account}
         onChange={(accountInputValue) => setAccount(accountInputValue)}
-        // alertText={alertText === "Error: 帳號不存在!" ? "帳號不存在!" : ""}
-        alertText={alertText}
+        alertText={alertText1}
       />
       <AuthInput
         type="password"
@@ -88,7 +96,7 @@ const LoginPage = () => {
         placeholder="請輸入密碼"
         value={password}
         onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-        alertText={alertText === "Error: 密碼錯誤！" ? "密碼錯誤！" : ""}
+        alertText={alertText2}
       />
       <AuthButton onClick={handleClick}>登入</AuthButton>
       <LinkTextContainer>

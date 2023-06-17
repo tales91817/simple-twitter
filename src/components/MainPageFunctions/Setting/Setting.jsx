@@ -22,7 +22,7 @@ const ConfigInput = ({
   wordCount,
 }) => {
   const wordCountClassName =
-    value.length > 0 ? "showWordCount" : "hideWordCount";
+    value?.length > 0 ? "showWordCount" : "hideWordCount";
 
   return (
     <>
@@ -68,7 +68,7 @@ const Setting = ({
   //   const [password, setPassword] = useState("");
   //   const [checkPassword, setCheckPassword] = useState("");
 
-  const nameInputLength = name.length;
+  const nameInputLength = name?.length;
 
   return (
     <div className="settingContainer">
@@ -118,7 +118,7 @@ const Setting = ({
 
       </div>
       <div className="saveBtn">
-        <button onClick={onClick} type="submit">
+        <button onClick={onClick} >
           儲存
         </button>
       </div>

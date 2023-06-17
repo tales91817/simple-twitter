@@ -26,7 +26,7 @@ export const login = async ({ account, password }) => {
     } else {
       const {message} = data;
       // console.log(message);
-      return { success: false, message, ...data };
+      return { success: false, message, data: {} };
     }
     // const {
     //   data: { token: authToken },
@@ -78,14 +78,16 @@ export const register = async ({
       checkPassword,
     });
 
-    const {
-      data: { token: authToken },
-    } = data;
+    console.log(data);
 
-    if (authToken) {
-      return { success: true, ...data };
+    const { status } = data;
+    if (status === "success") {
+      return { success: true, message: "" };
+    } else {
+      const { message } = data;
+      // console.log(message);
+      return { success: false, message };
     }
-    return data;
   } catch (error) {
     console.error("[Register Failed]:", error);
   }
@@ -99,12 +101,12 @@ export const checkPermission = async (authToken) => {
     //     "status": "success",
     //     "message": "It's a User"
     // }
-    const response = await axios.get(`${authURL}/auth/users`, {
+    const response = await axios.post(`${authURL}/auth/users`, {}, {
       headers: {
         Authorization: "Bearer " + authToken,
       },
     });
-    console.log(response) ///// 這行沒有印出任何東西，連undefined也沒有
+    console.log("checkPermission() response:", response); ///// 這行沒有印出任何東西，連undefined也沒有
     return response.data.status;
   } catch (error) {
     console.error('[Check Permission Failed]:', error);

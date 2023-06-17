@@ -20,13 +20,14 @@ const Sidebar = ({ onOpenModalTweet }) => {
         setIsSelectedIcon(buttonName)
     }
 
-    const { logout } = useAuth
+    const { logout } = useAuth()
     const navigate = useNavigate()
     const handleClick = () => {
-      console.log("按到了");
-      navigate("/users/login");
-      localStorage.removeItem("authToken");
-      navigate("/users/login");
+      console.log("按到登出了");
+      logout()
+      // navigate("/users/login");
+      // localStorage.removeItem("authToken");
+      // navigate("/users/login");
       
       // logout()
     };

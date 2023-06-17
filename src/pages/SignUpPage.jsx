@@ -36,10 +36,16 @@ const SignUpPage = () => {
     if (checkPassword.length === 0) {
       return;
     }
-    const status = await register({ name, account, email, password, checkPassword });
+    const { success, message } = await register({
+      name,
+      account,
+      email,
+      password,
+      checkPassword,
+    });
 
-    if (status === "success") {
-       // 註冊成功訊息
+    if (success) {
+      // 註冊成功訊息
       Swal.fire({
         position: "top",
         title: "註冊成功！",
@@ -47,6 +53,7 @@ const SignUpPage = () => {
         icon: "success",
         showConfirmButton: false,
       });
+      navigate("/users/login");
       return;
     }
 
