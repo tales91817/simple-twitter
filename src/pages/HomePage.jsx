@@ -55,39 +55,28 @@ const HomePage = () => {
   const [ openModalTweet, setOpenMoadlTweet ] = useState(false)
   const [ openModelEdit, setOpenModelEdit ] = useState(false)
   const [ userInfo, setuserInfo ] = useState({})
-  const [ inputValue, setInputValue ] = useState('')
   const [ tweets, setTweets ] = useState([])
+  const [ likes, setLikes ] = useState([])
+  const [ inputNameValue, setInputNameValue ] = useState('')
+  const [ inputIntroValue, setInputIntroValue ] = useState('')
+  const [ followers, setFollowers ] = useState([])
+  const [ followings, setFollowings ] = useState([])
 
-  const { currentMember } = useAuth();
-  const currentId = currentMember.id;
-  console.log('現在的id是',currentId)
-  const [id, setId] = useState(currentMember.id);
-  const [account, setAccount] = useState(currentMember.account);
-  const [name, setUsername] = useState(currentMember.name);
-  const [email, setEmail] = useState(currentMember.email);
-  const [password, setPassword] = useState("");
-  const [checkPassword, setCheckPassword] = useState("");
-  const [alertText, setAlertText] = useState("");
-  
+  /* Tweet */
+  const [ checkWordLength, setCheckWordLength ] = useState(false)
+  const [ checkInputIsSpace, setCheckInputIsSpace ] = useState(false)
+  const [ disabledButton, setDisabledButton ] = useState(false)
 
-  // const navigate = useNavigate()
+  /* Likes */
+  const [ currentClickLike, setCurrentClickLike] = useState('')
 
-  // const { isAuthenticated } = useAuth()
-  
-  
-  // useEffect(() => {
-  //   if(!isAuthenticated) {
-  //     console.log("登愣沒有isAuthenticated了");
-  //     navigate('users/login')
-  //   } 
-  // }, [navigate, isAuthenticated]);
 
   const handleClick = () => {
-    const test = getPopulars();
-    console.log(test);
-  };
-  /////////////////////////////////////////////////
+    const test = getFollower(24)
+    console.log(test)
+  }
 
+  /* 取得所有推文(主畫面) */
   useEffect(() => {
     const getUserTweetContentAsync = async () => {
       try {
@@ -100,7 +89,18 @@ const HomePage = () => {
     getTweetContentAsync()
   }, [])
 
-  /* 取得使用者的資料 */
+  useEffect(() => {
+    const getUserTweetContentAsync = async () => {
+      try {
+        const tweetInfo = await getUserTweetInfo(userId)
+        setPostCards(tweetInfo.map((post) => ({...post})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserTweetContentAsync()
+  }, [userId])
+
   useEffect(() => {
     const getUserInfoAsyn = async () => {
       try {
@@ -124,19 +124,145 @@ const HomePage = () => {
     }
     getPopularsAsyn()
   }, [])
+  
+  /* 取得使用者的所有推文 */
+  useEffect(() => {
+    const getUserTweetContentAsync = async () => {
+      try {
+        const tweetInfo = await getUserTweetInfo(currentId)
+        setPostCards(tweetInfo.map((post) => ({...post})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserTweetContentAsync()
+  }, [currentId])
 
-  const handleToggleFollow = (id, isFollowed) => {
-    setTrenderUsers((prevUsers) => {
-      return prevUsers.map((trend) => {
-        if (trend.id === id) {
-          return {
-            ...trend,
-            isFollowed: !isFollowed,
-          }
-        }
-        return trend
-      })
-    })
+  /* 取得使用者的所有回覆 */
+
+  useEffect(() => {
+    const getAllRepliesAsyn = async () => {
+      try {
+        const replies = await getAllReplies(currentId)
+        setAllReplies(replies.map((post) => ({...post})))
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getAllRepliesAsyn()
+  }, [currentId, addReply])
+
+  /* 取得使用者的所有喜歡 */
+  useEffect(() =>{
+    const getUserLikesAsync = async () => {
+      try {
+        const allLikes = await getUserLikesInfo(currentId) 
+        setLikes(allLikes.map((like) => ({...like})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserLikesAsync()
+  }, [currentId])
+
+  /* 取得跟隨者 */
+  useEffect(() => {
+    const getFollowerAsync = async () => {
+      try {
+        const info = await getFollowing(currentId)
+        setFollowings(info)
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getFollowerAsync()
+  }, [currentId])
+
+  useEffect(() => {
+    const getFollowingAsync = async () => {
+      try {
+        const info = await getFollower(currentId)
+        setFollowers(info)
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getFollowingAsync()
+  }, [currentId])
+
+
+  /*點擊後顯示該個人簡介 */
+  const handleClickedId = (id) => {
+    const getUserInfoAsyn = async () => {
+      try {
+        const info = await getUserInfo(id)
+        setuserInfo(info)
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserInfoAsyn()
+
+    const getUserTweetContentAsync = async () => {
+      try {
+        const tweetInfo = await getUserReplies(id)
+        setPostCards(tweetInfo.map((post) => ({...post})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserTweetContentAsync()
+
+    const getUserLikesAsync = async () => {
+      try {
+        const allLikes = await getUserLikesInfo(id) 
+        setLikes(allLikes.map((like) => ({...like})))
+        } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserLikesAsync()
+
+    const getAllRepliesAsyn = async () => {
+      try {
+        const replies = await getAllReplies(id)
+        setAllReplies(replies.map((post) => ({...post})))
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getAllRepliesAsyn()
+  }
+
+  /* 修改個人簡介 */
+  const handleChangeName = (value) => {
+    setInputNameValue(value)
+  }
+
+  const handleChangeIntro = (value) => {
+    setInputIntroValue(value)
+  }
+
+  const handleChangeImg = () => {
+    
+  }
+  /* 儲存個人資料 */
+  const handleOnSave = () => {
+    const payload = {
+      username: inputNameValue,
+      userIntroduction: inputIntroValue
+    }
+    setOpenModelEdit(false)
+    putUserProfileInfo(currentId, payload)
+    const getUserInfoAsyn = async () => {
+      try {
+        const info = await getUserInfo(currentId)
+        setuserInfo(info)
+      } catch (error) {
+        console.error (error);
+      }
+    }
+    getUserInfoAsyn()
   }
 
   const handleToggleLike = (id, isLiked) => {
@@ -179,13 +305,33 @@ const HomePage = () => {
 
   const handleChange = (value) => {
     setInputValue(value)
-  }
 
-  const handleAddTweet = async() => {
-    if (inputValue.length === 0) {
-      return
+    if(value.length >= 140) {
+      setCheckWordLength(true)
+      setDisabledButton(true)
+    } else if(value.length <= 140) {
+      setCheckWordLength(false)
+      setDisabledButton(false)
     }
 
+    if(value.length === 0 || value.trim() === '') {
+      setDisabledButton(true)
+      setCheckInputIsSpace(true)
+    } else if(value.length !== 0 || value.trim() !== '') {
+      setDisabledButton(false)
+      setCheckInputIsSpace(false)
+    }
+  }
+
+  /* 取消預設送出 */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+
+  /* 從主畫面的推特文進入回覆清單的回覆內容 */
+  const handleChangeReply = async(id) => {
+    setReplyId(id)
     try {
       const { data } = await postTweet({
         description: inputValue,
@@ -339,10 +485,10 @@ const HomePage = () => {
               <Route exact path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply}/>} />
 >>>>>>> 3a53a9a (refactor Setting and change css styles of HomePage (not done yet))
             </Routes>
-            <Populars trendUsers={trendUsers} onTogglefollow={handleToggleFollow}/>
-            { openModalReply && <ReplyModal closeModal={handleCloseModalReply}/> }
-            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet}/> }
-            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit}/>}
+            <Populars trendUsers={trendUsers} />
+            { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
+            { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
+            { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} onChangeName={handleChangeName} onChangeIntro={handleChangeIntro} onSave={handleOnSave} onChangeImg={handleChangeImg}/>}
             <button class="test" onClick={handleClick} >TEST</button>
         </div>
       );
