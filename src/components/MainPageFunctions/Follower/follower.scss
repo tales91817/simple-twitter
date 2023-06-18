@@ -1,0 +1,155 @@
+$twitterBorder: #e6ecf0;
+$twitterMainColor: #ff6600;
+$twitterComment: #6c757d;
+$popularsBackground: #fafafb;
+
+.followContainer {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-button {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 4px;
+        }
+      &::-webkit-scrollbar-track {
+        box-shadow: transparent;
+      }
+    .followListHeader {
+        width: 50%;
+        height: 74px;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        padding: 15px;
+        background-color: #fff;
+        font-weight: 700;
+        font-size: 18px;
+        border-right: 1px solid $twitterBorder;
+    }
+
+    .arrow {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+    .followPost {
+        position: relative;
+        width: 100%;
+        margin-top: 75px;
+        border-right: none; 
+        border-top: 1px solid $twitterBorder;
+
+        .followcollection {
+            width: 100%;
+            display: flex;
+            border-bottom: 1px solid $twitterBorder;
+
+            .class {
+                width: 15%;
+                padding: 15px 0;
+                font-size: 15px;
+                font-weight: 700;
+                text-align: center;
+                cursor: pointer;
+            }
+        
+            .active {
+                width: 15%;
+                padding: 15px 0;
+                text-align: center;
+                font-size: 15px;
+                font-weight: 700;
+                border-bottom: 2px solid $twitterMainColor;
+                color: $twitterMainColor;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .followStatus {
+        .followCard {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            border-bottom: 1px solid $twitterBorder;
+
+            .followCardImg {
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+            }
+
+            .followCardRightSide {
+                margin-left: 10px;
+                width: 100%;
+
+                .cardTitle {
+                    display: flex;
+                    justify-content: space-between;
+                    .followCardName {
+                        margin-right: 5px;
+                        padding: 5px 8px;
+                        font-size: 16px;
+                        font-weight: 700;
+                        cursor: pointer;
+                    }
+                    
+                    .followBtn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                        padding: 0px 15px;
+                        border-radius: 50px;
+                        border: 1px solid $twitterMainColor;
+                        background: #fff;
+                        color: $twitterMainColor;
+                        font-size: 16px;
+                        font-weight: 400;
+                        cursor: pointer;
+            
+                        
+                    }
+                    .followed {
+                        width: 96px;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-right: 10px;
+                        padding: 0px 15px;
+                        border-radius: 50px;
+                        border: 1px solid $twitterMainColor;
+                        background: $twitterMainColor;
+                        color: #fff;
+                        font-size: 16px;
+                        font-weight: 400;
+                        cursor: pointer;
+                    }
+                }
+                
+                
+                .followCardContent {
+                    padding: 8px;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 26px;
+                }
+            }
+            
+        }
+    }
+}

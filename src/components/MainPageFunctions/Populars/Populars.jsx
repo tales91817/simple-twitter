@@ -2,9 +2,8 @@ import React, { Fragment } from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
-/* eslint-disable */ 
-
-const Populars = ({ trendUsers, onTogglefollow }) => {
+const Populars = ({ trendUsers }) => {
+  
   return (
     <div className="populars">
       <div className="popularsHeader">
@@ -12,31 +11,24 @@ const Populars = ({ trendUsers, onTogglefollow }) => {
       </div>
       <div className="populars-wrapper">
         {trendUsers.map((user) => (
-          <Fragment key={user.userAccount}>
-            <div className="wrapper-content">
-              <div className="popularCard">
-                <div className="popularImg">
-                  <img src={user.userAvatar} alt="usrAvatar" />
-                </div>
-                <div className="popularContent">
-                  <div className="popularName">
-                    {user.userName.length > 10
-                      ? `${user.userName.slice(0, 5)}...`
-                      : user.userName}
-                  </div>
-                  <div className="popularAccount">{user.userAccount}</div>
-                </div>
+          <div className="wrapper-content">
+            <div className="popularCard" key={user.userId}>
+              <div className="popularImg">
+                <img src={user.userAvatar} alt="usrAvatar" />
               </div>
-              <div
-                className={clsx("followBtn", { followed: user.isFollowed })}
-                onClick={() => {
-                  onTogglefollow(user.id, user.isFollowed);
-                }}
-              >
-                {user.isFollowed ? "正在跟隨" : "跟隨"}
+              <div className="popularContent">
+                <div className="popularName">
+                  {user.userName.length > 10 ? `${user.userName.slice(0, 5)}...` : user.userName}
+                </div>
+                <div className="popularAccount">
+                  {user.userAccount}
+                </div>
               </div>
             </div>
-          </Fragment>
+            <div className={clsx('followBtn', { 'followed': user.isFollowed })}>
+              { user.isFollowed ? '正在跟隨' : '跟隨'}
+            </div>
+          </div>
         ))}
       </div>
     </div>

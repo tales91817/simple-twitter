@@ -10,6 +10,21 @@ $twitterBorderSidebarText: #44444f;
     position: fixed;
     margin-left: 25%;
     border-right: 1px solid $twitterBorder;
+    height: 100%;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-button {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c1c1c1;
+      border-radius: 4px;
+      }
+    &::-webkit-scrollbar-track {
+      box-shadow: transparent;
+    }
 
     .replyListHeader {
       width: 50%;
@@ -45,6 +60,12 @@ $twitterBorderSidebarText: #44444f;
             display: flex;
             margin: 16px 16px 0 16px;
 
+            img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+
             .replyer {
                 margin-right: 8px;
             }
@@ -70,6 +91,7 @@ $twitterBorderSidebarText: #44444f;
         .replyContent {
             p {
                 margin: 8px 45px 0 16px;
+                word-break: break-all;
             }
             .postDate {
                 margin: 8px 16px;

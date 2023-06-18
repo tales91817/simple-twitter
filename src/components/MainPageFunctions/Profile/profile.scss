@@ -5,12 +5,45 @@ $popularsBackground: #fafafb;
 
 .profile-wrapper {
   // width: 50%;
-  width: 520px;
-  height: 100vh;
+  // width: 520px;
+  // height: 100vh;
   // position: fixed;
-  margin: 0 10px;
-  border-right: 1px solid $twitterBorder;
-  border-left: 1px solid $twitterBorder;
+  // margin: 0 10px;
+  // border-right: 1px solid $twitterBorder;
+  // border-left: 1px solid $twitterBorder;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    margin-left: 25%;
+    border-right: 1px solid $twitterBorder;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-button {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 4px;
+        }
+      &::-webkit-scrollbar-track {
+        box-shadow: transparent;
+      }
+  
+    .profileHeader {
+      width: 50%;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      padding: 15px;
+      background-color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      border-right: 1px solid $twitterBorder;
+    }  
 
   .profileHeader {
     width: 520px;

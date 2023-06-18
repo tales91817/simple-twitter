@@ -25,7 +25,7 @@ const UserPosts = ({ postCards, onToggleLike, onOpenModalReply }) => {
   return (
     <div className='post-wrapper'>
         {postCards.map((post) => (
-            <div className="postCard">
+            <div className="postCard" key={post.id} >
             <div className="postCardImg">
                 <img src={post.userAvatar} alt="user-avatar" />
             </div>
@@ -49,9 +49,8 @@ const UserPosts = ({ postCards, onToggleLike, onOpenModalReply }) => {
                         <div className="text">{post.repliesNum}</div>
                     </div>
                     <div className='postCardIcon'>
-                        <div className="icon" onClick = {() => {
-                            onToggleLike(post.id, post.isLiked)
-                        }} > { post.isLiked ? <LikedIcon /> : <LikeIcon /> }
+                        <div className="icon" > 
+                        { post.isLiked ? <LikedIcon /> : <LikeIcon /> }
                         </div>
                         <div className="text">{post.likes}</div>
                     </div>

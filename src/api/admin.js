@@ -1,6 +1,7 @@
 import axios from "axios";
 const baseUrl = 'https://afternoon-waters-66047.herokuapp.com/api'
 
+
 const axiosInstance = axios.create({
   baseURL: baseUrl
 })

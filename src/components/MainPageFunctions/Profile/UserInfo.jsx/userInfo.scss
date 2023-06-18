@@ -6,23 +6,9 @@ $popularsBackground: #fafafb;
 .userInfo-wrapper { 
     position: relative;
     width: 100%;
-    height: 100vh;
     margin-top: 75px;
     border-right: none; 
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-        width: 8px;
-      }
-      &::-webkit-scrollbar-button {
-        background: transparent;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: #c1c1c1;
-        border-radius: 4px;
-        }
-      &::-webkit-scrollbar-track {
-        box-shadow: transparent;
-      }
+    
 
     .infoContent {
         position: relative;
@@ -38,10 +24,15 @@ $popularsBackground: #fafafb;
         
         .userPhoto {
             position: absolute;
-            top: 70%;
+            top: 66%;
             left: 22px;
             
+            
             img {
+                width: 140px;
+                height: 150px;
+                border-radius: 50%;
+                border: 5px solid #fff;
                 border-radius: 50%;
             }
         }
@@ -58,6 +49,37 @@ $popularsBackground: #fafafb;
         font-weight: 400;
         color: $twitterMainColor;
         cursor: pointer;
+    }
+
+    .btnCollection {
+        position: absolute;
+        right: 5px;
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        z-index: 99;
+
+        .followBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 15px;
+            border-radius: 50px;
+            border: 1px solid $twitterMainColor;
+            background: #fff;
+            color: $twitterMainColor;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+
+            &.followed {
+                width: 96px;
+                height: 40px;
+                background: $twitterMainColor;
+                color: #fff;
+              }
+        }
     }
 
     .userTextContent {

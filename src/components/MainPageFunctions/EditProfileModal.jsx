@@ -1,12 +1,16 @@
 import React from 'react'
-import { ReactComponent as MyAvatar } from 'assets/images/main-user-John-Doe avatar_50x50.svg'
 import { ReactComponent as CloseBtn } from 'assets/icons/close-button.svg'
 import { ReactComponent as EditBanner } from 'assets/images/edit-user-info-banner.svg'
 import { ReactComponent as Camera } from 'assets/icons/camera.svg'
 import { ReactComponent as RemoveBanner } from 'assets/icons/remove-button-banner.svg'
 import EditAvatar from 'assets/images/edit-main-user-John-Doe.png'
 
-const EditProfileModal = ({ closeModal }) => {
+const currentUserName = localStorage.getItem("name")
+const currentUserImg = localStorage.getItem("avatar")
+const currentUserCover = localStorage.getItem("cover")
+const currentUserSelf = localStorage.getItem("introduction")
+
+const EditProfileModal = ({ closeModal, onSave, onChangeName, onChangeIntro, onChangeImg }) => {
   return (
     <div className="editModalBackground">
         <div className="editModalContainer">
@@ -14,17 +18,27 @@ const EditProfileModal = ({ closeModal }) => {
                 <div className="closeBtn" onClick={() => {
                     closeModal()
                 }}><CloseBtn />
-                </div>
                 <p>編輯個人資料</p>
+                </div>
+                
+                <button type="submit" className="save" onClick={() => {
+                    onSave()
+                }}>
+                    儲存
+                </button>
             </div>
             <div className="editUserInfo">
                 <div className="editUserBanner">
-                        <EditBanner /> 
+                        <img src={currentUserCover} alt="cover" />
+                        <div className="camera" onChangeImg={() => {
+                            onChangeImg()
+                        }}>
                         <Camera className="cameraInBanner"/>
+                        </div>
                         <RemoveBanner className="removeBtn" />
                     <div className="editUserAvatar">
                         <Camera className="cameraInAvatar"/>
-                        <img src={EditAvatar} alt="avatar" />
+                        <img src={currentUserImg} alt="avatar" />
                     </div>
                 </div>
                 
@@ -32,11 +46,16 @@ const EditProfileModal = ({ closeModal }) => {
                     <form>
                         <label>
                             名稱
-                            <input type="Text" className="nameText" defaultValue="John Doe" placeholder="請輸入您的名稱" />
+                            <input type="Text" className="nameText" defaultValue={currentUserName} placeholder="請輸入您的名稱" onChange={(e) => {
+                                onChangeName(e.target.value)
+
+                            }}/>
                         </label>
                         <label>
                             自我介紹
-                            <input type="Text" className="introduceText" defaultValue="John Doe" placeholder="請輸入自我介紹內容" />
+                            <textarea type="Text" className="introduceText" defaultValue={currentUserSelf} placeholder="請輸入自我介紹內容" onChange={(e) => {
+                                onChangeIntro(e.target.value)
+                            }}/>
                         </label>
                     </form>
                 </div>

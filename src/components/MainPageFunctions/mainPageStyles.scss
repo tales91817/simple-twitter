@@ -16,7 +16,7 @@ $inputPlaceholderText: #b5b5be;
   position: fixed;
   margin-left: 25%;
   border-right: 1px solid $twitterBorder;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 8px;
@@ -52,30 +52,39 @@ $inputPlaceholderText: #b5b5be;
   padding: 20px 0;
   border-bottom: 10px solid $twitterBorder;
 
-
   .create_container {
     display: flex;
     align-items: center;
     padding: 0 20px;
-    
 
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    
     .create_input {
+      width: 90%;
       margin-left: 8px;
 
-      input {
-        height: 50px;
-      }
-
-      input::placeholder {
-        font-size: 18px;
-        font-weight: 700; 
-      }
-
-      .create_control {
-        border: none;
-        outline: none;
-        color: $twitterBorderSidebarText;
-        font-weight: 500;
+      form {
+        textarea {
+          font-size: 18px;
+          resize: none;
+          border: none;
+          outline: none;
+        }
+  
+        textarea::placeholder {
+          font-size: 18px;
+          font-weight: 700; 
+        }
+  
+        .create_control {
+          width: 100%;
+          color: $twitterBorderSidebarText;
+          font-weight: 500;
+        }
       }
     }
   }
@@ -85,20 +94,26 @@ $inputPlaceholderText: #b5b5be;
     margin-top: 15px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+
+    .alertWords {
+      margin-right: 20px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 15px;
+      color: #FC5A5A;
+    }
 
     .tweet_btn {
-      width: 50%;
+      height: 40px;
       text-align: right;
       margin-right: 20px;
-
-      a {
-        text-decoration: none;
-        background: $twitterMainColor;
-        color: #fff;
-        border-radius: 50px;
-        outline: none;
-        padding: 10px 20px;
-      }
+      border-radius: 50px;
+      background: $twitterMainColor;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
     }
   }
 }
@@ -106,7 +121,6 @@ $inputPlaceholderText: #b5b5be;
 /*postCard*/
 
 .post-wrapper {
-  
   .postCard {
     display: flex;
     align-items: flex-start;
@@ -127,7 +141,8 @@ $inputPlaceholderText: #b5b5be;
       display: flex;
       flex-direction: column;
       justify-self: flex-start;
-      margin-left: 10px; 
+      margin-left: 10px;
+      width: 90%;
       
       .postCardtitle {
         display: flex;
@@ -150,16 +165,17 @@ $inputPlaceholderText: #b5b5be;
 
       .postCardContent {
         display: flex;
+        overflow-wrap: break-word;
+        margin: 8px 0;
 
         .toReply {
+          width: 90%;
           text-decoration: none;
           color: #171725;
-          p {
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 26px;
-          }
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 26px;
         }
       }
 
@@ -226,13 +242,13 @@ $inputPlaceholderText: #b5b5be;
     .postContent {
       position: relative;
       display: flex;
-      justify-content: center;
+      width: 100%;
       padding: 24px;
       &::before {
         content: '';
         border-left: 2px solid #b5b5be;
         position: absolute;
-        top: 50%;
+        top: 58%;
         left: 48px;
         width: 100%;
         height: 50%;
@@ -241,7 +257,11 @@ $inputPlaceholderText: #b5b5be;
       
       .modalUserAvatar {
         margin-right: 8px;
-
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
       }
 
       .modalRightSide {
@@ -275,6 +295,7 @@ $inputPlaceholderText: #b5b5be;
           font-weight: 400;
           font-size: 15px;
           line-height: 26px;
+          word-break: break-all;
         }
 
         .replyTo {
@@ -293,67 +314,112 @@ $inputPlaceholderText: #b5b5be;
     }
 
     /*Tweet Modal*/
+    
     .myTweet {
-      display: flex;
-      width: 634px;
-      padding: 24px;
-
-      .myTweetContainer {
+      width: 100%;
+      height: 100%;
+      form {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 80%;
+        padding: 24px;
 
-        .tweetRightSide {
-          margin-left: 10px;
+        .myTweetContainer {
+          display: flex;
+          height: 100%;
 
-          input {
+          img {
+            width: 50px;
             height: 50px;
+            border-radius: 50%;
           }
-          input::placeholder {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 26px;
-            color: $twitterComment;
-          }
-          .tweetContent {
-            border: none;
-            outline: none;
-          }
+
+            textarea::placeholder {
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 26px;
+              color: $twitterComment;
+            }
+            .tweetContent {
+              margin-left: 8px;
+              width: 100%;
+              height: 100%;
+              resize: none;
+              border: none;
+              outline: none;
+            }
         }
       }
-    }
+      }
 
     /*Reply Modal*/
     .myReply {
       display: flex;
+      align-items: fle;
       padding: 24px;
+      width: 100%;
+      height: 100%;
 
       .myReplyContainer {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
 
         .replyRightSide {
+          width: 100%;
+          height: 100%;
           margin-left: 10px;
-          input {
-            height: 50px;
-          }
-          input::placeholder {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 26px;
-            color: $twitterComment;
-          }
-          .replyContent {
-            border: none;
-            outline: none;
+          form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+
+            textarea {
+              width: 100%;
+              height: 100%;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 26px;
+              resize: none;
+              border: none;
+              outline: none;
+            }
+            
+            textarea::placeholder {
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 26px;
+              color: $twitterComment;
+            }
           }
         }
       }
     }
 
     .modalFooter {
-      position: absolute;
-      bottom: 16px;
-      right: 16px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 20%;
+      padding: 16px;
+
+      .alertWords {
+        margin-right: 20px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 15px;
+        color: #FC5A5A;
+      }
 
       .replyBtn {
         display: flex;
@@ -365,6 +431,7 @@ $inputPlaceholderText: #b5b5be;
         background: $twitterMainColor;
         color: #fff;
         border-radius: 50px;
+        border: none;
         cursor: pointer;
         
         p {
@@ -402,28 +469,48 @@ $inputPlaceholderText: #b5b5be;
 
     .editModalHeader {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       height: 57px;
       padding: 15px;
       border-bottom: 1px solid $twitterBorder;
 
       .closeBtn {
-        margin-right: 37px;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 26px;
+        display: flex;
+        align-items: center;
         cursor: pointer;
+
+        p {
+          margin-left: 20px;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 26px;
+        }
       }
 
-      
+      button {
+        width: 64px;
+        height: 40px;
+        padding: 8px 16px;
+        background: $twitterMainColor;
+        color: #fff;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+      }
     }
+
     .editUserInfo {
       display: flex;
       flex-direction: column;
       
       .editUserBanner {
         position: relative;
+
+        img {
+          filter: brightness(0.5)
+        }
 
         .cameraInBanner {
           position: absolute;
@@ -445,11 +532,21 @@ $inputPlaceholderText: #b5b5be;
           left: 50%;
           z-index: 99;
         }
+        
         .editUserAvatar {
           position: absolute;
           top: 95%;
           left: 16px;
           transform: translateY(-50%);
+          border: 5px solid #fff;
+          border-radius: 50%;
+
+          img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            filter: brightness(0.5)
+          }
         }
       }
       .editTextInfo {
@@ -490,6 +587,10 @@ $inputPlaceholderText: #b5b5be;
                 font-weight: 400;
                 font-size: 16px;
                 vertical-align: text-top;
+                resize: none;
+                border: none;
+                outline: none;
+                word-break: break-all;
               }
   
               &::placeholder {

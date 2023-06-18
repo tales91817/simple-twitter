@@ -33,14 +33,49 @@ const LoginPage = () => {
       success,
       message,
       data,
+
+      // status,   ////////// status 改成 success，型別從字串變成布林值 ////////////
+      // data: { 
+      //   token: authToken,
+      //   user: 
+      //    {
+      //     id: id,
+      //     account: useraccount,
+      //     email: email,
+      //     name: name,
+      //     avatar: avatar,
+      //     cover: cover,
+      //     introduction: introduction,
+      //     role: role,
+      //     createdAt: createdAt,
+      //     updatedAt: updatedAt
+      //   }
+      // },
     } = await login({
       account,
       password,
     });
 
+
     if (success) {
       console.log("success是" + success);
       const authToken = localStorage.getItem('authToken')
+      
+//////////////////////下面這段寫法要修改//////////////////////////
+    // if (status === "success") {
+    //   localStorage.setItem("authToken", authToken);
+    //   localStorage.setItem("id", id)
+    //   localStorage.setItem("useraccount", useraccount)
+    //   localStorage.setItem("email", email)
+    //   localStorage.setItem("name", name)
+    //   localStorage.setItem("avatar", avatar)
+    //   localStorage.setItem("cover", cover)
+    //   localStorage.setItem("introduction", introduction)
+    //   localStorage.setItem("role", role)
+    //   console.log("status是" + status);
+    //   console.log("token是" + authToken);
+//////////////////////上面這段寫法要修改//////////////////////////
+
 
       // 登入成功訊息
       Swal.fire({

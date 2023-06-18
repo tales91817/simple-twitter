@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom'
 import './sidebar.scss'
 import { useAuth } from 'contexts/AuthContext'
 
-
 /* eslint-disable */ 
 
 const Sidebar = ({ onOpenModalTweet }) => {
@@ -23,13 +22,18 @@ const Sidebar = ({ onOpenModalTweet }) => {
     const { logout } = useAuth()
     const navigate = useNavigate()
     const handleClick = () => {
-      console.log("按到登出了");
       logout()
-      // navigate("/users/login");
-      // localStorage.removeItem("authToken");
-      // navigate("/users/login");
-      
-      // logout()
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("id");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+      localStorage.removeItem("useraccount");
+      localStorage.removeItem("avatar");
+      localStorage.removeItem("cover");
+      localStorage.removeItem("introduction");
+      localStorage.removeItem("role");
+      localStorage.removeItem("token");
+      navigate("/users/login");
     };
 
   return (

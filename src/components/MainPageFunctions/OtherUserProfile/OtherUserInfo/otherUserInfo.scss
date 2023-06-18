@@ -8,21 +8,6 @@ $popularsBackground: #fafafb;
     width: 100%;
     margin-top: 75px;
     border-right: none; 
-    height: 100vh;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
-    &::-webkit-scrollbar-button {
-        background: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #c1c1c1;
-        border-radius: 4px;
-        }
-    &::-webkit-scrollbar-track {
-        box-shadow: transparent;
-    }
 
     .OtherInfoContent {
         position: relative;
