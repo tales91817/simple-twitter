@@ -2,12 +2,9 @@ import "./AdminUser.scss";
 import AdminUserItem from "./AdminUserItem";
 
 const AdminUserCollection = ({ users }) => {
-  //依照推文數排序
-  const sortedUsers = users.sort((a, b) => b.postNum - a.postNum);
-  
   return (
     <div className="adminUserCollection">
-      {sortedUsers.map((user) => {
+      {users.map((user) => {
         return <AdminUserItem key={user.id} user={user} />;
       })}
     </div>

@@ -1,20 +1,20 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
-/* eslint-disable */ 
+const currentUserId = localStorage.getItem("id")
 
-const Populars = ({ trendUsers, onTogglefollow }) => {
+const Populars = ({ trendUsers, onChangeFollow }) => {
   
   return (
-    <div className="populars">
+    <div className='populars'>
       <div className="popularsHeader">
         <h4>推薦跟隨</h4>
       </div>
       <div className="populars-wrapper">
         {trendUsers.map((user) => (
           <div className="wrapper-content">
-            <div className="popularCard">
+            <div className="popularCard" key={user.userId}>
               <div className="popularImg">
                 <img src={user.userAvatar} alt="usrAvatar" />
               </div>
@@ -27,17 +27,15 @@ const Populars = ({ trendUsers, onTogglefollow }) => {
                 </div>
               </div>
             </div>
-            <div className={clsx('followBtn', { 'followed': user.isFollowed })} 
-              onClick={() => {
-                onTogglefollow(user.id, user.isFollowed)
-              }}>
+            <div className={clsx('followBtn', { 'followed': user.isFollowed })} onClick={() => onChangeFollow(user.userId, user.isFollowed)}>
+              { user.id === currentUserId ? '' : ''}
               { user.isFollowed ? '正在跟隨' : '跟隨'}
             </div>
-          </Fragment>
+          </div>
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 export default Populars

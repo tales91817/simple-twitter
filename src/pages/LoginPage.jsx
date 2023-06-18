@@ -7,19 +7,14 @@ import {
 } from "../components/common/Auth";
 import { ReactComponent as Logo } from "../assets/icons/LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { login } from "api/auth";
 import Swal from "sweetalert2";
-import { useAuth } from "contexts/AuthContext";
 
 const LoginPage = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
-  const [alertText1, setAlertText1] = useState("");
-  const [alertText2, setAlertText2] = useState("");
-  const [alertText, setAlertText] = useState("");
   const navigate = useNavigate();
-
-  const { login, isAuthenticated } = useAuth()
 
   const handleClick = async () => {
     if (account.length === 0) {
@@ -29,14 +24,40 @@ const LoginPage = () => {
       return;
     }
 
-    const { success, message }= await login({
+    const {
+      status,
+      data: { 
+        token: authToken,
+        user: 
+         {
+          id: id,
+          account: useraccount,
+          email: email,
+          name: name,
+          avatar: avatar,
+          cover: cover,
+          introduction: introduction,
+          role: role,
+          createdAt: createdAt,
+          updatedAt: updatedAt
+        }
+      },
+    } = await login({
       account,
       password,
     });
-
     if (status === "success") {
+      localStorage.setItem("authToken", authToken);
+      localStorage.setItem("id", id)
+      localStorage.setItem("useraccount", useraccount)
+      localStorage.setItem("email", email)
+      localStorage.setItem("name", name)
+      localStorage.setItem("avatar", avatar)
+      localStorage.setItem("cover", cover)
+      localStorage.setItem("introduction", introduction)
+      localStorage.setItem("role", role)
       console.log("status是" + status);
-      const authToken = localStorage.getItem('authToken')
+      console.log("token是" + authToken);
 
       // 登入成功訊息
       Swal.fire({
@@ -46,34 +67,19 @@ const LoginPage = () => {
         icon: "success",
         showConfirmButton: false,
       });
+      navigate("/");
       return;
     }
-    
-    console.log('登入GG')
-    if (message === "Error: 帳號不存在!") {
-      setAlertText("帳號不存在！");
-      setAlertText1("帳號不存在！");
-      setAlertText2("");
-    } else if (message === "Error: 密碼錯誤!") {
-      setAlertText("密碼錯誤！");
-      setAlertText2("密碼錯誤！");
-      setAlertText1("");
-    }
-    
+
+    // 登入失敗訊息
     Swal.fire({
       position: "top",
-      title: alertText,
+      title: "登入失敗！",
       timer: 1000,
-      // icon: "error",
+      icon: "error",
       showConfirmButton: false,
     });
   };
-
-   useEffect(() => {
-    if(isAuthenticated) {
-      navigate('/')
-    }
-   }, [navigate, isAuthenticated]);
 
   return (
     <AuthContainer>
@@ -84,7 +90,7 @@ const LoginPage = () => {
         placeholder="請輸入帳號"
         value={account}
         onChange={(accountInputValue) => setAccount(accountInputValue)}
-        alertText={alertText1}
+        alertText="帳號不存在！"
       />
       <AuthInput
         type="password"
@@ -92,7 +98,7 @@ const LoginPage = () => {
         placeholder="請輸入密碼"
         value={password}
         onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-        alertText={alertText2}
+        alertText="密碼錯誤！"
       />
       <AuthButton onClick={handleClick}>登入</AuthButton>
       <LinkTextContainer>

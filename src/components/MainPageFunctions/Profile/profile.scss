@@ -36,25 +36,24 @@ $popularsBackground: #fafafb;
       font-weight: 700;
       font-size: 18px;
       border-right: 1px solid $twitterBorder;
-    }
 
-    .arrow {
-      margin: 0 10px;
-      cursor: pointer;
-    }
-
-    .backUser {
-      margin-left: 10px;
-
-      .topUsername {
-        margin: 0;
+      .arrow {
+        margin: 0 10px;
+        cursor: pointer;
       }
-      .userTweetsNum {
-        margin: 0;
-        font-size: 13px;
-        font-weight: 500;
-        color: $twitterComment;
+
+      .backUser {
+        margin-left: 10px;
+
+        .topUsername {
+            margin: 0;
+        }
+        .userTweetsNum {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: $twitterComment;
+        }
       }
     }
-}
-
+  }
