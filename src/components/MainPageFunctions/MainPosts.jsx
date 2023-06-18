@@ -4,7 +4,7 @@ import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
 import { Link } from 'react-router-dom'
 
-const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClickedId, onChangeReply, replyId }) => {
+const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, currentId, onClickedId, onChangeReply, replyId }) => {
     
     const getTimeDifference = (tweetTimestamp) => {
         const tweetDate = new Date(tweetTimestamp)
@@ -28,7 +28,7 @@ const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClicked
                 <div className="postCardImg" key={post.id} onClick={() => {
                 onClickedId(post.UserId)
             }}>
-                    <Link to={`profile/${userId}`}><img src={post.avatar} alt="user-avatar" /></Link>
+                    <Link to="/profile"><img src={post.avatar} alt="user-avatar" /></Link>
                 </div>
             <div className="postCardRightSide">
                 <div className="postCardtitle">
@@ -40,7 +40,7 @@ const MainPosts = ({ allTweet, onToggleLike, onOpenModalReply, userId, onClicked
                     </div>
                 </div>
                 <div className="postCardContent">
-                    <Link to={`/replyList/${replyId}`} className="toReply" onClick={() => {onChangeReply(post.id)}}>{post.description}</Link>
+                    <Link to="/replyList" className="toReply" onClick={() => {onChangeReply(post.id)}}>{post.description}</Link>
                 </div>
                 <div className="postCardfooter">
                     <div className='postCardIcon'>

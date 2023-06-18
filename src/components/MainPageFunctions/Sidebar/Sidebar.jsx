@@ -10,7 +10,6 @@ import { ReactComponent as LogoutIcon } from 'assets/icons/Logout.svg'
 import { useNavigate } from 'react-router-dom'
 import './sidebar.scss'
 
-
 /* eslint-disable */ 
 
 const Sidebar = ({ onOpenModalTweet }) => {
@@ -21,6 +20,15 @@ const Sidebar = ({ onOpenModalTweet }) => {
     const navigate = useNavigate()
     const handleClick = () => {
       localStorage.removeItem("authToken");
+      localStorage.removeItem("id");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+      localStorage.removeItem("useraccount");
+      localStorage.removeItem("avatar");
+      localStorage.removeItem("cover");
+      localStorage.removeItem("introduction");
+      localStorage.removeItem("role");
+      localStorage.removeItem("token");
       navigate("/users/login");
     };
 
@@ -50,7 +58,7 @@ const Sidebar = ({ onOpenModalTweet }) => {
           className={isSelectedIcon === "profile" ? "selected" : "item"}
           onClick={() => {
             handleButtonClick("profile");
-            navigate("/profile/24");
+            navigate("/profile");
           }}
         >
           {isSelectedIcon === "profile" ? (

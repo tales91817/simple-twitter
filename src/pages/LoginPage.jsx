@@ -26,13 +26,36 @@ const LoginPage = () => {
 
     const {
       status,
-      data: { token: authToken },
+      data: { 
+        token: authToken,
+        user: 
+         {
+          id: id,
+          account: useraccount,
+          email: email,
+          name: name,
+          avatar: avatar,
+          cover: cover,
+          introduction: introduction,
+          role: role,
+          createdAt: createdAt,
+          updatedAt: updatedAt
+        }
+      },
     } = await login({
       account,
       password,
     });
     if (status === "success") {
       localStorage.setItem("authToken", authToken);
+      localStorage.setItem("id", id)
+      localStorage.setItem("useraccount", useraccount)
+      localStorage.setItem("email", email)
+      localStorage.setItem("name", name)
+      localStorage.setItem("avatar", avatar)
+      localStorage.setItem("cover", cover)
+      localStorage.setItem("introduction", introduction)
+      localStorage.setItem("role", role)
       console.log("status是" + status);
       console.log("token是" + authToken);
 

@@ -3,6 +3,8 @@ import { ReactComponent as ModalUserAvatar } from 'assets/icons/other-user-avata
 import { ReactComponent as MyAvatar } from 'assets/images/main-user-John-Doe avatar_50x50.svg'
 import { ReactComponent as CloseBtn } from 'assets/icons/close-button.svg'
 
+const currentUserImg = localStorage.getItem("avatar")
+
 const ReplyModal = ({ closeModal, replyPostInfo, onChange, onAddReply, disabledButton }) => {
 
     const getTimeDifference = (tweetTimestamp) => {
@@ -45,7 +47,7 @@ const ReplyModal = ({ closeModal, replyPostInfo, onChange, onAddReply, disabledB
             </div>
             <div className="myReply">
                 <div className="myReplyContainer">
-                    <MyAvatar />
+                    <img src={currentUserImg} alt="avatar" />
                     <div className="replyRightSide">
                         <form action="submit">
                             <textarea type="text" className="replyContent" placeholder='推你的回覆' onChange={(e) => {
@@ -56,7 +58,7 @@ const ReplyModal = ({ closeModal, replyPostInfo, onChange, onAddReply, disabledB
                 </div>
             </div>
             <div className="modalFooter">
-                <button className="replyBtn" onClick={() => onAddReply()} disabled={disabledButton} >
+                <button className="replyBtn" onClick={() => onAddReply(replyPostInfo.id)} disabled={disabledButton} >
                     回覆
                 </button>
             </div>
