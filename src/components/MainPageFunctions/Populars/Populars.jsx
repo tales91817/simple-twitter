@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
 const Populars = ({ trendUsers }) => {
   
   return (
-    <div className='populars'>
+    <div className="populars">
       <div className="popularsHeader">
         <h4>推薦跟隨</h4>
       </div>
@@ -32,7 +32,7 @@ const Populars = ({ trendUsers }) => {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default Populars

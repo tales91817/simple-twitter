@@ -7,19 +7,22 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 import AdminMainPage from "./pages/AdminMainPage";
 import AdminUsersPage from "pages/AdminUsersPage";
 import HomePage from "pages/HomePage";
+import { AuthProvider } from "contexts/AuthContext";
 
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/users/login" element={<LoginPage />} />
-          <Route path="/users/signup" element={<SignUpPage />} />
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-          <Route path="/admin/main" element={<AdminMainPage />} />
-          <Route path="/admin/users" element={<AdminUsersPage />} />
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="users/login" element={<LoginPage />} />
+            <Route path="users/signup" element={<SignUpPage />} />
+            <Route path="admin/login" element={<AdminLoginPage />} />
+            <Route path="admin/main" element={<AdminMainPage />} />
+            <Route path="admin/users" element={<AdminUsersPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

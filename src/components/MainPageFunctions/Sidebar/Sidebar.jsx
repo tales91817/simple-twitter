@@ -9,16 +9,20 @@ import { ReactComponent as SettingIconSelected } from 'assets/icons/setting_sele
 import { ReactComponent as LogoutIcon } from 'assets/icons/Logout.svg'
 import { useNavigate } from 'react-router-dom'
 import './sidebar.scss'
+import { useAuth } from 'contexts/AuthContext'
 
 /* eslint-disable */ 
 
 const Sidebar = ({ onOpenModalTweet }) => {
-    const [ isSelectedIcon, setIsSelectedIcon ] = useState('')
+    const [ isSelectedIcon, setIsSelectedIcon ] = useState ('')
     const handleButtonClick = (buttonName) => {
         setIsSelectedIcon(buttonName)
     }
+
+    const { logout } = useAuth()
     const navigate = useNavigate()
     const handleClick = () => {
+      logout()
       localStorage.removeItem("authToken");
       localStorage.removeItem("id");
       localStorage.removeItem("name");
@@ -82,17 +86,20 @@ const Sidebar = ({ onOpenModalTweet }) => {
           )}
           <div className="text">設定</div>
         </div>
-        <div className="sidebar_Btn" onClick={() => {
-                onOpenModalTweet()
-        }}>
+        <div
+          className="sidebar_Btn"
+          onClick={() => {
+            onOpenModalTweet();
+          }}
+        >
           <a href="#">推文</a>
         </div>
       </div>
       <div onClick={handleClick} className="logout">
         <div className="logoutBtn">
           <LogoutIcon />
-          <div className="logoutText">登出</div>
         </div>
+        <div className="logoutText">登出</div>
       </div>
     </div>
   );
