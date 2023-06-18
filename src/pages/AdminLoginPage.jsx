@@ -84,7 +84,7 @@ useEffect(() => {
         placeholder="請輸入帳號"
         value={account}
         onChange={(accountInputValue) => setAccount(accountInputValue)}
-        alertText="帳號不存在！"
+        alertText={alertText1}
       />
       <AuthInput
         type="password"
@@ -92,7 +92,7 @@ useEffect(() => {
         placeholder="請輸入密碼"
         value={password}
         onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-        alertText="密碼錯誤！"
+        alertText={alertText2}
       />
       <AuthButton onClick={handleClick}>登入</AuthButton>
       <LinkTextContainer>

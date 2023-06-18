@@ -96,10 +96,16 @@ const Setting = ({
      setAlertText3("");
    }
 
-   if (alertText === "尚未輸入密碼") {
+   if (alertText === "尚未輸入密碼！") {
      setAlertText4("尚未輸入密碼！");
    } else {
      setAlertText4("");
+   }
+   
+   if (alertText === "尚未輸入確認密碼！") {
+     setAlertText5("尚未輸入確認密碼！");
+   } else {
+     setAlertText5("");
    }
 
    if (alertText === "Error: 密碼與確認密碼不相符!") {

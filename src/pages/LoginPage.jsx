@@ -23,10 +23,30 @@ const LoginPage = () => {
 
   const handleClick = async () => {
     if (account.length === 0) {
+      setAlertText1("尚未輸入帳號！");
+      Swal.fire({
+        position: "top",
+        title: "所有欄位皆為必填!",
+        timer: 1000,
+        icon: "error",
+        showConfirmButton: false,
+      });
       return;
+    } else {
+      setAlertText1("");
     }
     if (password.length === 0) {
+      setAlertText2("尚未輸入密碼！");
+      Swal.fire({
+        position: "top",
+        title: "所有欄位皆為必填",
+        timer: 1000,
+        icon: "error",
+        showConfirmButton: false,
+      });
       return;
+    } else {
+      setAlertText2("");
     }
 
     const {

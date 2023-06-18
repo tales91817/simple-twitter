@@ -509,27 +509,32 @@ const HomePage = () => {
       return;
     }
     if (password.length === 0) {
-      setAlertText("尚未輸入密碼");
+      setAlertText("尚未輸入密碼！");
       Swal.fire({
         position: "top",
-        title: "尚未輸入密碼",
+        title: "尚未輸入密碼！",
         timer: 1000,
         icon: "error",
         showConfirmButton: false,
       });
       return;
+    } else {
+      setAlertText("");
     }
     if (checkPassword.length === 0) {
-      
+      setAlertText("尚未輸入確認密碼！");
       Swal.fire({
         position: "top",
-        title: "尚未輸入確認密碼",
+        title: "尚未輸入確認密碼！",
         timer: 1000,
         icon: "error",
         showConfirmButton: false,
       });
       return;
+    } else {
+      setAlertText("");
     }
+
     console.log("現在的id是", currentUserId);
     let id = currentUserId;
     console.log(`currenId是${currentUserId}, id是${id}`);
