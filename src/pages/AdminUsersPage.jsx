@@ -7,38 +7,38 @@ import { useEffect, useState } from "react";
 import { getUsers } from "api/admin";
 import { useAuth } from "contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { useAuthAdmin } from "contexts/AuthAdminContext";
 
 
 const AdminUsersPage = () => {
-   const [users, setUsers] = useState([]);
-  //   const navigate = useNavigate();
-  //  const { isAuthenticated } = useAuth();
+  const [users, setUsers] = useState([]);
 
-  //  useEffect(() => {
-  //    if (!isAuthenticated) {
-  //      console.log("登愣沒有isAuthenticated了");
-  //      navigate("/admin/login");
-  //    }
-  //  }, [navigate, isAuthenticated]);
+  ////////身份驗證與頁面自動導引//////////
+  const navigate = useNavigate();
+  const { isAdminAuthenticated } = useAuthAdmin();
 
-   useEffect(() => {
-     const getUsersAsync = async () => {
-       try {
-         const users = await getUsers();
-         setUsers(users);
-       } catch (error) {
-         console.error(error);
-       }
-     };
-     getUsersAsync();
-   }, []);
+  useEffect(() => {
+    if (!isAdminAuthenticated) {
+      console.log("登愣沒有isAdminAuthenticated了");
+      navigate("admin/users");
+    }
+  }, [navigate, isAdminAuthenticated]);
+
+  useEffect(() => {
+    const getUsersAsync = async () => {
+      try {
+        const users = await getUsers();
+        setUsers(users);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getUsersAsync();
+  }, []);
 
   return (
     <div className="adminContentPageContainer">
-      <AdminLeftColumn
-        icon1={<Home />}
-        icon2={<ProfileSelected />}
-      />
+      <AdminLeftColumn icon1={<Home />} icon2={<ProfileSelected />} />
       <AdminUserList users={users} />
     </div>
   );
