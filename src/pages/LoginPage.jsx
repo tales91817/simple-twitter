@@ -103,7 +103,7 @@ const LoginPage = () => {
       position: "top",
       title: alertText,
       timer: 1000,
-      // icon: "error",
+      icon: "error",
       showConfirmButton: false,
     });
   };

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 const AuthContainer = ({ children }) => {
   return <div className="authContainer">{children}</div>;
 };
@@ -13,10 +14,15 @@ const AuthInput = ({
 }) => {
   const wordCountClassName =
     value.length > 0 ? "showWordCount" : "hideWordCount";
-    
+
   return (
     <>
-      <div className="authInputContainer">
+      {/* <div className="authInputContainer"> */}
+      <div
+        className={clsx("authInputContainer", {
+          authInputContainerError: alertText !== "",
+        })}
+      >
         <label className="authInputLabel">{label}</label>
         <input
           className="authInput"
@@ -46,7 +52,6 @@ const LinkTextContainer = ({ children }) => {
   return <div className="authLinkTextContainer">{children}</div>;
 };
 
-
 const AuthLinkText = ({ children }) => {
   return <div className="authLinkText">{children}</div>;
 };
@@ -55,10 +60,9 @@ const AuthTitle = ({ children }) => {
   return <div className="authTitle">{children}</div>;
 };
 
-
 export default AuthInput;
-export {AuthButton};
+export { AuthButton };
 export { AuthLinkText };
 export { LinkTextContainer };
 export { AuthTitle };
-export { AuthContainer }
+export { AuthContainer };

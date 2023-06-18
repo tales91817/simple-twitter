@@ -18,6 +18,7 @@ import { getAllTweetPost, postTweet } from 'api/tweetInfo';
 import { getAllReplies, replyToTweet } from 'api/reply';
 import { addLikes, cancelLikes } from 'api/like';
 import { deleteFollower, postFollower, getFollower, getFollowing } from 'api/follow';
+import Swal from "sweetalert2";
 
 /////////////////////以下是 Context 引用 與 <Setting /> 會用到的函式/////////////////////////
 import { useAuth } from "contexts/AuthContext";
@@ -508,9 +509,25 @@ const HomePage = () => {
       return;
     }
     if (password.length === 0) {
+      setAlertText("尚未輸入密碼");
+      Swal.fire({
+        position: "top",
+        title: "尚未輸入密碼",
+        timer: 1000,
+        icon: "error",
+        showConfirmButton: false,
+      });
       return;
     }
     if (checkPassword.length === 0) {
+      
+      Swal.fire({
+        position: "top",
+        title: "尚未輸入確認密碼",
+        timer: 1000,
+        icon: "error",
+        showConfirmButton: false,
+      });
       return;
     }
     console.log("現在的id是", currentUserId);
@@ -528,6 +545,27 @@ const HomePage = () => {
     console.log(data);
     setAlertText(data.message);
     console.log(alertText);
+    const { success } = data;
+    if (success) {
+      // 編輯成功訊息
+      Swal.fire({
+        position: "top",
+        title: "儲存成功！",
+        timer: 1000,
+        icon: "success",
+        showConfirmButton: false,
+      });
+      return;
+    }
+    // 編輯失敗訊息
+    Swal.fire({
+      position: "top",
+      title: alertText,
+      timer: 1000,
+      icon: "error",
+      showConfirmButton: false,
+    });
+
     // if (data.message) {console.log(data.message)};
   };
   /////////////////// 以上是 <Setting /> 的儲存按鈕的handler ///////////////////
