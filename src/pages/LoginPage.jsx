@@ -100,6 +100,7 @@ const LoginPage = () => {
           <AuthLinkText>登入後台</AuthLinkText>
         </Link>
       </LinkTextContainer>
+      <div>test</div>
     </AuthContainer>
   );
 };
