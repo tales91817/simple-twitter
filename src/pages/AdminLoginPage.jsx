@@ -7,14 +7,20 @@ import {
 } from "../components/common/Auth";
 import { ReactComponent as Logo } from "../assets/icons/LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { adminLogin } from "api/auth";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useAuth } from "contexts/AuthContext";
+import { useAuthAdmin } from "contexts/AuthAdminContext";
 
 const AdminLoginPage = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  const [alertText1, setAlertText1] = useState("");
+  const [alertText2, setAlertText2] = useState("");
+  const [alertText, setAlertText] = useState("");
   const navigate = useNavigate();
+
+const { adminLogin, isAdminAuthenticated } = useAuthAdmin();
 
 const handleClick = async () => {
   if (account.length === 0) {
@@ -24,17 +30,13 @@ const handleClick = async () => {
     return;
   }
 
-  const {
-    status,
-    data: { token: authToken },
-  } = await adminLogin({
+  const { success, message } = await adminLogin({
     account,
     password,
   });
-  if (status === "success") {
-    localStorage.setItem("authToken", authToken);
-    console.log("status是" + status);
-    console.log("token是" + authToken);
+  if (success) {
+    console.log("success是" + success);
+    const authToken = localStorage.getItem("authToken");
 
     // 登入成功訊息
     Swal.fire({
@@ -44,19 +46,34 @@ const handleClick = async () => {
       icon: "success",
       showConfirmButton: false,
     });
-    navigate('/admin/main')
     return;
+  }
+
+  if (message === "Error: 帳號不存在!") {
+    setAlertText("帳號不存在！");
+    setAlertText1("帳號不存在！");
+    setAlertText2("");
+  } else if (message === "Error: 密碼錯誤!") {
+    setAlertText("密碼錯誤！");
+    setAlertText2("密碼錯誤！");
+    setAlertText1("");
   }
 
   // 登入失敗訊息
   Swal.fire({
     position: "top",
-    title: "登入失敗！",
+    title: alertText,
     timer: 1000,
     icon: "error",
     showConfirmButton: false,
   });
 };
+
+useEffect(() => {
+  if (isAdminAuthenticated) {
+    navigate("/admin/main");
+  }
+}, [navigate, isAdminAuthenticated]);
 
   return (
     <AuthContainer>

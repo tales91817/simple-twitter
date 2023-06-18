@@ -35,9 +35,9 @@ const LoginPage = () => {
       data,
 
       // status,   ////////// status 改成 success，型別從字串變成布林值 ////////////
-      // data: { 
+      // data: {
       //   token: authToken,
-      //   user: 
+      //   user:
       //    {
       //     id: id,
       //     account: useraccount,
@@ -56,26 +56,24 @@ const LoginPage = () => {
       password,
     });
 
-
     if (success) {
       console.log("success是" + success);
-      const authToken = localStorage.getItem('authToken')
-      
-//////////////////////下面這段寫法要修改//////////////////////////
-    // if (status === "success") {
-    //   localStorage.setItem("authToken", authToken);
-    //   localStorage.setItem("id", id)
-    //   localStorage.setItem("useraccount", useraccount)
-    //   localStorage.setItem("email", email)
-    //   localStorage.setItem("name", name)
-    //   localStorage.setItem("avatar", avatar)
-    //   localStorage.setItem("cover", cover)
-    //   localStorage.setItem("introduction", introduction)
-    //   localStorage.setItem("role", role)
-    //   console.log("status是" + status);
-    //   console.log("token是" + authToken);
-//////////////////////上面這段寫法要修改//////////////////////////
+      const authToken = localStorage.getItem("authToken");
 
+      //////////////////////下面這段寫法要修改//////////////////////////
+      // if (status === "success") {
+      //   localStorage.setItem("authToken", authToken);
+      //   localStorage.setItem("id", id)
+      //   localStorage.setItem("useraccount", useraccount)
+      //   localStorage.setItem("email", email)
+      //   localStorage.setItem("name", name)
+      //   localStorage.setItem("avatar", avatar)
+      //   localStorage.setItem("cover", cover)
+      //   localStorage.setItem("introduction", introduction)
+      //   localStorage.setItem("role", role)
+      //   console.log("status是" + status);
+      //   console.log("token是" + authToken);
+      //////////////////////上面這段寫法要修改//////////////////////////
 
       // 登入成功訊息
       Swal.fire({
@@ -87,8 +85,8 @@ const LoginPage = () => {
       });
       return;
     }
-    
-    console.log('登入GG')
+
+    console.log("登入GG");
     if (message === "Error: 帳號不存在!") {
       setAlertText("帳號不存在！");
       setAlertText1("帳號不存在！");
@@ -98,7 +96,8 @@ const LoginPage = () => {
       setAlertText2("密碼錯誤！");
       setAlertText1("");
     }
-    
+
+    // 登入失敗訊息
     Swal.fire({
       position: "top",
       title: alertText,

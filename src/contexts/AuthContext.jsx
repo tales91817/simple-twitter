@@ -1,4 +1,4 @@
-import { checkPermission, login, register } from "api/auth";
+import { checkPermission, register, login } from "api/auth";
 import { createContext, useContext, useEffect, useState } from 'react';
 import * as jwt from 'jsonwebtoken';
 import { useLocation } from 'react-router-dom';
@@ -9,6 +9,7 @@ const defaultAuthContext = {
   currentMember: {},
   register: null,
   login: null,
+  adminLogin: null,
   logout: null,
 };
 
@@ -50,7 +51,7 @@ export const AuthProvider = ({ children }) => {
           id: payload.id,
           name: payload.name,
           email: payload.email,
-          account: payload.account
+          account: payload.account,
         },
         register: async (data) => {
           const {
@@ -66,7 +67,6 @@ export const AuthProvider = ({ children }) => {
             password: data.password,
             checkPassword: data.checkPassword,
           });
-
 
           // const tempPayload = jwt.decode(authToken);
           // if (tempPayload) {
@@ -94,8 +94,8 @@ export const AuthProvider = ({ children }) => {
             account: giveInData.account,
             password: giveInData.password,
           });
-        //   if (successData) {
-        //  const { token: authToken } = successData;
+          //   if (successData) {
+          //  const { token: authToken } = successData;
 
           const tempPayload = jwt.decode(authToken);
           if (tempPayload) {
@@ -103,20 +103,19 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(true);
             localStorage.setItem("authToken", authToken);
             console.log("現在有權限喔^^");
-          
           } else {
             setPayload(null);
             setIsAuthenticated(false);
-            console.log('現在沒權限了><')
+            console.log("現在沒權限了><");
           }
-          return {success, message, data};
+          return { success, message, data };
         },
 
         logout: () => {
           localStorage.removeItem("authToken");
           setPayload(null);
           setIsAuthenticated(false);
-          console.log(`isAuthenticated狀態：${isAuthenticated}`)
+          console.log(`isAuthenticated狀態：${isAuthenticated}`);
         },
       }}
     >
