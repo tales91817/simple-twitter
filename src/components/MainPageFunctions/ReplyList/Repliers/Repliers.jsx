@@ -2,7 +2,7 @@ import React from 'react'
 import './repliers.scss'
 
 const Repliers = ({ allReplies }) => {
-  if (allReplies.length === 0) {
+  if (allReplies.status === 'error') {
     return (<div className="replyPost-wrapper"></div>)
   } else {
     return (
