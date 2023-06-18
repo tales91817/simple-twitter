@@ -27,19 +27,19 @@ const UserPosts = ({ postCards, onToggleLike, onOpenModalReply }) => {
         {postCards.map((post) => (
             <div className="postCard" key={post.id} >
             <div className="postCardImg">
-                <img src={post.userAvatar} alt="user-avatar" />
+                <img src={post.avatar} alt="user-avatar" />
             </div>
             <div className="postCardRightSide">
                 <div className="postCardtitle">
                     <div className="postCardName">
-                        <strong>{post.userName}</strong>
+                        <strong>{post.name}</strong>
                     </div>
                     <div className="postUserAccount">
-                        @{post.userAccount}・<span>{getTimeDifference(post.updatedAt)}</span>
+                        @{post.userAccount}・<span>{getTimeDifference(post.createdAt)}</span>
                     </div>
                 </div>
                 <div className="postCardContent">
-                    <Link to="/replyList" className="toReply"><p>{post.description}</p></Link>
+                    <Link to="/replyList" className="toReply"><p>{post.comment}</p></Link>
                 </div>
                 <div className="postCardfooter">
                     <div className='postCardIcon'>

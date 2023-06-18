@@ -1,16 +1,15 @@
 import React from 'react'
 import { ReactComponent as CloseBtn } from 'assets/icons/close-button.svg'
-import { ReactComponent as EditBanner } from 'assets/images/edit-user-info-banner.svg'
 import { ReactComponent as Camera } from 'assets/icons/camera.svg'
 import { ReactComponent as RemoveBanner } from 'assets/icons/remove-button-banner.svg'
-import EditAvatar from 'assets/images/edit-main-user-John-Doe.png'
 
 const currentUserName = localStorage.getItem("name")
+const currentUserId = localStorage.getItem("id")
 const currentUserImg = localStorage.getItem("avatar")
 const currentUserCover = localStorage.getItem("cover")
 const currentUserSelf = localStorage.getItem("introduction")
 
-const EditProfileModal = ({ closeModal, onSave, onChangeName, onChangeIntro, onChangeImg }) => {
+const EditProfileModal = ({ closeModal, onSave, onChangeName, onChangeIntro }) => {
   return (
     <div className="editModalBackground">
         <div className="editModalContainer">
@@ -20,9 +19,8 @@ const EditProfileModal = ({ closeModal, onSave, onChangeName, onChangeIntro, onC
                 }}><CloseBtn />
                 <p>編輯個人資料</p>
                 </div>
-                
                 <button type="submit" className="save" onClick={() => {
-                    onSave()
+                    onSave(currentUserId)
                 }}>
                     儲存
                 </button>
@@ -30,9 +28,7 @@ const EditProfileModal = ({ closeModal, onSave, onChangeName, onChangeIntro, onC
             <div className="editUserInfo">
                 <div className="editUserBanner">
                         <img src={currentUserCover} alt="cover" />
-                        <div className="camera" onChangeImg={() => {
-                            onChangeImg()
-                        }}>
+                        <div className="camera">
                         <Camera className="cameraInBanner"/>
                         </div>
                         <RemoveBanner className="removeBtn" />
