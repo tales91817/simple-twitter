@@ -4,13 +4,6 @@ $twitterComment: #6c757d;
 $popularsBackground: #fafafb;
 
 .profile-wrapper {
-  // width: 50%;
-  // width: 520px;
-  // height: 100vh;
-  // position: fixed;
-  // margin: 0 10px;
-  // border-right: 1px solid $twitterBorder;
-  // border-left: 1px solid $twitterBorder;
     width: 50%;
     height: 100%;
     position: fixed;
@@ -43,45 +36,24 @@ $popularsBackground: #fafafb;
       font-weight: 700;
       font-size: 18px;
       border-right: 1px solid $twitterBorder;
-    }  
 
-  .profileHeader {
-    width: 520px;
-    height: 74px;
-    display: flex;
-    align-items: center;
-    // position: fixed;
-    top: 0;
-    padding: 15px;
-    background-color: #fff;
-    font-weight: 700;
-    font-size: 18px;
-
-    .arrow {
-      margin: 0 10px;
-      cursor: pointer;
-    }
-
-    .backUser {
-      margin-left: 10px;
-
-      .topUsername {
-        margin: 0;
+      .arrow {
+        margin: 0 10px;
+        cursor: pointer;
       }
-      .userTweetsNum {
-        margin: 0;
-        font-size: 13px;
-        font-weight: 500;
-        color: $twitterComment;
+
+      .backUser {
+        margin-left: 10px;
+
+        .topUsername {
+            margin: 0;
+        }
+        .userTweetsNum {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
+            color: $twitterComment;
+        }
       }
     }
   }
-}
-
-@media screen and (min-width: 1200px) {
-  .profile-wrapper,
-  .profileHeader {
-    width: 639px;
-    margin: 0 24px;
-  }
-}
