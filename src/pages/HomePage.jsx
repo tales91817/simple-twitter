@@ -525,7 +525,8 @@ const HomePage = () => {
         { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} onChangeName={handleChangeName} onChangeIntro={handleChangeIntro} onSave={handleOnSave}/>}
       </div>
     );
-  };
+  ;
+
 
   //////////////// 以下是 <Setting /> 的儲存按鈕的handler ///////////////////
   const handleSaveConfig = async () => {
