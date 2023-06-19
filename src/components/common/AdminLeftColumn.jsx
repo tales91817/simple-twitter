@@ -1,3 +1,4 @@
+import { useAuthAdmin } from "contexts/AuthAdminContext";
 import { ReactComponent as Logo } from "../../assets/icons/LOGO.svg";
 import { ReactComponent as Logout } from "../../assets/icons/Logout.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,9 +13,11 @@ const NavItem = ({ icon, title, onClick }) => {
 };
 
 const AdminLeftColumn = ({ icon1, icon2 }) => {
-    const navigate = useNavigate();
-
+    
+  const { adminLogout } = useAuthAdmin();
+  const navigate = useNavigate();
     const handleClick = () => {
+      adminLogout()
       localStorage.removeItem("authToken");
       navigate("/admin/login");
     };
