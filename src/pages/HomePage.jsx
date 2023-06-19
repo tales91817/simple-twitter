@@ -44,14 +44,16 @@ const HomePage = () => {
   const [addReply, setAddReply] = useState({});
 
   /* UserProfile */
-  const [userInfo, setuserInfo] = useState({});
-  const [userId, setUserId] = useState(currentId);
-  const [tweets, setTweets] = useState([]);
-  const [likes, setLikes] = useState([]);
-  const [inputNameValue, setInputNameValue] = useState("");
-  const [inputIntroValue, setInputIntroValue] = useState("");
-  const [followers, setFollowers] = useState([]);
-  const [followings, setFollowings] = useState([]);
+  const [ userInfo, setuserInfo ] = useState({})
+  const [ userId, setUserId] = useState(currentId)
+  const [ tweets, setTweets ] = useState([])
+  const [ likes, setLikes ] = useState([])
+  const [ inputNameValue, setInputNameValue ] = useState('')
+  const [ inputIntroValue, setInputIntroValue ] = useState('')
+  const [ followers, setFollowers ] = useState([])
+  const [ followings, setFollowings ] = useState([])
+  const [ image, setImage ] = useState(null)
+
 
   /* Tweet */
   const [checkWordLength, setCheckWordLength] = useState(false);
@@ -59,6 +61,7 @@ const HomePage = () => {
   const [disabledButton, setDisabledButton] = useState(false);
 
   /* Likes */
+
   const [currentClickLike, setCurrentClickLike] = useState("");
 
   ///////////////////////以下是 <Setting /> 元件會用到的 state ////////////////////////
@@ -93,6 +96,7 @@ const HomePage = () => {
     console.log(test);
   };
 
+
   /* 取得所有推文(主畫面) */
   useEffect(() => {
     const getAllTweetContentAsync = async () => {
@@ -102,9 +106,10 @@ const HomePage = () => {
       } catch (error) {
         console.error(error);
       }
-    };
-    getAllTweetContentAsync();
-  }, []);
+    }
+    getAllTweetContentAsync()
+  }, [currentClickLike])
+
 
   useEffect(() => {
     const getUserTweetContentAsync = async () => {
@@ -138,9 +143,10 @@ const HomePage = () => {
       } catch (error) {
         console.error(error);
       }
-    };
-    getPopularsAsyn();
-  }, []);
+    }
+    getPopularsAsyn()
+  }, [userInfo])
+  
 
   /* 取得使用者的所有推文 */
   useEffect(() => {
@@ -259,19 +265,18 @@ const HomePage = () => {
     setInputIntroValue(value);
   };
 
-  const handleChangeImg = () => {};
   /* 儲存個人資料 */
-  const handleOnSave = () => {
+  const handleOnSave = (id) => {
     const payload = {
       username: inputNameValue,
-      userIntroduction: inputIntroValue,
-    };
-    setOpenModelEdit(false);
-    putUserProfileInfo(currentId, payload);
+      userIntroduction: inputIntroValue
+    }
+    setOpenModelEdit(false)
+    putUserProfileInfo(id, payload)
     const getUserInfoAsyn = async () => {
       try {
-        const info = await getUserInfo(currentId);
-        setuserInfo(info);
+        const info = await getUserInfo(id)
+        setuserInfo(info)
       } catch (error) {
         console.error(error);
       }
@@ -432,24 +437,25 @@ const HomePage = () => {
 
   /* 輸入框限制文字內容 */
   const handleChange = (value) => {
-    setInputValue(value);
+    setInputValue(value)
 
-    if (value.length >= 140) {
-      setCheckWordLength(true);
-      setDisabledButton(true);
-    } else if (value.length <= 140) {
-      setCheckWordLength(false);
-      setDisabledButton(false);
+    if(value.length === 0 || value.trim() === '') {
+      setDisabledButton(true)
+      setCheckInputIsSpace(true)
+    } else if(value.length !== 0 || value.trim() !== '') {
+      setDisabledButton(false)
+      setCheckInputIsSpace(false)
     }
 
-    if (value.length === 0 || value.trim() === "") {
-      setDisabledButton(true);
-      setCheckInputIsSpace(true);
-    } else if (value.length !== 0 || value.trim() !== "") {
-      setDisabledButton(false);
-      setCheckInputIsSpace(false);
+    if(value.length >= 140) {
+      setCheckWordLength(true)
+      setDisabledButton(true)
+    } else if(value.length <= 140) {
+      setCheckWordLength(false)
+      setDisabledButton(false)
     }
-  };
+  }
+
 
   /* 取消預設送出 */
   const handleSubmit = (e) => {
@@ -457,8 +463,9 @@ const HomePage = () => {
   };
 
   /* 從主畫面的推特文進入回覆清單的回覆內容 */
-  const handleChangeReply = async (id) => {
-    setReplyId(id);
+  const handleChangeReply = async(id) => {
+    console.log(id)
+    setReplyId(id)
     try {
       const Replies = await getAllReplies(id);
       setAllReplies(Replies);
@@ -472,8 +479,11 @@ const HomePage = () => {
 
   /* 跟隨 & 取消跟隨 */
   const handleClickFollow = (id, isFollowed) => {
-    if (isFollowed === true) {
-      deleteFollower(id);
+    if( id === Number(currentId) ) {
+      alert('不可跟隨自己的帳號')
+    } else if( isFollowed && (id !== Number(currentId))) {
+      deleteFollower(id)
+
       const getUserInfoAsyn = async () => {
         try {
           const info = await getUserInfo(id);
@@ -481,10 +491,11 @@ const HomePage = () => {
         } catch (error) {
           console.error(error);
         }
-      };
-      getUserInfoAsyn();
-    } else if (isFollowed === false) {
-      postFollower(id);
+      }
+      getUserInfoAsyn()
+    } else if ( !isFollowed && (id !== Number(currentId)) ) {
+      postFollower(id)
+
       const getUserInfoAsyn = async () => {
         try {
           const info = await getUserInfo(id);
@@ -495,6 +506,25 @@ const HomePage = () => {
       };
       getUserInfoAsyn();
     }
+  }
+
+  return (
+      <div className="container">
+        <Sidebar onOpenModalTweet={handleOpenModalTweet}/>
+        <Routes>
+          <Route path="*" element={<Twittes allTweet={allTweet} tweets={tweets} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} onSubmit={handleSubmit} disabledButton={disabledButton} checkWordLength={checkWordLength} checkInputIsSpace={checkInputIsSpace} currentId={currentId} onClickedId={handleClickedId} onChangeReply={handleChangeReply} replyId={replyId} />} />
+          <Route path="/profile" element={<Profile onOpenEditModal={handleOpenModalEdit} postCards={postCards} userInfo={userInfo} allReplies={allReplies} onToggleLike={handleToggleLike} onOpenModalReply={handleOpenModalReply} likes={likes} onClickFollow={handleClickFollow} />} />
+          <Route path="/setting" element={<Setting />} />
+          <Route path="/other" element={<OtherUserProfile userInfo={userInfo} postCards={postCards} onOpenModalReply={handleOpenModalReply} />} />
+          <Route path="/replyList" element={<ReplyList onOpenModalReply={handleOpenModalReply} allReplies={allReplies} currentTweet={currentTweet} />} />
+          <Route path="/followers" element={<FollowInfo followers={followers} followings={followings} onClickFollow={handleClickFollow} />} />
+        </Routes>
+        <Populars trendUsers={trendUsers} onChangeFollow={handleClickFollow}/>
+        { openModalReply && <ReplyModal closeModal={handleCloseModalReply} replyPostInfo={replyPostInfo} onChange={handleChange} onAddReply={handleAddReply} /> }
+        { openModalTweet && <TwitterModal closeModal={handleCloseModalTweet} onChange={handleChange} inputValue={inputValue} onAddTweet={handleAddTweet} checkWordLength={checkWordLength} onSubmit={handleSubmit} disabledButton={disabledButton} checkInputIsSpace={checkInputIsSpace}/> }
+        { openModelEdit && <EditProfileModal closeModal={handleCloseModalEdit} onChangeName={handleChangeName} onChangeIntro={handleChangeIntro} onSave={handleOnSave}/>}
+      </div>
+    );
   };
 
   //////////////// 以下是 <Setting /> 的儲存按鈕的handler ///////////////////

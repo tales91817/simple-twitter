@@ -44,7 +44,7 @@ const UserInfo = ({ onOpenEditModal, postCards, userInfo, onToggleLike, onOpenMo
           <span className="numbers">{userInfo.follower}位</span><p>跟隨者</p>
         </div>
       </div>
-      <StateContent postCards={postCards} onToggleLike={onToggleLike} onOpenModalReply={onOpenModalReply} likes={likes} allReplies={allReplies}/>
+      <StateContent postCards={postCards} onToggleLike={onToggleLike} onOpenModalReply={onOpenModalReply} likes={likes} allReplies={allReplies} userInfo={userInfo}/>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { ReactComponent as LikeIcon } from 'assets/icons/icon_like.svg'
 import { ReactComponent as LikedIcon } from 'assets/icons/icon_like_slected.svg'
 import { Link } from 'react-router-dom'
 
-const UserPosts = ({ postCards, onToggleLike, onOpenModalReply }) => {
+const UserPosts = ({ postCards, onOpenModalReply }) => {
     
     const getTimeDifference = (tweetTimestamp) => {
         const tweetDate = new Date(tweetTimestamp)
@@ -32,10 +32,10 @@ const UserPosts = ({ postCards, onToggleLike, onOpenModalReply }) => {
             <div className="postCardRightSide">
                 <div className="postCardtitle">
                     <div className="postCardName">
-                        <strong>{post.userName}</strong>
+                        <strong>{post.username}</strong>
                     </div>
                     <div className="postUserAccount">
-                        @{post.userAccount}・<span>{getTimeDifference(post.updatedAt)}</span>
+                        @{post.userAccount}・<span>{getTimeDifference(post.createdAt)}</span>
                     </div>
                 </div>
                 <div className="postCardContent">

@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom'
 import './sidebar.scss'
 import { useAuth } from 'contexts/AuthContext'
 
-/* eslint-disable */ 
 
 const Sidebar = ({ onOpenModalTweet }) => {
     const [ isSelectedIcon, setIsSelectedIcon ] = useState ('')

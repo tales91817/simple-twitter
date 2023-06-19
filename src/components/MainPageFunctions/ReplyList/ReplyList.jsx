@@ -7,6 +7,22 @@ import Repliers from './Repliers/Repliers'
 
 
 const ReplyList = ({ onOpenModalReply, allReplies, currentTweet }) => {
+
+  const getTimeDifference = (tweetTimestamp) => {
+    const tweetDate = new Date(tweetTimestamp)
+    const currentDate = new Date()
+
+    const timeDifference = Math.abs(currentDate - tweetDate) // 獲取兩個日期的毫秒數差距
+    const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60)) // 轉換為小時
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24)) // 轉換為天數
+
+    if (daysDifference > 0) {
+        return `${daysDifference} 天前`;
+      } else {
+        return `${hoursDifference} 小時前`;
+      }
+  }
+
   return (
     <div className='replyList'>
       <div className="replyListHeader">
@@ -27,7 +43,7 @@ const ReplyList = ({ onOpenModalReply, allReplies, currentTweet }) => {
           <div className="replyContent">
             <p>{currentTweet.description}</p>
             <div className="postDate">
-              {currentTweet.createdAt}
+              {getTimeDifference(currentTweet.createdAt)}
             </div>
           </div>
         </div>

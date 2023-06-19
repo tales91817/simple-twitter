@@ -2,7 +2,9 @@ import React, { Fragment } from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
-const Populars = ({ trendUsers }) => {
+const currentUserId = localStorage.getItem("id")
+
+const Populars = ({ trendUsers, onChangeFollow }) => {
   
   return (
     <div className="populars">
@@ -25,7 +27,8 @@ const Populars = ({ trendUsers }) => {
                 </div>
               </div>
             </div>
-            <div className={clsx('followBtn', { 'followed': user.isFollowed })}>
+            <div className={clsx('followBtn', { 'followed': user.isFollowed })} onClick={() => onChangeFollow(user.userId, user.isFollowed)}>
+              { user.id === currentUserId ? '' : ''}
               { user.isFollowed ? '正在跟隨' : '跟隨'}
             </div>
           </div>
