@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import clsx from 'clsx'
 import './populars.scss'
 
@@ -7,7 +7,7 @@ const currentUserId = localStorage.getItem("id")
 const Populars = ({ trendUsers, onChangeFollow }) => {
   
   return (
-    <div className='populars'>
+    <div className="populars">
       <div className="popularsHeader">
         <h4>推薦跟隨</h4>
       </div>
@@ -35,7 +35,7 @@ const Populars = ({ trendUsers, onChangeFollow }) => {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default Populars

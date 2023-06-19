@@ -5,12 +5,12 @@ $popularsBackground: #fafafb;
 $twitterBorderSidebarText: #44444f;
 
 .populars {
-    position: fixed;
+    // position: fixed;
     top: 16px;
     right: 60px;
-    width: 20%;
+    width: 273px;
     background: $popularsBackground;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow-y: auto;
     &::-webkit-scrollbar {
       width: 8px;
@@ -32,10 +32,12 @@ $twitterBorderSidebarText: #44444f;
       font-size: 24px;
       font-weight: 700;
       border-bottom: 1px solid $twitterBorder;
-      padding-bottom: 8px;
+      // padding-bottom: 8px;
 
       h4 {
         margin: 20px;
+        font-size: 24px;
+        line-height: 26px;
       }
     }
   
@@ -44,8 +46,8 @@ $twitterBorderSidebarText: #44444f;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 16px;
-        margin: 22px 16px;
+        // margin: 22px 16px;
+        padding: 16px;
     
         .popularCard {
           display: flex;

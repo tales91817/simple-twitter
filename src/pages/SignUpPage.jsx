@@ -3,11 +3,11 @@ import { AuthButton, AuthLinkText, AuthTitle } from "../components/common/Auth";
 import { ReactComponent as Logo } from "../assets/icons/LOGO.svg";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useState } from "react";
-import { register } from "api/auth";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useAuth } from "contexts/AuthContext";
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const [account, setAccount] = useState("");
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -17,6 +17,8 @@ const LoginPage = () => {
   const nameInputLength = name.length;
 
   const navigate = useNavigate();
+
+  const { register, isAuthenticated } = useAuth();
 
   const handleClick = async () => {
     if (account.length === 0) {
@@ -34,14 +36,15 @@ const LoginPage = () => {
     if (checkPassword.length === 0) {
       return;
     }
-    const {
-      status,
-      data: { token: authToken },
-    } = await register({ name, account, email, password, checkPassword });
+    const { success, message } = await register({
+      name,
+      account,
+      email,
+      password,
+      checkPassword,
+    });
 
-    if (status === "success") {
-      localStorage.setItem("authToken", authToken);
-
+    if (success) {
       // 註冊成功訊息
       Swal.fire({
         position: "top",
@@ -50,7 +53,7 @@ const LoginPage = () => {
         icon: "success",
         showConfirmButton: false,
       });
-      navigate("/");
+      navigate("/users/login");
       return;
     }
 
@@ -63,6 +66,12 @@ const LoginPage = () => {
       showConfirmButton: false,
     });
   };
+
+  useEffect(() => {
+    if(isAuthenticated) {
+      navigate('/')
+    }
+  }, [navigate, isAuthenticated]);
 
   return (
     <AuthContainer>
@@ -117,4 +126,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
